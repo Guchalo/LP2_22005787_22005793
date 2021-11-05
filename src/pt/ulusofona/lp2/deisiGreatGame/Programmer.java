@@ -27,10 +27,9 @@ public class Programmer {
 
     @Override
     public String toString() {
-        return "Programmer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", color=" + color +
+        return "Programmer{" + "id=" + id +
+                ",name='" + name  +
+                ",color=" + color +
                 '}';
     }
 }
