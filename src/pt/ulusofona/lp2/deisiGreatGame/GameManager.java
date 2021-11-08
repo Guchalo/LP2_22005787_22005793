@@ -26,6 +26,7 @@ public class GameManager {
     }
 
     public int getCurrentPlayerID(){
+
         return 1;
     }
 

@@ -8,6 +8,7 @@ public class Programmer {
     ProgrammerColor color;
     int pos;
     ArrayList<String> linguagensProg = new ArrayList<>();
+    boolean estado = true;
 
     public int getId() {
         return id;
@@ -25,11 +26,20 @@ public class Programmer {
         return pos;
     }
 
+    public String getEstado(){
+        if (estado){
+            return "Em Jogo";
+        }else{
+            return "Derrotado";
+        }
+    }
+
+    public String getLinguagensProg(){
+        return "";
+    }
+
     @Override
     public String toString() {
-        return "Programmer{" + "id=" + id +
-                ",name='" + name  +
-                ",color=" + color +
-                '}';
+        return "" + id + " | " + name + " | " + pos + " | " + getLinguagensProg() + " | " + getEstado();
     }
 }
