@@ -8,7 +8,7 @@ public class Programmer {
     String name;
     ProgrammerColor color;
     String image;
-    int pos = 0;
+    int pos = 1;
     ArrayList<String> linguagensProg = new ArrayList<>();
     boolean estado = true;
 
@@ -21,7 +21,14 @@ public class Programmer {
     }
 
 
-    public boolean moverPos(int nrPositions){
+    public boolean moverPos(int nrPositions, int size){
+        if(pos + nrPositions > size){
+            int diferenca = (pos + nrPositions) - size;
+            int alcancarSize = size - pos;
+            pos += alcancarSize;
+            pos -= diferenca;
+            return true;
+        }
         pos += nrPositions;
         return true;
     }
@@ -50,7 +57,7 @@ public class Programmer {
         return pos;
     }
 
-    public String StringEstado(){
+    public String stringEstado(){
         if (estado){
             return "Em Jogo";
         }else{
@@ -79,6 +86,6 @@ public class Programmer {
 
     @Override
     public String toString() {
-        return "" + id + " | " + name + " | " + pos + " | " + getLinguagensProg() + " | " + StringEstado();
+        return "" + id + " | " + name + " | " + pos + " | " + getLinguagensProg() + " | " + stringEstado();
     }
 }

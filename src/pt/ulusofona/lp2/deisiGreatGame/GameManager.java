@@ -226,7 +226,7 @@ public class GameManager {
         if (nrPositions < 1 || nrPositions > 6) {
             return false;
         }
-        turno.getProgramadorAtual().moverPos(nrPositions);
+        turno.getProgramadorAtual().moverPos(nrPositions,tamanhoTab);
         programadores = turno.alterarTurno(turno.getProgramadorAtual());
         turno.mudarJogador(turno.getProgramadorAtual());
         turno.aumentarTurno();
