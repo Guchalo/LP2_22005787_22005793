@@ -12,6 +12,21 @@ public class Programmer {
     boolean estado = true;
     boolean turno = false;
 
+    public Programmer() {
+    }
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public boolean getTurno() {
+        return turno;
+    }
+
+    public boolean moverPos(int nrPositions){
+        pos += nrPositions;
+        return true;
+    }
 
     public Programmer(int id, String name, ProgrammerColor color, ArrayList<String> linguagensProg) {
         this.id = id;
@@ -36,7 +51,7 @@ public class Programmer {
         return pos;
     }
 
-    public String getEstado(){
+    public String StringEstado(){
         if (estado){
             return "Em Jogo";
         }else{
@@ -63,15 +78,11 @@ public class Programmer {
     }
 
     public void trocarTurno(){
-        if (turno){
-            turno = false;
-        } else {
-            turno = true;
-        }
+        turno = !turno;
     }
 
     @Override
     public String toString() {
-        return "" + id + " | " + name + " | " + pos + " | " + getLinguagensProg() + " | " + getEstado();
+        return "" + id + " | " + name + " | " + pos + " | " + getLinguagensProg() + " | " + StringEstado();
     }
 }

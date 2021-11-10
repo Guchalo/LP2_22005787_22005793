@@ -1,15 +1,21 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
+
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Locale;
 
 public class GameManager {
-
+    int tamanhoTab;
+    ArrayList<Programmer> programadores = new ArrayList<>();
 
     public GameManager() {
     }
 
     public boolean createInitialBoard(String[][] playerInfo, int boardSize) {
+        this.tamanhoTab = boardSize;
         int nJogadores = playerInfo.length;
         if (nJogadores < 2 || nJogadores > 4) {
             return false;
@@ -58,7 +64,13 @@ public class GameManager {
                 p2 = new Programmer(id2, playerInfo[1][1], ProgrammerColor.valueOf(playerInfo[1][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[1][2]));
 
-                return HelpfullFunctions.verificarProgrammer(p1, p2);
+                if (HelpfullFunctions.verificarProgrammer(p1, p2)) {
+                    programadores.add(p1);
+                    programadores.add(p2);
+                    return true;
+                }
+
+                break;
 
 
             case 3:
@@ -101,8 +113,15 @@ public class GameManager {
                 p3 = new Programmer(id3, playerInfo[2][1], ProgrammerColor.valueOf(playerInfo[2][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[2][2]));
 
-                return HelpfullFunctions.verificarProgrammer(p1, p2) || HelpfullFunctions.verificarProgrammer(p1, p3) ||
-                        HelpfullFunctions.verificarProgrammer(p2, p3);
+                if (HelpfullFunctions.verificarProgrammer(p1, p2) || HelpfullFunctions.verificarProgrammer(p1, p3) ||
+                        HelpfullFunctions.verificarProgrammer(p2, p3)) {
+                    programadores.add(p1);
+                    programadores.add(p2);
+                    programadores.add(p3);
+                    return true;
+                }
+
+                break;
 
             case 4:
 
@@ -147,45 +166,93 @@ public class GameManager {
                 p4 = new Programmer(id4, playerInfo[3][1], ProgrammerColor.valueOf(playerInfo[3][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[3][2]));
 
-                return HelpfullFunctions.verificarProgrammer(p1, p2) || HelpfullFunctions.verificarProgrammer(p1, p3) ||
+                if (HelpfullFunctions.verificarProgrammer(p1, p2) || HelpfullFunctions.verificarProgrammer(p1, p3) ||
                         HelpfullFunctions.verificarProgrammer(p1, p4) || HelpfullFunctions.verificarProgrammer(p2, p3) ||
-                        HelpfullFunctions.verificarProgrammer(p2, p4) || HelpfullFunctions.verificarProgrammer(p3, p4);
+                        HelpfullFunctions.verificarProgrammer(p2, p4) || HelpfullFunctions.verificarProgrammer(p3, p4)) {
+                    programadores.add(p1);
+                    programadores.add(p2);
+                    programadores.add(p3);
+                    programadores.add(p4);
+
+                    return true;
+                }
+
+                break;
+
             default:
                 return false;
         }
-
-    }
-
-    public String getImagePng(int position){
-        return "";
-    }
-
-    public ArrayList<Programmer> getProgrammers(){
-        return new ArrayList<>();
-    }
-
-    public ArrayList<Programmer> getProgrammers(int position){
-        return new ArrayList<>();
-    }
-
-    public int getCurrentPlayerID(){
-
-        return 1;
-    }
-
-    public boolean moveCurrentPlayer(int nrPositions){
         return false;
+
     }
 
-    public boolean gameIsOver(){
+
+    public String getImagePng(int position) {
+        if (position < 0 || position > tamanhoTab) {
+            return null;
+        }
+        if (position == tamanhoTab) {
+            return "finishLine50x50.png";
+        }
+        return "blank.png";
+    }
+
+    public ArrayList<Programmer> getProgrammers() {
+        return programadores;
+    }
+
+    public ArrayList<Programmer> getProgrammers(int position) {
+        if (position < 0 || position > tamanhoTab) {
+            return null;
+        }
+        ArrayList<Programmer> programadoresPorPosicao = new ArrayList<>();
+        for (Programmer p : programadores) {
+            if (p.getPos() == position) {
+                programadoresPorPosicao.add(p);
+            }
+        }
+        return programadoresPorPosicao;
+    }
+
+    public int getCurrentPlayerID() {
+        for (Programmer p : programadores) {
+            if (p.getTurno()) {
+                return p.getId();
+            }
+        }
+        return 0;
+    }
+
+    public boolean moveCurrentPlayer(int nrPositions) {
+        if (nrPositions < 1 || nrPositions > 6) {
+            return false;
+        }
+        Programmer progAtual = new Programmer();
+        for (Programmer p : programadores) {
+            if (p.getTurno()) {
+                progAtual = p;
+            }
+        }
+        progAtual.moverPos(nrPositions);
         return true;
     }
 
-    public ArrayList<String> getGameResults(){
-        return new ArrayList<>();
+    public boolean gameIsOver() {
+        for (Programmer p : programadores) {
+            if (p.getPos() == tamanhoTab) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public JPanel getAuthorsPanel(){
-        return new JPanel();
+    public ArrayList<String> getGameResults() {
+        ArrayList<String> results = new ArrayList<>();
+        results.add("boda");
+        return results;
+    }
+
+    public JPanel getAuthorsPanel() {
+        return null;
     }
 }

@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class HelpfullFunctions {
-
     public static boolean verificarString(String lp){
         return lp != null && lp.length() != 0;
     }
@@ -30,5 +29,4 @@ public class HelpfullFunctions {
         Collections.sort(listaLinguagens);
         return listaLinguagens;
     }
-
 }
