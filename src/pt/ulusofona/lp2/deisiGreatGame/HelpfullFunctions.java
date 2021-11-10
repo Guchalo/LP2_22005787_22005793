@@ -9,8 +9,14 @@ public class HelpfullFunctions {
         return lp != null && lp.length() != 0;
     }
 
-    public static boolean verificarColor(String lp){
-        return lp.equals("Purple") || lp.equals("Blue") || lp.equals("Green") || lp.equals("Brown");
+    public static boolean verificarColor(String[][] inf){
+        for(int r = 0; r < inf.length; r++){
+            if(!inf[r][3].equalsIgnoreCase("Purple") && !inf[r][3].equalsIgnoreCase("Blue") &&
+                    !inf[r][3].equalsIgnoreCase("Green") && !inf[r][3].equalsIgnoreCase("Brown")){
+                return false;
+            }
+        }
+        return true;
     }
 
     public static boolean verificarProgrammer(Programmer p1, Programmer p2){

@@ -7,10 +7,11 @@ public class Programmer {
     int id;
     String name;
     ProgrammerColor color;
+    String image;
     int pos = 0;
     ArrayList<String> linguagensProg = new ArrayList<>();
     boolean estado = true;
-    boolean turno = false;
+
 
     public Programmer() {
     }
@@ -19,9 +20,6 @@ public class Programmer {
         return estado;
     }
 
-    public boolean getTurno() {
-        return turno;
-    }
 
     public boolean moverPos(int nrPositions){
         pos += nrPositions;
@@ -32,6 +30,7 @@ public class Programmer {
         this.id = id;
         this.name = name;
         this.color = color;
+        this.image = color.getCor();
         this.linguagensProg = linguagensProg;
     }
 
@@ -77,9 +76,6 @@ public class Programmer {
         return linguagens.substring(0,linguagens.length() - 2);
     }
 
-    public void trocarTurno(){
-        turno = !turno;
-    }
 
     @Override
     public String toString() {

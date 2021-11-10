@@ -2,19 +2,18 @@ package pt.ulusofona.lp2.deisiGreatGame;
 
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Locale;
+import java.util.*;
 
 public class GameManager {
     int tamanhoTab;
     ArrayList<Programmer> programadores = new ArrayList<>();
+    Turn turno;
 
     public GameManager() {
     }
 
     public boolean createInitialBoard(String[][] playerInfo, int boardSize) {
+        programadores.clear();
         this.tamanhoTab = boardSize;
         int nJogadores = playerInfo.length;
         if (nJogadores < 2 || nJogadores > 4) {
@@ -54,7 +53,7 @@ public class GameManager {
                     return false;
                 }
 
-                if (!HelpfullFunctions.verificarColor(playerInfo[0][3]) ||
+                if (!HelpfullFunctions.verificarColor(playerInfo) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][3])) {
                     return false;
                 }
@@ -67,6 +66,8 @@ public class GameManager {
                 if (HelpfullFunctions.verificarProgrammer(p1, p2)) {
                     programadores.add(p1);
                     programadores.add(p2);
+                    programadores.sort(Comparator.comparingInt(Programmer::getId));
+                    turno = new Turn(programadores,programadores.get(0));
                     return true;
                 }
 
@@ -100,7 +101,7 @@ public class GameManager {
                     return false;
                 }
 
-                if (!HelpfullFunctions.verificarColor(playerInfo[0][3]) ||
+                if (!HelpfullFunctions.verificarColor(playerInfo) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][3]) ||
                         !HelpfullFunctions.verificarString(playerInfo[2][3])) {
                     return false;
@@ -118,6 +119,8 @@ public class GameManager {
                     programadores.add(p1);
                     programadores.add(p2);
                     programadores.add(p3);
+                    programadores.sort(Comparator.comparingInt(Programmer::getId));
+                    turno = new Turn(programadores,programadores.get(0));
                     return true;
                 }
 
@@ -151,7 +154,7 @@ public class GameManager {
                     return false;
                 }
 
-                if (!HelpfullFunctions.verificarColor(playerInfo[0][3]) ||
+                if (!HelpfullFunctions.verificarColor(playerInfo) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][3]) ||
                         !HelpfullFunctions.verificarString(playerInfo[2][3])) {
                     return false;
@@ -173,7 +176,8 @@ public class GameManager {
                     programadores.add(p2);
                     programadores.add(p3);
                     programadores.add(p4);
-
+                    programadores.sort(Comparator.comparingInt(Programmer::getId));
+                    turno = new Turn(programadores,programadores.get(0));
                     return true;
                 }
 
@@ -188,13 +192,13 @@ public class GameManager {
 
 
     public String getImagePng(int position) {
-        if (position < 0 || position > tamanhoTab) {
-            return null;
-        }
         if (position == tamanhoTab) {
             return "finishLine50x50.png";
         }
-        return "blank.png";
+        if (position < tamanhoTab && position > 0) {
+            return "blank.png";
+        }
+        return null;
     }
 
     public ArrayList<Programmer> getProgrammers() {
@@ -215,25 +219,18 @@ public class GameManager {
     }
 
     public int getCurrentPlayerID() {
-        for (Programmer p : programadores) {
-            if (p.getTurno()) {
-                return p.getId();
-            }
-        }
-        return 0;
+       return turno.getProgramadorAtual().getId();
     }
 
     public boolean moveCurrentPlayer(int nrPositions) {
         if (nrPositions < 1 || nrPositions > 6) {
             return false;
         }
-        Programmer progAtual = new Programmer();
-        for (Programmer p : programadores) {
-            if (p.getTurno()) {
-                progAtual = p;
-            }
-        }
-        progAtual.moverPos(nrPositions);
+        turno.getProgramadorAtual().moverPos(nrPositions);
+        programadores = turno.alterarTurno(turno.getProgramadorAtual());
+        turno.mudarJogador(turno.getProgramadorAtual());
+        turno.aumentarTurno();
+
         return true;
     }
 
@@ -248,7 +245,7 @@ public class GameManager {
 
     public ArrayList<String> getGameResults() {
         ArrayList<String> results = new ArrayList<>();
-        results.add("boda");
+        results.add("Parabens ganhaste um ganda pote cheio de nada");
         return results;
     }
 

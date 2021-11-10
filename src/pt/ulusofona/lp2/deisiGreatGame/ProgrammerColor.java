@@ -8,4 +8,13 @@ public enum ProgrammerColor {
     ProgrammerColor(String cor) {
         this.cor = cor;
     }
+
+    public String getCor() {
+        return this.cor.toString();
+    }
+
+    @Override
+    public String toString() {
+        return  cor;
+    }
 }
