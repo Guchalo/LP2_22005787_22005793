@@ -223,6 +223,9 @@ public class GameManager {
     }
 
     public boolean moveCurrentPlayer(int nrPositions) {
+        if (gameIsOver()){
+            return false;
+        }
         if (nrPositions < 1 || nrPositions > 6) {
             return false;
         }
@@ -230,7 +233,6 @@ public class GameManager {
         programadores = turno.alterarTurno(turno.getProgramadorAtual());
         turno.mudarJogador(turno.getProgramadorAtual());
         turno.aumentarTurno();
-
         return true;
     }
 
@@ -256,7 +258,7 @@ public class GameManager {
         results.add("");
         results.add("RESTANTES");
         for (int u = 1; u < programadores.size(); u++){
-                results.add("" + programadores.get(u).getName() + " " + (u + 1));
+                results.add("" + programadores.get(u).getName() + " " + programadores.get(u).getPos());
             }
         return results;
     }
