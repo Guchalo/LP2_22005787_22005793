@@ -245,11 +245,42 @@ public class GameManager {
 
     public ArrayList<String> getGameResults() {
         ArrayList<String> results = new ArrayList<>();
-        results.add("Parabens ganhaste um ganda pote cheio de nada");
+        results.add("O GRANDE JOGO DO DEISI");
+        results.add("");
+        results.add("NR. DE TURNOS");
+        results.add("" + this.turno.getNrTurnos());
+        results.add("");
+        results.add("VENCEDOR");
+        programadores.sort(Comparator.comparingInt(Programmer::getPos).reversed());
+        results.add("" + this.programadores.get(0).getName());
+        results.add("");
+        results.add("RESTANTES");
+        for (int u = 1; u < programadores.size(); u++){
+                results.add("" + programadores.get(u).getName() + " " + (u + 1));
+            }
         return results;
     }
 
     public JPanel getAuthorsPanel() {
-        return null;
+
+        JPanel painel = new JPanel();
+        painel.setBounds(40,80,200,200);
+        JLabel texto = new JLabel("Trabalho realizado por;");
+        painel.add(texto);
+        JLabel texto2 = new JLabel("                                                                          " +
+                "                                            ");
+        JLabel texto3 = new JLabel("Gonçalo Nunes (a22005787)");
+        JLabel texto4 = new JLabel("Rafael Simões (a22005793)");
+        JLabel texto5 = new JLabel("                                                                           " +
+                "                                            ");
+        JLabel texto6 = new JLabel("May the odds be ever in your favor");
+        painel.add(texto2);
+        painel.add(texto3);
+        painel.add(texto4);
+        painel.add(texto5);
+        painel.add(texto6);
+        return painel;
     }
+
 }
+
