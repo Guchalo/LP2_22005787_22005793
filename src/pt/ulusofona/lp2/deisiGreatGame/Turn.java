@@ -20,13 +20,13 @@ public class Turn {
         return nrTurnos;
     }
 
-    public void aumentarTurno(){
+    public void aumentarTurno() {
         nrTurnos++;
     }
 
-    public ArrayList<Programmer> alterarTurno(Programmer atual){
+    public ArrayList<Programmer> alterarTurno(Programmer atual) {
         ArrayList<Programmer> temp = new ArrayList<>();
-        for(int g = 1; g < programadores.size(); g++ ){
+        for (int g = 1; g < programadores.size(); g++) {
             temp.add(programadores.get(g));
         }
         temp.add(programadores.get(0));
@@ -36,7 +36,7 @@ public class Turn {
         return programadores;
     }
 
-    public boolean mudarJogador(Programmer atual){
+    public boolean mudarJogador(Programmer atual) {
         programadorAtual = atual;
         return true;
     }

@@ -21,8 +21,8 @@ public class Programmer {
     }
 
 
-    public boolean moverPos(int nrPositions, int size){
-        if(pos + nrPositions > size){
+    public boolean moverPos(int nrPositions, int size) {
+        if (pos + nrPositions > size) {
             int diferenca = (pos + nrPositions) - size;
             int alcancarSize = size - pos;
             pos += alcancarSize;
@@ -57,30 +57,30 @@ public class Programmer {
         return pos;
     }
 
-    public String stringEstado(){
-        if (estado){
+    public String stringEstado() {
+        if (estado) {
             return "Em Jogo";
-        }else{
+        } else {
             return "Derrotado";
         }
     }
 
-    public void derrotado(){
-        if (estado == false){
+    public void derrotado() {
+        if (!estado) {
             return;
         } else {
             estado = false;
         }
     }
 
-    public String getLinguagensProg(){
+    public String getLinguagensProg() {
         Collections.sort(linguagensProg);
         StringBuilder linguagens = new StringBuilder();
-        for (String linguagem : linguagensProg){
+        for (String linguagem : linguagensProg) {
             linguagens.append(linguagem);
             linguagens.append("; ");
         }
-        return linguagens.substring(0,linguagens.length() - 2);
+        return linguagens.substring(0, linguagens.length() - 2);
     }
 
 

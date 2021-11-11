@@ -14,7 +14,7 @@ public class GameManager {
 
     public boolean createInitialBoard(String[][] playerInfo, int boardSize) {
         programadores.clear();
-        this.tamanhoTab = boardSize;
+        setTamanhoTab(boardSize);
         int nJogadores = playerInfo.length;
         if (nJogadores < 2 || nJogadores > 4) {
             return false;
@@ -64,10 +64,10 @@ public class GameManager {
                         HelpfullFunctions.linguagensDeProg(playerInfo[1][2]));
 
                 if (HelpfullFunctions.verificarProgrammer(p1, p2)) {
-                    programadores.add(p1);
-                    programadores.add(p2);
-                    programadores.sort(Comparator.comparingInt(Programmer::getId));
-                    turno = new Turn(programadores,programadores.get(0));
+                    addProgrammer(p1);
+                    addProgrammer(p2);
+                    ordenarProgId();
+                    turno = new Turn(programadores, programadores.get(0));
                     return true;
                 }
 
@@ -116,11 +116,11 @@ public class GameManager {
 
                 if (HelpfullFunctions.verificarProgrammer(p1, p2) || HelpfullFunctions.verificarProgrammer(p1, p3) ||
                         HelpfullFunctions.verificarProgrammer(p2, p3)) {
-                    programadores.add(p1);
-                    programadores.add(p2);
-                    programadores.add(p3);
-                    programadores.sort(Comparator.comparingInt(Programmer::getId));
-                    turno = new Turn(programadores,programadores.get(0));
+                    addProgrammer(p1);
+                    addProgrammer(p2);
+                    addProgrammer(p3);
+                    ordenarProgId();
+                    turno = new Turn(programadores, programadores.get(0));
                     return true;
                 }
 
@@ -172,12 +172,12 @@ public class GameManager {
                 if (HelpfullFunctions.verificarProgrammer(p1, p2) || HelpfullFunctions.verificarProgrammer(p1, p3) ||
                         HelpfullFunctions.verificarProgrammer(p1, p4) || HelpfullFunctions.verificarProgrammer(p2, p3) ||
                         HelpfullFunctions.verificarProgrammer(p2, p4) || HelpfullFunctions.verificarProgrammer(p3, p4)) {
-                    programadores.add(p1);
-                    programadores.add(p2);
-                    programadores.add(p3);
-                    programadores.add(p4);
-                    programadores.sort(Comparator.comparingInt(Programmer::getId));
-                    turno = new Turn(programadores,programadores.get(0));
+                    addProgrammer(p1);
+                    addProgrammer(p2);
+                    addProgrammer(p3);
+                    addProgrammer(p4);
+                    ordenarProgId();
+                    turno = new Turn(programadores, programadores.get(0));
                     return true;
                 }
 
@@ -190,6 +190,24 @@ public class GameManager {
 
     }
 
+    public void setTamanhoTab(int tamanhoTab) {
+        this.tamanhoTab = tamanhoTab;
+    }
+
+    public boolean addProgrammer(Programmer p) {
+        if (p == null || p.getName() == null) {
+            return false;
+        }
+        programadores.add(p);
+        return true;
+    }
+
+    public void ordenarProgId() {
+        if (programadores.size() == 0) {
+            return;
+        }
+        programadores.sort(Comparator.comparingInt(Programmer::getId));
+    }
 
     public String getImagePng(int position) {
         if (position == tamanhoTab) {
@@ -219,17 +237,17 @@ public class GameManager {
     }
 
     public int getCurrentPlayerID() {
-       return turno.getProgramadorAtual().getId();
+        return turno.getProgramadorAtual().getId();
     }
 
     public boolean moveCurrentPlayer(int nrPositions) {
-        if (gameIsOver()){
+        if (gameIsOver()) {
             return false;
         }
         if (nrPositions < 1 || nrPositions > 6) {
             return false;
         }
-        turno.getProgramadorAtual().moverPos(nrPositions,tamanhoTab);
+        turno.getProgramadorAtual().moverPos(nrPositions, tamanhoTab);
         programadores = turno.alterarTurno(turno.getProgramadorAtual());
         turno.mudarJogador(turno.getProgramadorAtual());
         turno.aumentarTurno();
@@ -257,16 +275,16 @@ public class GameManager {
         results.add("" + this.programadores.get(0).getName());
         results.add("");
         results.add("RESTANTES");
-        for (int u = 1; u < programadores.size(); u++){
-                results.add("" + programadores.get(u).getName() + " " + programadores.get(u).getPos());
-            }
+        for (int u = 1; u < programadores.size(); u++) {
+            results.add("" + programadores.get(u).getName() + " " + programadores.get(u).getPos());
+        }
         return results;
     }
 
     public JPanel getAuthorsPanel() {
 
         JPanel painel = new JPanel();
-        painel.setBounds(40,80,200,200);
+        painel.setBounds(40, 80, 200, 200);
         JLabel texto = new JLabel("Trabalho realizado por;");
         painel.add(texto);
         JLabel texto2 = new JLabel("                                                                          " +
