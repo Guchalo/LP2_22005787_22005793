@@ -19,7 +19,7 @@ public class HelpfullFunctions {
         return true;
     }
 
-    public static boolean verificarProgrammer(Programmer p1, Programmer p2) {
+    public static boolean compararProgrammer(Programmer p1, Programmer p2) {
         if (p1 == p2) {
             return false;
         }

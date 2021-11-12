@@ -20,7 +20,6 @@ public class Programmer {
         return estado;
     }
 
-
     public boolean moverPos(int nrPositions, int size) {
         if (pos + nrPositions > size) {
             int diferenca = (pos + nrPositions) - size;

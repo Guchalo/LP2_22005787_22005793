@@ -63,7 +63,7 @@ public class GameManager {
                 p2 = new Programmer(id2, playerInfo[1][1], ProgrammerColor.valueOf(playerInfo[1][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[1][2]));
 
-                if (HelpfullFunctions.verificarProgrammer(p1, p2)) {
+                if (HelpfullFunctions.compararProgrammer(p1, p2)) {
                     addProgrammer(p1);
                     addProgrammer(p2);
                     ordenarProgId();
@@ -114,8 +114,8 @@ public class GameManager {
                 p3 = new Programmer(id3, playerInfo[2][1], ProgrammerColor.valueOf(playerInfo[2][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[2][2]));
 
-                if (HelpfullFunctions.verificarProgrammer(p1, p2) || HelpfullFunctions.verificarProgrammer(p1, p3) ||
-                        HelpfullFunctions.verificarProgrammer(p2, p3)) {
+                if (HelpfullFunctions.compararProgrammer(p1, p2) || HelpfullFunctions.compararProgrammer(p1, p3) ||
+                        HelpfullFunctions.compararProgrammer(p2, p3)) {
                     addProgrammer(p1);
                     addProgrammer(p2);
                     addProgrammer(p3);
@@ -169,9 +169,9 @@ public class GameManager {
                 p4 = new Programmer(id4, playerInfo[3][1], ProgrammerColor.valueOf(playerInfo[3][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[3][2]));
 
-                if (HelpfullFunctions.verificarProgrammer(p1, p2) || HelpfullFunctions.verificarProgrammer(p1, p3) ||
-                        HelpfullFunctions.verificarProgrammer(p1, p4) || HelpfullFunctions.verificarProgrammer(p2, p3) ||
-                        HelpfullFunctions.verificarProgrammer(p2, p4) || HelpfullFunctions.verificarProgrammer(p3, p4)) {
+                if (HelpfullFunctions.compararProgrammer(p1, p2) || HelpfullFunctions.compararProgrammer(p1, p3) ||
+                        HelpfullFunctions.compararProgrammer(p1, p4) || HelpfullFunctions.compararProgrammer(p2, p3) ||
+                        HelpfullFunctions.compararProgrammer(p2, p4) || HelpfullFunctions.compararProgrammer(p3, p4)) {
                     addProgrammer(p1);
                     addProgrammer(p2);
                     addProgrammer(p3);

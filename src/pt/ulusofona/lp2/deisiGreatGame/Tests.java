@@ -164,11 +164,11 @@ public class Tests {
         Programmer p3 = new Programmer(10, "Fernando", ProgrammerColor.BROWN, lp);
         Programmer p4 = new Programmer(10, "Armando", ProgrammerColor.PURPLE, lp);
 
-        assertTrue(HelpfullFunctions.verificarProgrammer(p1, p2));
+        assertTrue(HelpfullFunctions.compararProgrammer(p1, p2));
         /* Teste para cores iguais */
-        assertFalse(HelpfullFunctions.verificarProgrammer(p4, p2));
+        assertFalse(HelpfullFunctions.compararProgrammer(p4, p2));
         /* Teste para id's iguais */
-        assertFalse(HelpfullFunctions.verificarProgrammer(p3, p4));
+        assertFalse(HelpfullFunctions.compararProgrammer(p3, p4));
 
     }
 }
