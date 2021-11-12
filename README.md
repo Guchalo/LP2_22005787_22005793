@@ -1,10 +1,10 @@
-##O Grande Jogo do DEISI
+## O Grande Jogo do DEISI
 
-###Primeira Parte
+### Primeira Parte
 
 Este projeto consiste no desenvolvimento de um jogo de tabuleiro, em que os participantes são programadores.
 
-###Como funciona o jogo:
+### Como funciona o jogo:
 Na primeira parte os programadores já vão estar definidos, sendo constituídos por um id, nome, as suas
 linguagens de programação favoritas e uma cor(Purple, Blue, Green, Brown).
 
@@ -17,11 +17,11 @@ recuar o número de casas em excesso.
 Este jogo ainda conta com um método para reiniciar o tabuleiro e um método para mostrar uma janela com os créditos.
 
 
-###Diagrama UML
+### Diagrama UML
 
 ![](diagrama.png?raw=true "Diagrama UML")
 
-###Este trabalho foi realizado por:
+### Este trabalho foi realizado por:
 
 Gonçalo Nunes 22005787
 
