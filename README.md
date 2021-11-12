@@ -6,7 +6,7 @@ Este projeto consiste no desenvolvimento de um jogo de tabuleiro, em que os part
 
 ###Como funciona o jogo:
 Na primeira parte os programadores já vão estar definidos, sendo constituídos por um id, nome, as suas
-linguagens de programaçao favoritas e uma cor(Purple, Blue, Green, Brown).
+linguagens de programação favoritas e uma cor(Purple, Blue, Green, Brown).
 
 O jogo permite de 2 até 4 jogadores.
 
