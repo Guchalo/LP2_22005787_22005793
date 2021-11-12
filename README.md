@@ -19,7 +19,7 @@ Este jogo ainda conta com um método para reiniciar o tabuleiro e um método par
 
 ###Diagrama UML
 
-<img height="297" src="diagrama.png?raw=true" title="Diagrama UML" width="210"/>
+![](diagrama.png?raw=true "Diagrama UML")
 
 ###Este trabalho foi realizado por:
 
