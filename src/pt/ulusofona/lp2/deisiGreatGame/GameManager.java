@@ -5,9 +5,10 @@ import javax.swing.*;
 import java.util.*;
 
 public class GameManager {
-    int tamanhoTab;
-    ArrayList<Programmer> programadores = new ArrayList<>();
-    Turn turno;
+    private int tamanhoTab;
+    private ArrayList<Programmer> programadores = new ArrayList<>();
+    private Turn turno;
+    private ArrayList<Programmer> boardApps = new ArrayList<>();
 
     public GameManager() {
     }
@@ -191,6 +192,77 @@ public class GameManager {
     }
 
     boolean createInitialBoard(String[][] playerInfo, int worldSize,String[][] abyssesAndTools){
+        createInitialBoard(playerInfo, worldSize);
+        for(int r = 0; r < abyssesAndTools.length; r++){
+            if (!HelpfullFunctions.verificarString(abyssesAndTools[r][0]) ||
+                    !HelpfullFunctions.verificarString(abyssesAndTools[r][1]) ||
+                    !HelpfullFunctions.verificarString(abyssesAndTools[r][2])) {
+                return false;
+            }
+
+            int app = Integer.parseInt(abyssesAndTools[r][0]);
+            int appType = Integer.parseInt(abyssesAndTools[r][1]);
+            int appPosicion = Integer.parseInt(abyssesAndTools[r][2]);
+
+            if(appPosicion < 0 || appPosicion > worldSize){
+                return false;
+            }
+            BoardApps boardApp;
+
+            switch (app){
+                case 0:
+                    switch (appType){
+                        case 0:
+                            boardApp = new SyntaxError();
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+                        case 8:
+                            break;
+                        case 9:
+                            break;
+                        default:
+                            return false;
+                    }
+                    break;
+                case 1:
+                    switch (appType){
+                        case 0:
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        default:
+                            return false;
+                    }
+                    break;
+                default:
+                    return false;
+
+            }
+
+
+
+        }
         return true;
     }
 
