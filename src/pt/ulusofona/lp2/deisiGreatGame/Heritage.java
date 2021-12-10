@@ -1,15 +1,17 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class SyntaxError extends Abyss {
-    public SyntaxError(int posicao) {
+public class Heritage extends Tool{
+
+    public Heritage(int posicao) {
         super(posicao);
         id = 0;
-        titulo = "Erro de sintaxe";
+        titulo = "Herança";
     }
+
 
     @Override
     public String message() {
-        return null;
+        return "WI ESSE FILHO NUM É MEU";
     }
 
     @Override

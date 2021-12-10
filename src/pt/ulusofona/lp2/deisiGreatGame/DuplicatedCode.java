@@ -1,15 +1,15 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class SyntaxError extends Abyss {
-    public SyntaxError(int posicao) {
+public class DuplicatedCode extends Abyss{
+    public DuplicatedCode(int posicao) {
         super(posicao);
-        id = 0;
-        titulo = "Erro de sintaxe";
+        id = 5;
+        titulo = "Duplicated Code";
     }
 
     @Override
     public String message() {
-        return null;
+        return "WI NUM FAZ ISSO";
     }
 
     @Override

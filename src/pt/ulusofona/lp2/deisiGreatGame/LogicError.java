@@ -1,15 +1,15 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class SyntaxError extends Abyss {
-    public SyntaxError(int posicao) {
+public class LogicError extends Abyss {
+    public LogicError(int posicao) {
         super(posicao);
-        id = 0;
-        titulo = "Erro de sintaxe";
+        id = 1;
+        titulo = "Erro de lógica";
     }
 
     @Override
     public String message() {
-        return null;
+        return "Wi pipino di novo";
     }
 
     @Override

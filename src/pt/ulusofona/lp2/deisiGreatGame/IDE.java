@@ -1,19 +1,21 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class SyntaxError extends Abyss {
-    public SyntaxError(int posicao) {
+public class IDE extends Tool{
+
+    public IDE(int posicao) {
         super(posicao);
-        id = 0;
-        titulo = "Erro de sintaxe";
+        id = 4;
+        titulo = "IDE";
     }
 
     @Override
     public String message() {
-        return null;
+        return "Ganhaste acesso temporario ao WiTraficante.com";
     }
 
     @Override
     public void react() {
 
     }
+
 }

@@ -1,15 +1,15 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class SyntaxError extends Abyss {
-    public SyntaxError(int posicao) {
+public class Exception extends Abyss{
+    public Exception(int posicao) {
         super(posicao);
-        id = 0;
-        titulo = "Erro de sintaxe";
+        id = 2;
+        titulo = "Exception";
     }
 
     @Override
     public String message() {
-        return null;
+        return "Levaste 2 balas nos canivetes wi";
     }
 
     @Override

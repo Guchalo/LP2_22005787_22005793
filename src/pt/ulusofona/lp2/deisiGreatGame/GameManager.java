@@ -8,7 +8,7 @@ public class GameManager {
     private int tamanhoTab;
     private ArrayList<Programmer> programadores = new ArrayList<>();
     private Turn turno;
-    private ArrayList<Programmer> boardApps = new ArrayList<>();
+    private ArrayList<BoardApps> boardApps = new ArrayList<>();
 
     public GameManager() {
     }
@@ -191,65 +191,80 @@ public class GameManager {
 
     }
 
-    boolean createInitialBoard(String[][] playerInfo, int worldSize,String[][] abyssesAndTools){
+    public boolean createInitialBoard(String[][] playerInfo, int worldSize,String[][] abyssesAndTools){
         createInitialBoard(playerInfo, worldSize);
-        for(int r = 0; r < abyssesAndTools.length; r++){
-            if (!HelpfullFunctions.verificarString(abyssesAndTools[r][0]) ||
-                    !HelpfullFunctions.verificarString(abyssesAndTools[r][1]) ||
-                    !HelpfullFunctions.verificarString(abyssesAndTools[r][2])) {
+        for (String[] abyssesAndTool : abyssesAndTools) {
+            if (!HelpfullFunctions.verificarString(abyssesAndTool[0]) ||
+                    !HelpfullFunctions.verificarString(abyssesAndTool[1]) ||
+                    !HelpfullFunctions.verificarString(abyssesAndTool[2])) {
                 return false;
             }
 
-            int app = Integer.parseInt(abyssesAndTools[r][0]);
-            int appType = Integer.parseInt(abyssesAndTools[r][1]);
-            int appPosicion = Integer.parseInt(abyssesAndTools[r][2]);
+            int app = Integer.parseInt(abyssesAndTool[0]);
+            int appType = Integer.parseInt(abyssesAndTool[1]);
+            int appPosicion = Integer.parseInt(abyssesAndTool[2]);
 
-            if(appPosicion < 0 || appPosicion > worldSize){
+            if (appPosicion < 0 || appPosicion > worldSize) {
                 return false;
             }
             BoardApps boardApp;
 
-            switch (app){
+            switch (app) {
                 case 0:
-                    switch (appType){
+                    switch (appType) {
                         case 0:
-                            boardApp = new SyntaxError();
+                            boardApp = new SyntaxError(appPosicion);
                             break;
                         case 1:
+                            boardApp = new LogicError(appPosicion);
                             break;
                         case 2:
+                            boardApp = new Exception(appPosicion);
                             break;
                         case 3:
+                            boardApp = new FileNotFoundException(appPosicion);
                             break;
                         case 4:
+                            boardApp = new Crash(appPosicion);
                             break;
                         case 5:
+                            boardApp = new DuplicatedCode(appPosicion);
                             break;
                         case 6:
+                            boardApp = new SideEffects(appPosicion);
                             break;
                         case 7:
+                            boardApp = new BlueScreenofDeath(appPosicion);
                             break;
                         case 8:
+                            boardApp = new InfiniteCicle(appPosicion);
                             break;
                         case 9:
+                            boardApp = new SegmentationFault(appPosicion);
                             break;
                         default:
                             return false;
                     }
                     break;
                 case 1:
-                    switch (appType){
+                    switch (appType) {
                         case 0:
+                            boardApp = new Heritage(appPosicion);
                             break;
                         case 1:
+                            boardApp = new FunctionalProgramming(appPosicion);
                             break;
                         case 2:
+                            boardApp = new UnityTests(appPosicion);
                             break;
                         case 3:
+                            boardApp = new ExceptionHandling(appPosicion);
                             break;
                         case 4:
+                            boardApp = new IDE(appPosicion);
                             break;
                         case 5:
+                            boardApp = new TeacherHelp(appPosicion);
                             break;
                         default:
                             return false;
@@ -257,11 +272,8 @@ public class GameManager {
                     break;
                 default:
                     return false;
-
             }
-
-
-
+            boardApps.add(boardApp);
         }
         return true;
     }
@@ -289,14 +301,23 @@ public class GameManager {
         if (position == tamanhoTab) {
             return "finishLine50x50.png";
         }
-        if (position < tamanhoTab && position > 0) {
-            return "blank.png";
-        }
         return null;
     }
 
     public String getTitle(int position){
-        return "";
+        if(position < 0 || position == tamanhoTab){
+            return null;
+        }
+        for (BoardApps boardApp: getBoardApps()) {
+            if (position == boardApp.getPosicao()){
+                return boardApp.getTitulo();
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<BoardApps> getBoardApps() {
+        return boardApps;
     }
 
     public ArrayList<Programmer> getProgrammers() {
