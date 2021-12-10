@@ -12,14 +12,14 @@ public class GameManager {
     public GameManager() {
     }
 
-    public boolean createInitialBoard(String[][] playerInfo, int boardSize) {
+    public boolean createInitialBoard(String[][] playerInfo, int worldSize) {
         programadores.clear();
-        setTamanhoTab(boardSize);
+        setTamanhoTab(worldSize);
         int nJogadores = playerInfo.length;
         if (nJogadores < 2 || nJogadores > 4) {
             return false;
         }
-        if (boardSize < (nJogadores * 2)) {
+        if (worldSize < (nJogadores * 2)) {
             return false;
         }
         Programmer p1;
@@ -190,6 +190,10 @@ public class GameManager {
 
     }
 
+    boolean createInitialBoard(String[][] playerInfo, int worldSize,String[][] abyssesAndTools){
+        return true;
+    }
+
     public void setTamanhoTab(int tamanhoTab) {
         this.tamanhoTab = tamanhoTab;
     }
@@ -219,11 +223,19 @@ public class GameManager {
         return null;
     }
 
+    public String getTitle(int position){
+        return "";
+    }
+
     public ArrayList<Programmer> getProgrammers() {
         return programadores;
     }
 
-    public ArrayList<Programmer> getProgrammers(int position) {
+    public List<Programmer> getProgrammers(boolean includeDefeated){
+        return new ArrayList<>();
+    }
+
+    public List<Programmer> getProgrammers(int position) {
         if (position < 0 || position > tamanhoTab) {
             return null;
         }
@@ -263,7 +275,7 @@ public class GameManager {
         return false;
     }
 
-    public ArrayList<String> getGameResults() {
+    public List<String> getGameResults() {
         ArrayList<String> results = new ArrayList<>();
         results.add("O GRANDE JOGO DO DEISI");
         results.add("");
@@ -301,6 +313,16 @@ public class GameManager {
         painel.add(texto6);
         return painel;
     }
+
+    public String getProgrammersInfo(){
+        return "";
+    }
+
+    public String reactToAbyssOrTool(){
+        return ";_;";
+    }
+
+
 
 }
 
