@@ -5,6 +5,7 @@ public class InfiniteCicle extends Abyss{
         super(posicao);
         id = 8;
         titulo = "Ciclo infinito";
+        imagem = "infinite-loop.png";
     }
 
     @Override

@@ -6,6 +6,7 @@ public class ExceptionHandling extends Tool{
         super(posicao);
         id = 3;
         titulo = "Tratamento de Excepções";
+        imagem = "catch.png";
     }
 
     @Override

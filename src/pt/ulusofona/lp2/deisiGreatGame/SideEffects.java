@@ -5,6 +5,7 @@ public class SideEffects extends Abyss{
         super(posicao);
         id = 6;
         titulo = "Efeitos secundários";
+        imagem = "secondary-effects.png";
     }
 
     @Override

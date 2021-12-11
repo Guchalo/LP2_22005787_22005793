@@ -6,6 +6,7 @@ public class IDE extends Tool{
         super(posicao);
         id = 4;
         titulo = "IDE";
+        imagem = "IDE.png";
     }
 
     @Override

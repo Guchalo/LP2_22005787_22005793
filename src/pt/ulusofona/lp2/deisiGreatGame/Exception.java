@@ -5,6 +5,7 @@ public class Exception extends Abyss{
         super(posicao);
         id = 2;
         titulo = "Exception";
+        imagem = "exception.png";
     }
 
     @Override

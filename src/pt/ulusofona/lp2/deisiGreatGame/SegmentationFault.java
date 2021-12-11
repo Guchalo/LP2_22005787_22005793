@@ -5,6 +5,7 @@ public class SegmentationFault extends Abyss{
         super(posicao);
         id = 9;
         titulo = "Segmentation Fault";
+        imagem = "core-dumped.png";
     }
 
     @Override

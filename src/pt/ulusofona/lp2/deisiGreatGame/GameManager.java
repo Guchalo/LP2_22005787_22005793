@@ -13,8 +13,13 @@ public class GameManager {
     public GameManager() {
     }
 
+    public GameManager(ArrayList<Programmer> programadores) {
+        this.programadores = programadores;
+    }
+
     public boolean createInitialBoard(String[][] playerInfo, int worldSize) {
         programadores.clear();
+        boardApps.clear();
         setTamanhoTab(worldSize);
         int nJogadores = playerInfo.length;
         if (nJogadores < 2 || nJogadores > 4) {
@@ -301,6 +306,11 @@ public class GameManager {
         if (position == tamanhoTab) {
             return "finishLine50x50.png";
         }
+        for (BoardApps boardApp: getBoardApps()) {
+            if (position == boardApp.getPosicao()){
+                return boardApp.getImagem();
+            }
+        }
         return null;
     }
 
@@ -325,7 +335,17 @@ public class GameManager {
     }
 
     public List<Programmer> getProgrammers(boolean includeDefeated){
-        return new ArrayList<>();
+        ArrayList<Programmer> programmers = new ArrayList<>();
+            if (includeDefeated){
+                return programadores;
+            }
+            for (Programmer p : programadores){
+            if (p.getEstado()){
+                programmers.add(p);
+            }
+        }
+            return programmers;
+
     }
 
     public List<Programmer> getProgrammers(int position) {
@@ -390,7 +410,7 @@ public class GameManager {
     public JPanel getAuthorsPanel() {
 
         JPanel painel = new JPanel();
-        painel.setBounds(40, 80, 200, 200);
+        painel.setBounds(40, 80, 300, 300);
         JLabel texto = new JLabel("Trabalho realizado por;");
         painel.add(texto);
         JLabel texto2 = new JLabel("                                                                          " +

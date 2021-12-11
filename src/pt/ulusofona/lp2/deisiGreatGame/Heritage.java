@@ -6,6 +6,7 @@ public class Heritage extends Tool{
         super(posicao);
         id = 0;
         titulo = "Herança";
+        imagem = "inheritance.png";
     }
 
 

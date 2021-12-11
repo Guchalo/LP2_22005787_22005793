@@ -5,6 +5,7 @@ public class SyntaxError extends Abyss {
         super(posicao);
         id = 0;
         titulo = "Erro de sintaxe";
+        imagem = "syntax.png";
     }
 
     @Override

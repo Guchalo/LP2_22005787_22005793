@@ -6,6 +6,7 @@ public class FunctionalProgramming extends Tool{
         super(posicao);
         id = 1;
         titulo = "Programação Funcional";
+        imagem = "functional.png";
     }
 
     @Override

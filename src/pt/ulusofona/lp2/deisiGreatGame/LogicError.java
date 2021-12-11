@@ -5,6 +5,7 @@ public class LogicError extends Abyss {
         super(posicao);
         id = 1;
         titulo = "Erro de lógica";
+        imagem = "logic.png";
     }
 
     @Override

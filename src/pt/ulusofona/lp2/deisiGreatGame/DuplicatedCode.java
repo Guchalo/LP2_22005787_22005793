@@ -5,6 +5,7 @@ public class DuplicatedCode extends Abyss{
         super(posicao);
         id = 5;
         titulo = "Duplicated Code";
+        imagem = "duplicated-code.png";
     }
 
     @Override

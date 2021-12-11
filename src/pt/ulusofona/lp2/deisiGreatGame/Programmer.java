@@ -2,6 +2,7 @@ package pt.ulusofona.lp2.deisiGreatGame;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Programmer {
     int id;
@@ -11,6 +12,7 @@ public class Programmer {
     int pos = 1;
     ArrayList<String> linguagensProg = new ArrayList<>();
     boolean estado = true;
+    List<Tool> tools = new ArrayList<>();
 
 
     public Programmer() {
@@ -82,9 +84,20 @@ public class Programmer {
         return linguagens.substring(0, linguagens.length() - 2);
     }
 
+    public String toStringTools(){
+        if(tools == null || tools.size() == 0){
+            return "No tools";
+        }
+        StringBuilder resultado = new StringBuilder();
+        for (Tool ferramenta : tools){
+            resultado.append(ferramenta.getTitulo()).append(";");
+        }
+        return resultado.substring(0,resultado.length() - 2);
+    }
+
 
     @Override
     public String toString() {
-        return "" + id + " | " + name + " | " + pos + " | " + getLinguagensProg() + " | " + stringEstado();
+        return "" + id + " | " + name + " | " + pos + " | " + toStringTools() + " | " + getLinguagensProg() + " | " + stringEstado();
     }
 }

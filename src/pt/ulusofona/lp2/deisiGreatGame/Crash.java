@@ -5,6 +5,7 @@ public class Crash extends Abyss{
         super(posicao);
         id = 4;
         titulo = "Crash (aka Rebentanço)";
+        imagem = "crash.png";
     }
 
     @Override

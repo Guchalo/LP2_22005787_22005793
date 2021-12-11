@@ -6,6 +6,7 @@ public class UnityTests extends Tool{
         super(posicao);
         id = 2;
         titulo = "Testes unitários";
+        imagem = "unit-tests.png";
     }
 
     @Override

@@ -5,6 +5,7 @@ public class FileNotFoundException extends Abyss{
         super(posicao);
         id = 3;
         titulo = "File Not Found Exception";
+        imagem = "file-not-found-exception.png";
     }
 
     @Override

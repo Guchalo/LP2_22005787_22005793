@@ -4,8 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class Tests {
@@ -171,4 +170,26 @@ public class Tests {
         assertFalse(HelpfullFunctions.compararProgrammer(p3, p4));
 
     }
+
+    @Test
+    public void testGetProgrammer() {
+
+        ArrayList<String> lp = new ArrayList<>();
+        lp.add("Java");
+        Programmer p1 = new Programmer(12, "Joaquim", ProgrammerColor.GREEN, lp);
+        Programmer p2 = new Programmer(1, "António", ProgrammerColor.PURPLE, lp);
+        Programmer p3 = new Programmer(10, "Fernando", ProgrammerColor.BROWN, lp);
+        Programmer p4 = new Programmer(10, "Armando", ProgrammerColor.PURPLE, lp);
+        p1.derrotado();
+        ArrayList<Programmer> programadores = new ArrayList<>();
+        programadores.add(p1);
+        programadores.add(p2);
+        programadores.add(p3);
+        programadores.add(p4);
+        GameManager manager = new GameManager(programadores);
+        assertEquals(4,manager.getProgrammers(true).size());
+        assertEquals(3,manager.getProgrammers(false).size());
+
+    }
+
 }

@@ -5,7 +5,8 @@ public class TeacherHelp extends Tool{
     public TeacherHelp(int posicao) {
         super(posicao);
         id = 5;
-        titulo = "Ajuda Do Professor ";
+        titulo = "Ajuda Do Professor";
+        imagem = "ajuda-professor.png";
     }
 
     @Override

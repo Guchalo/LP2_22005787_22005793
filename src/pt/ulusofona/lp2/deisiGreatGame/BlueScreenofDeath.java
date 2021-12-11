@@ -5,6 +5,7 @@ public class BlueScreenofDeath extends Abyss{
         super(posicao);
         id = 7;
         titulo = "Blue Screen of Death";
+        imagem = "bsod.png";
     }
 
     @Override
