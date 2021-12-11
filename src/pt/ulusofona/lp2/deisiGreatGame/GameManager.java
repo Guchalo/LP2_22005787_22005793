@@ -356,6 +356,7 @@ public class GameManager {
         programadores = turno.alterarTurno(turno.getProgramadorAtual());
         turno.mudarJogador(turno.getProgramadorAtual());
         turno.aumentarTurno();
+        reactToAbyssOrTool();
         return true;
     }
 
