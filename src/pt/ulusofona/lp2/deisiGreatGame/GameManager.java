@@ -311,6 +311,7 @@ public class GameManager {
                 return boardApp.getImagem();
             }
         }
+
         return null;
     }
 
@@ -429,7 +430,7 @@ public class GameManager {
     }
 
     public String getProgrammersInfo(){
-        return "";
+        return "1 2 3 macaquinho do chines";
     }
 
     public String reactToAbyssOrTool(){
