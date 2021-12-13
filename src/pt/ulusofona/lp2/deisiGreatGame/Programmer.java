@@ -74,6 +74,18 @@ public class Programmer {
         }
     }
 
+    public void adicionarTool(Tool t){
+        if(t == null){
+            return;
+        }
+        for(Tool tool : tools){
+            if (tool.getTitulo().equals(t.getTitulo())){
+                return;
+            }
+        }
+        tools.add(t);
+    }
+
     public String getLinguagensProg() {
         Collections.sort(linguagensProg);
         StringBuilder linguagens = new StringBuilder();
@@ -92,7 +104,7 @@ public class Programmer {
         for (Tool ferramenta : tools){
             resultado.append(ferramenta.getTitulo()).append(";");
         }
-        return resultado.substring(0,resultado.length() - 2);
+        return resultado.substring(0,resultado.length() - 1);
     }
 
 

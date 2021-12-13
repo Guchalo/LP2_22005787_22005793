@@ -19,4 +19,8 @@ public class TeacherHelp extends Tool{
 
     }
 
+    @Override
+    public void adicionarGM(GameManager p){
+
+    }
 }

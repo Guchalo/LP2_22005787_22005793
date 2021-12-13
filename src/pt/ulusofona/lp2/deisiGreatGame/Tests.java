@@ -192,4 +192,24 @@ public class Tests {
 
     }
 
+    @Test
+    public void testBSD(){
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[1][3];
+        tools[0][0] = "0";
+        tools[0][1] = "7";
+        tools[0][2] = "3";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        manager.createInitialBoard(playerInfo, 15,tools);
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+    }
 }

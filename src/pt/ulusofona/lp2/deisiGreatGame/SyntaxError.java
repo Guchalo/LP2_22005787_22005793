@@ -10,7 +10,7 @@ public class SyntaxError extends Abyss {
 
     @Override
     public String message() {
-        return null;
+        return "Olha o boda";
     }
 
     @Override

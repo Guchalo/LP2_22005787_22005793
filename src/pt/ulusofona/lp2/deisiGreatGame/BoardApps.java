@@ -5,6 +5,7 @@ public abstract class BoardApps {
     String titulo;
     int posicao;
     String imagem;
+    String identificadorAT;
 
 
     public BoardApps(int posicao) {
@@ -12,6 +13,10 @@ public abstract class BoardApps {
     }
 
     public BoardApps() {
+    }
+
+    public String getIdentificadorAT() {
+        return identificadorAT;
     }
 
     public String getImagem() {
@@ -33,4 +38,6 @@ public abstract class BoardApps {
     public abstract String message();
 
     public abstract void react();
+
+    public abstract void adicionarGM(GameManager p);
 }

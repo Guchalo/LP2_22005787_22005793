@@ -18,5 +18,8 @@ public class FunctionalProgramming extends Tool{
     public void react() {
 
     }
+    @Override
+    public void adicionarGM(GameManager p){
 
+    }
 }

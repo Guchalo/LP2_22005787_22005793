@@ -19,4 +19,8 @@ public class UnityTests extends Tool{
 
     }
 
+    @Override
+    public void adicionarGM(GameManager p){
+
+    }
 }

@@ -196,7 +196,7 @@ public class GameManager {
 
     }
 
-    public boolean createInitialBoard(String[][] playerInfo, int worldSize,String[][] abyssesAndTools){
+    public boolean createInitialBoard(String[][] playerInfo, int worldSize, String[][] abyssesAndTools) {
         createInitialBoard(playerInfo, worldSize);
         for (String[] abyssesAndTool : abyssesAndTools) {
             if (!HelpfullFunctions.verificarString(abyssesAndTool[0]) ||
@@ -306,8 +306,8 @@ public class GameManager {
         if (position == tamanhoTab) {
             return "finishLine50x50.png";
         }
-        for (BoardApps boardApp: getBoardApps()) {
-            if (position == boardApp.getPosicao()){
+        for (BoardApps boardApp : getBoardApps()) {
+            if (position == boardApp.getPosicao()) {
                 return boardApp.getImagem();
             }
         }
@@ -315,12 +315,12 @@ public class GameManager {
         return null;
     }
 
-    public String getTitle(int position){
-        if(position < 0 || position == tamanhoTab){
+    public String getTitle(int position) {
+        if (position < 0 || position == tamanhoTab) {
             return null;
         }
-        for (BoardApps boardApp: getBoardApps()) {
-            if (position == boardApp.getPosicao()){
+        for (BoardApps boardApp : getBoardApps()) {
+            if (position == boardApp.getPosicao()) {
                 return boardApp.getTitulo();
             }
         }
@@ -335,17 +335,17 @@ public class GameManager {
         return programadores;
     }
 
-    public List<Programmer> getProgrammers(boolean includeDefeated){
+    public List<Programmer> getProgrammers(boolean includeDefeated) {
         ArrayList<Programmer> programmers = new ArrayList<>();
-            if (includeDefeated){
-                return programadores;
-            }
-            for (Programmer p : programadores){
-            if (p.getEstado()){
+        if (includeDefeated) {
+            return programadores;
+        }
+        for (Programmer p : programadores) {
+            if (p.getEstado()) {
                 programmers.add(p);
             }
         }
-            return programmers;
+        return programmers;
 
     }
 
@@ -373,11 +373,11 @@ public class GameManager {
         if (nrPositions < 1 || nrPositions > 6) {
             return false;
         }
+        if (!turno.getProgramadorAtual().getEstado()) {
+            return false;
+        }
+
         turno.getProgramadorAtual().moverPos(nrPositions, tamanhoTab);
-        programadores = turno.alterarTurno(turno.getProgramadorAtual());
-        turno.mudarJogador(turno.getProgramadorAtual());
-        turno.aumentarTurno();
-        reactToAbyssOrTool();
         return true;
     }
 
@@ -429,14 +429,40 @@ public class GameManager {
         return painel;
     }
 
-    public String getProgrammersInfo(){
-        return "1 2 3 macaquinho do chines";
+    public String getProgrammersInfo() {
+        ArrayList<Programmer> temp = new ArrayList(programadores);
+        temp.sort(Comparator.comparingInt(Programmer::getId));
+        StringBuilder resultado = new StringBuilder();
+        for (Programmer p : temp) {
+            resultado.append(p.getName());
+            resultado.append(" : ");
+            resultado.append(p.toStringTools());
+            resultado.append(" | ");
+        }
+        return resultado.substring(0, resultado.length() - 3);
     }
 
-    public String reactToAbyssOrTool(){
-        return ";_;";
+    public void mudarTurno() {
+        programadores = turno.alterarTurno(turno.getProgramadorAtual());
+        turno.mudarJogador(turno.getProgramadorAtual());
+        turno.aumentarTurno();
     }
 
+    public String reactToAbyssOrTool() {
+        for (BoardApps boardApp : boardApps) {
+            if (turno.getProgramadorAtual().getPos() == boardApp.getPosicao()) {
+                if (boardApp.getIdentificadorAT().equals("T")) {
+                    turno.getProgramadorAtual().adicionarTool((Tool) boardApp);
+                    mudarTurno();
+                    return boardApp.message();
+                }
+                mudarTurno();
+                return boardApp.message();
+            }
+        }
+        mudarTurno();
+        return null;
+    }
 
 
 }

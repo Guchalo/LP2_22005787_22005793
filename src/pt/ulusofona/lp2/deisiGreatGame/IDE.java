@@ -19,4 +19,8 @@ public class IDE extends Tool{
 
     }
 
+    @Override
+    public void adicionarGM(GameManager p){
+
+    }
 }

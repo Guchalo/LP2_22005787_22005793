@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class Heritage extends Tool{
+public class Heritage extends Tool {
 
     public Heritage(int posicao) {
         super(posicao);
@@ -17,6 +17,11 @@ public class Heritage extends Tool{
 
     @Override
     public void react() {
+
+    }
+
+    @Override
+    public void adicionarGM(GameManager p) {
 
     }
 }
