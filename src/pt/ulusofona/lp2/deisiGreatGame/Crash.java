@@ -5,12 +5,13 @@ public class Crash extends Abyss{
         super(posicao);
         id = 4;
         titulo = "Crash (aka Rebentanço)";
-        imagem = "crash.png";
+        imagem = "tanjiroInjured.png";
     }
 
     @Override
     public String message() {
-        return "Wi foste de cana, volta pro inicio";
+        return "Depois de uma grande batalha, perdeste todas as forças e foste levado para a casa da Shinobu para" +
+                "recuperar";
     }
 
     @Override

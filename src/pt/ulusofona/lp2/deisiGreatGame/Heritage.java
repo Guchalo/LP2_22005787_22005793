@@ -6,13 +6,13 @@ public class Heritage extends Tool {
         super(posicao);
         id = 0;
         titulo = "Herança";
-        imagem = "inheritance.png";
+        imagem = "inEze.png";
     }
 
 
     @Override
     public String message() {
-        return "WI ESSE FILHO NUM É MEU";
+        return "Zenitsu e Inosuke juntam se a ti para a proxima batalha";
     }
 
     @Override

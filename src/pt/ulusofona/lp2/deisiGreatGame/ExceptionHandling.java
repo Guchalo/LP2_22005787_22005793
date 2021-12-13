@@ -6,12 +6,12 @@ public class ExceptionHandling extends Tool{
         super(posicao);
         id = 3;
         titulo = "Tratamento de Excepções";
-        imagem = "catch.png";
+        imagem = "mister.png";
     }
 
     @Override
     public String message() {
-        return "Apanhaste um colete á prova di tiru e imunidade á ressaca";
+        return "Treinaste durante 2 anos com o Urokodaki e melhoraste as tuas habilidades de caçador";
     }
 
     @Override

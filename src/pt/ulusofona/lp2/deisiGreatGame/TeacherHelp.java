@@ -6,12 +6,12 @@ public class TeacherHelp extends Tool{
         super(posicao);
         id = 5;
         titulo = "Ajuda Do Professor";
-        imagem = "ajuda-professor.png";
+        imagem = "rengoku.png";
     }
 
     @Override
     public String message() {
-        return "Wi tou num aperto, mi ajuda";
+        return "O Rengoku chegou para te ajudar";
     }
 
     @Override

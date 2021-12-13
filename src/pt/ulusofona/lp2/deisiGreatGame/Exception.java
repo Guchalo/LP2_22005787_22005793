@@ -5,12 +5,12 @@ public class Exception extends Abyss{
         super(posicao);
         id = 2;
         titulo = "Exception";
-        imagem = "exception.png";
+        imagem = "tanjiroH.png";
     }
 
     @Override
     public String message() {
-        return "Levaste 2 balas nos canivetes wi";
+        return "Levaste uma cabeçada do Tanjiro e voltaste duas casas para trás";
     }
 
     @Override

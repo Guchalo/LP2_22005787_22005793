@@ -5,12 +5,13 @@ public class InfiniteCicle extends Abyss{
         super(posicao);
         id = 8;
         titulo = "Ciclo infinito";
-        imagem = "infinite-loop.png";
+        imagem = "pedra.png";
     }
 
     @Override
     public String message() {
-        return "Foste preso wi, tens o direito de permanecer calado e quieto até o teu tropa chegar";
+        return "Só precisas de partir a pedra para te tornares num caçador mas a pedra nem racha, será que vais ter " +
+                "ajuda?";
     }
 
     @Override

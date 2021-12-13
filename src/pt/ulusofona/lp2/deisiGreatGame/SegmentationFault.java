@@ -5,12 +5,13 @@ public class SegmentationFault extends Abyss{
         super(posicao);
         id = 9;
         titulo = "Segmentation Fault";
-        imagem = "core-dumped.png";
+        imagem = "train.png";
     }
 
     @Override
     public String message() {
-        return "Não vais dar pull up na zona dos opps sem o teu tropa wi";
+        return "Depois de esperares pelos teus companheiros voces reparam que não estão na estação do " +
+                "Mugen Train e recuam 3 casas";
     }
 
     @Override

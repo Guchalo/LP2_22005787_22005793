@@ -5,12 +5,12 @@ public class DuplicatedCode extends Abyss{
         super(posicao);
         id = 5;
         titulo = "Duplicated Code";
-        imagem = "duplicated-code.png";
+        imagem = "zenitsu.png";
     }
 
     @Override
     public String message() {
-        return "WI NUM FAZ ISSO";
+        return "Viste um demonio que estava completamente fora do teu alcance, acobardaste-te e voltas-te para trás";
     }
 
     @Override

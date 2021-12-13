@@ -5,12 +5,12 @@ public class SyntaxError extends Abyss {
         super(posicao);
         id = 0;
         titulo = "Erro de sintaxe";
-        imagem = "syntax.png";
+        imagem = "armadilha.png";
     }
 
     @Override
     public String message() {
-        return "Olha o boda";
+        return "Caiste numa das armadilhas do Urokodaki, recuas 1 casa";
     }
 
     @Override

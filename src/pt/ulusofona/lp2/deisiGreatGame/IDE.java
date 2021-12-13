@@ -6,12 +6,12 @@ public class IDE extends Tool{
         super(posicao);
         id = 4;
         titulo = "IDE";
-        imagem = "IDE.png";
+        imagem = "passou.png";
     }
 
     @Override
     public String message() {
-        return "Ganhaste acesso temporario ao WiTraficante.com";
+        return "Passaste em todos os testes do Urokodaki";
     }
 
     @Override

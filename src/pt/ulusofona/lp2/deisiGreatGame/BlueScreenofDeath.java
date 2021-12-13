@@ -5,12 +5,12 @@ public class BlueScreenofDeath extends Abyss{
         super(posicao);
         id = 7;
         titulo = "Blue Screen of Death";
-        imagem = "bsod.png";
+        imagem = "haganezuka.png";
     }
 
     @Override
     public String message() {
-        return "Foste ao Cacém e perdeste tudo...";
+        return "Perdeste a tua espada pela 2ª vez, Haganezuka não te perdoou e executou-te, acabou o jogo";
     }
 
     @Override

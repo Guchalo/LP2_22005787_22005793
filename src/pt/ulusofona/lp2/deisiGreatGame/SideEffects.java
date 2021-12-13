@@ -5,12 +5,13 @@ public class SideEffects extends Abyss{
         super(posicao);
         id = 6;
         titulo = "Efeitos secundários";
-        imagem = "secondary-effects.png";
+        imagem = "muzan.png";
     }
 
     @Override
     public String message() {
-        return "Porra wi tou bem lavado ehehe";
+        return "Deste de caras com o Muzan mas perdeste a oportunidade de o apanhar," +
+                " por isso voltaste para onde estavas á 2 jogadas atrás";
     }
 
     @Override

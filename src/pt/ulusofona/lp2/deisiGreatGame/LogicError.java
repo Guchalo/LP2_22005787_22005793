@@ -5,12 +5,13 @@ public class LogicError extends Abyss {
         super(posicao);
         id = 1;
         titulo = "Erro de lógica";
-        imagem = "logic.png";
+        imagem = "bicho.png";
     }
 
     @Override
     public String message() {
-        return "Wi pipino di novo";
+        return "Deparaste-te com um demonio cujo o poder não consegues identificar, por isso " +
+                "recuaste metade das casas que avançaste";
     }
 
     @Override

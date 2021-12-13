@@ -6,12 +6,13 @@ public class FunctionalProgramming extends Tool{
         super(posicao);
         id = 1;
         titulo = "Programação Funcional";
-        imagem = "functional.png";
+        imagem = "respiracaoDoSol.png";
     }
 
     @Override
     public String message() {
-        return "Wi fiz bué kumbu";
+        return "Agora que conseguiste dominar a Respiração total, já tens capacidade e poder " +
+                "para enfrentar diversos perigos";
     }
 
     @Override

@@ -5,12 +5,12 @@ public class FileNotFoundException extends Abyss{
         super(posicao);
         id = 3;
         titulo = "File Not Found Exception";
-        imagem = "file-not-found-exception.png";
+        imagem = "JAVALI.png";
     }
 
     @Override
     public String message() {
-        return "Wi te banharam";
+        return "Deste de cara com um humano com cara de Javali e recuaste 3 casas";
     }
 
     @Override

@@ -6,12 +6,12 @@ public class UnityTests extends Tool{
         super(posicao);
         id = 2;
         titulo = "Testes unitários";
-        imagem = "unit-tests.png";
+        imagem = "nezuko.png";
     }
 
     @Override
     public String message() {
-        return "Ganhaste imunidade a todos os testes de substancias ilicitas";
+        return "A Nezuko saiu da caixa para te ajudar na luta ";
     }
 
     @Override
