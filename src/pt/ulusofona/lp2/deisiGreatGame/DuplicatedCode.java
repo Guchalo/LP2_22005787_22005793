@@ -22,6 +22,5 @@ public class DuplicatedCode extends Abyss {
         }
         p.voltarOndeEstava();
         return "Viste um demonio que estava completamente fora do teu alcance, acobardaste-te e voltas-te para trás";
-
     }
 }

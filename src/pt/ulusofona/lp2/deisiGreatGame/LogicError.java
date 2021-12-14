@@ -15,6 +15,10 @@ public class LogicError extends Abyss {
             p.removerTool("Erro de lógica");
             return "Graças a ajuda do Regonku vocês conseguiram derrotar o demónio, pórem o Rengoku não sobreviveu :(";
         }
+        if (p.temUT()){
+            p.removerTool("Testes unitários");
+            return "Graças a ajuda do Regonku vocês conseguiram derrotar o demónio, pórem o Rengoku não sobreviveu :(";
+        }
         p.erroDeLogica();
         return "Deparaste-te com um demonio cujo o poder não consegues identificar, por isso " +
                 "recuaste metade das casas que avançaste";
