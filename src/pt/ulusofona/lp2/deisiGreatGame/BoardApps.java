@@ -36,7 +36,6 @@ public abstract class BoardApps {
         return posicao;
     }
 
-
     public abstract String react(Programmer p);
 
 

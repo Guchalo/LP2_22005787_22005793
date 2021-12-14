@@ -13,7 +13,8 @@ public class Programmer {
     ArrayList<String> linguagensProg = new ArrayList<>();
     boolean estado = true;
     List<Tool> tools = new ArrayList<>();
-    static int valorDado = 0;
+    static int valorDoDado = 0;
+    ArrayList<Integer> nrJogadas = new ArrayList<>(2);
 
 
     public Programmer() {
@@ -24,11 +25,12 @@ public class Programmer {
     }
 
     public static int getValorDado() {
-        return valorDado;
+        return valorDoDado;
     }
 
     public boolean moverPos(int nrPositions, int size) {
-        valorDado = nrPositions;
+        valorDoDado = nrPositions;
+        nrJogadas.add(valorDoDado);
         if (pos + nrPositions > size) {
             int diferenca = (pos + nrPositions) - size;
             int alcancarSize = size - pos;
@@ -40,6 +42,11 @@ public class Programmer {
         return true;
     }
 
+    public void posicao2Jogadas(){
+        int posicao = nrJogadas.get(nrJogadas.size() - 1) + nrJogadas.get(nrJogadas.size() - 2);
+        pos -= posicao;
+    }
+
     public void recuar(int nrPositions) {
         pos -= (nrPositions);
     }
@@ -49,11 +56,11 @@ public class Programmer {
     }
 
     public void erroDeLogica() {
-        pos -= (valorDado / 2);
+        pos -= (valorDoDado / 2);
     }
 
     public void voltarOndeEstava() {
-        pos -= valorDado;
+        pos -= valorDoDado;
     }
 
     public Programmer(int id, String name, ProgrammerColor color, ArrayList<String> linguagensProg) {

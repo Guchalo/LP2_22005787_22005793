@@ -220,7 +220,6 @@ public class GameManager {
                 return false;
             }
             BoardApps boardApp;
-
             switch (app) {
                 case 0:
                     switch (appType) {

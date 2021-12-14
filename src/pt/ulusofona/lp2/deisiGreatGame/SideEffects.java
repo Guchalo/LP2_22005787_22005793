@@ -17,6 +17,7 @@ public class SideEffects extends Abyss {
                     " e conseguiste bater te de frente com o Muzan. Mas ficaste demasiado fraco para continuar" +
                     " e Muzan fugiu.";
         }
+        p.posicao2Jogadas();
         return "Deste de caras com o Muzan mas perdeste a oportunidade de o apanhar," +
                 " por isso voltaste para onde estavas á 2 jogadas atrás";
     }
