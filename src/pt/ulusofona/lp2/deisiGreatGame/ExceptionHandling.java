@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class ExceptionHandling extends Tool{
+public class ExceptionHandling extends Tool {
 
     public ExceptionHandling(int posicao) {
         super(posicao);
@@ -8,7 +8,6 @@ public class ExceptionHandling extends Tool{
         titulo = "Tratamento de Excepções";
         imagem = "mister.png";
     }
-
 
 
     @Override

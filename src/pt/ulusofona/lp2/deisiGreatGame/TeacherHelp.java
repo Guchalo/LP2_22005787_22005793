@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class TeacherHelp extends Tool{
+public class TeacherHelp extends Tool {
 
     public TeacherHelp(int posicao) {
         super(posicao);
@@ -8,7 +8,6 @@ public class TeacherHelp extends Tool{
         titulo = "Ajuda Do Professor";
         imagem = "rengoku.png";
     }
-
 
 
     @Override

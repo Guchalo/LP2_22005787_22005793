@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class SideEffects extends Abyss{
+public class SideEffects extends Abyss {
     public SideEffects(int posicao) {
         super(posicao);
         id = 6;
@@ -9,9 +9,8 @@ public class SideEffects extends Abyss{
     }
 
 
-
     @Override
-    public String  react(Programmer p) {
+    public String react(Programmer p) {
         return "Deste de caras com o Muzan mas perdeste a oportunidade de o apanhar," +
                 " por isso voltaste para onde estavas á 2 jogadas atrás";
     }

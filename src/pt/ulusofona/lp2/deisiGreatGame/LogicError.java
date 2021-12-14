@@ -9,7 +9,6 @@ public class LogicError extends Abyss {
     }
 
 
-
     @Override
     public String react(Programmer p) {
         p.erroDeLogica();

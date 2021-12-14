@@ -46,7 +46,7 @@ public class Turn {
         return true;
     }
 
-    public void playersInGame(){
+    public void playersInGame() {
         ArrayList<Programmer> temp = new ArrayList<>();
         for (Programmer p : programadores) {
             if (p.getEstado()) {

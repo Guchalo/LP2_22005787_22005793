@@ -16,7 +16,6 @@ public abstract class BoardApps {
     }
 
 
-
     public String getIdentificadorAT() {
         return identificadorAT;
     }
@@ -36,7 +35,6 @@ public abstract class BoardApps {
     public int getPosicao() {
         return posicao;
     }
-
 
 
     public abstract String react(Programmer p);

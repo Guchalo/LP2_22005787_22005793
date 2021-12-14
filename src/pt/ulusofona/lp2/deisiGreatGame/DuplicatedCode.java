@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class DuplicatedCode extends Abyss{
+public class DuplicatedCode extends Abyss {
     public DuplicatedCode(int posicao) {
         super(posicao);
         id = 5;
@@ -9,10 +9,9 @@ public class DuplicatedCode extends Abyss{
     }
 
 
-
     @Override
     public String react(Programmer p) {
-        if(p.temHeranca()){
+        if (p.temHeranca()) {
             p.removerTool("Herança");
             return "Recebeste ajuda para derrotar o demonio";
         }

@@ -187,13 +187,13 @@ public class Tests {
         programadores.add(p3);
         programadores.add(p4);
         GameManager manager = new GameManager(programadores);
-        assertEquals(4,manager.getProgrammers(true).size());
-        assertEquals(3,manager.getProgrammers(false).size());
+        assertEquals(4, manager.getProgrammers(true).size());
+        assertEquals(3, manager.getProgrammers(false).size());
 
     }
 
     @Test
-    public void testBSD(){
+    public void testBSD() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         String[][] tools = new String[1][3];
@@ -208,7 +208,7 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15,tools);
+        manager.createInitialBoard(playerInfo, 15, tools);
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
         System.out.println(manager.getProgrammers());
@@ -220,7 +220,7 @@ public class Tests {
     }
 
     @Test
-    public void testBSOD02(){
+    public void testBSOD02() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[3][4];
         String[][] tools = new String[1][3];
@@ -239,7 +239,7 @@ public class Tests {
         playerInfo[2][1] = "Antonio";
         playerInfo[2][2] = "Java";
         playerInfo[2][3] = "BLUE";
-        manager.createInitialBoard(playerInfo, 15,tools);
+        manager.createInitialBoard(playerInfo, 15, tools);
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);

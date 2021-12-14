@@ -16,7 +16,6 @@ public class Programmer {
     static int valorDado = 0;
 
 
-
     public Programmer() {
     }
 
@@ -41,19 +40,19 @@ public class Programmer {
         return true;
     }
 
-    public void recuar(int nrPositions){
+    public void recuar(int nrPositions) {
         pos -= (nrPositions);
     }
 
-    public void voltarPracasa(){
+    public void voltarPracasa() {
         pos = 1;
     }
 
-    public void erroDeLogica(){
-        pos -= (valorDado/2);
+    public void erroDeLogica() {
+        pos -= (valorDado / 2);
     }
 
-    public void voltarOndeEstava(){
+    public void voltarOndeEstava() {
         pos -= valorDado;
     }
 
@@ -97,20 +96,20 @@ public class Programmer {
         }
     }
 
-    public void adicionarTool(Tool t){
-        if(t == null){
+    public void adicionarTool(Tool t) {
+        if (t == null) {
             return;
         }
-        for(Tool tool : tools){
-            if (tool.getTitulo().equals(t.getTitulo())){
+        for (Tool tool : tools) {
+            if (tool.getTitulo().equals(t.getTitulo())) {
                 return;
             }
         }
         tools.add(t);
     }
 
-    public void removerTool(String t){
-        if(t == null){
+    public void removerTool(String t) {
+        if (t == null) {
             return;
         }
         tools.removeIf(tool -> tool.getTitulo().equals(t));
@@ -126,65 +125,65 @@ public class Programmer {
         return linguagens.substring(0, linguagens.length() - 2);
     }
 
-    public String toStringTools(){
-        if(tools == null || tools.size() == 0){
+    public String toStringTools() {
+        if (tools == null || tools.size() == 0) {
             return "No tools";
         }
         StringBuilder resultado = new StringBuilder();
-        for (Tool ferramenta : tools){
+        for (Tool ferramenta : tools) {
             resultado.append(ferramenta.getTitulo()).append(";");
         }
-        return resultado.substring(0,resultado.length() - 1);
+        return resultado.substring(0, resultado.length() - 1);
     }
 
-    public boolean temEA(){
-        for(Tool tool : tools){
-            if (tool.getTitulo().equals("Tratamento de Excepções")){
+    public boolean temEA() {
+        for (Tool tool : tools) {
+            if (tool.getTitulo().equals("Tratamento de Excepções")) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean temFP(){
-        for(Tool tool : tools){
-            if (tool.getTitulo().equals("Programação Funcional")){
+    public boolean temFP() {
+        for (Tool tool : tools) {
+            if (tool.getTitulo().equals("Programação Funcional")) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean temHeranca(){
-        for(Tool tool : tools){
-            if (tool.getTitulo().equals("Herança")){
+    public boolean temHeranca() {
+        for (Tool tool : tools) {
+            if (tool.getTitulo().equals("Herança")) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean temIDE(){
-        for(Tool tool : tools){
-            if (tool.getTitulo().equals("IDE")){
+    public boolean temIDE() {
+        for (Tool tool : tools) {
+            if (tool.getTitulo().equals("IDE")) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean temTH(){
-        for(Tool tool : tools){
-            if (tool.getTitulo().equals("Ajuda Do Professor")){
+    public boolean temTH() {
+        for (Tool tool : tools) {
+            if (tool.getTitulo().equals("Ajuda Do Professor")) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean temUT(){
-        for(Tool tool : tools){
-            if (tool.getTitulo().equals("Testes unitários")){
+    public boolean temUT() {
+        for (Tool tool : tools) {
+            if (tool.getTitulo().equals("Testes unitários")) {
                 return true;
             }
         }

@@ -9,9 +9,6 @@ public abstract class Abyss extends BoardApps {
     }
 
 
-
-
-
     public abstract String react(Programmer p);
 }
 

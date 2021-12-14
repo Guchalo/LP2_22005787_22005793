@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class IDE extends Tool{
+public class IDE extends Tool {
 
     public IDE(int posicao) {
         super(posicao);
@@ -10,9 +10,8 @@ public class IDE extends Tool{
     }
 
 
-
     @Override
-    public String  react(Programmer p) {
+    public String react(Programmer p) {
         return "Passaste em todos os testes do Urokodaki";
     }
 

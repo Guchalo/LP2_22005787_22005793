@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-public class Crash extends Abyss{
+public class Crash extends Abyss {
     public Crash(int posicao) {
         super(posicao);
         id = 4;

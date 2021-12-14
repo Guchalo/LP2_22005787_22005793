@@ -8,7 +8,6 @@ public abstract class Tool extends BoardApps {
     }
 
 
-
-    public abstract String  react(Programmer p);
+    public abstract String react(Programmer p);
 
 }
