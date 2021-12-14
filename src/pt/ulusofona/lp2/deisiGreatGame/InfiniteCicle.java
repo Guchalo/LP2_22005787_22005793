@@ -11,6 +11,10 @@ public class InfiniteCicle extends Abyss {
 
     @Override
     public String react(Programmer p) {
+        if (p.temFP()){
+            p.removerTool("Programação Funcional");
+            return "Graças a ajuda do Regonku vocês conseguiram derrotar o demónio, pórem o Rengoku não sobreviveu :(";
+        }
         return "Só precisas de partir a pedra para te tornares num caçador mas a pedra nem racha, será que vais ter " +
                 "ajuda?";
     }
