@@ -37,9 +37,9 @@ public abstract class BoardApps {
         return posicao;
     }
 
-    public abstract String message();
 
-    public abstract void react(Programmer p);
+
+    public abstract String react(Programmer p);
 
 
 }

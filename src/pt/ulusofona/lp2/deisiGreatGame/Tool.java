@@ -7,8 +7,8 @@ public abstract class Tool extends BoardApps {
         identificadorAT = "T";
     }
 
-    public abstract String message();
 
-    public abstract void react(Programmer p);
+
+    public abstract String  react(Programmer p);
 
 }

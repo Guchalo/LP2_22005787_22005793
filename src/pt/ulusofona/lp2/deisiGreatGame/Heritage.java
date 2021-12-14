@@ -11,13 +11,8 @@ public class Heritage extends Tool {
 
 
     @Override
-    public String message() {
+    public String react(Programmer p) {
         return "Zenitsu e Inosuke juntam se a ti para a proxima batalha";
-    }
-
-    @Override
-    public void react(Programmer p) {
-
     }
 
 

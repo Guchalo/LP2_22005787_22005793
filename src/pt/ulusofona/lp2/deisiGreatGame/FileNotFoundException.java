@@ -8,13 +8,11 @@ public class FileNotFoundException extends Abyss{
         imagem = "JAVALI.png";
     }
 
-    @Override
-    public String message() {
-        return "Deste de cara com um humano com cara de Javali e recuaste 3 casas";
-    }
+
 
     @Override
-    public void react(Programmer p) {
+    public String  react(Programmer p) {
         p.recuar(3);
+        return "Deste de cara com um humano com cara de Javali e recuaste 3 casas";
     }
 }

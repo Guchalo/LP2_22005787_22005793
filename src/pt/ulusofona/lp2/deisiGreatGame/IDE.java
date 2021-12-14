@@ -9,14 +9,11 @@ public class IDE extends Tool{
         imagem = "passou.png";
     }
 
+
+
     @Override
-    public String message() {
+    public String  react(Programmer p) {
         return "Passaste em todos os testes do Urokodaki";
-    }
-
-    @Override
-    public void react(Programmer p) {
-
     }
 
 

@@ -9,15 +9,12 @@ public class FunctionalProgramming extends Tool{
         imagem = "respiracaoDoSol.png";
     }
 
+
+
     @Override
-    public String message() {
+    public String  react(Programmer p) {
         return "Agora que conseguiste dominar a Respiração total, já tens capacidade e poder " +
                 "para enfrentar diversos perigos";
-    }
-
-    @Override
-    public void react(Programmer p) {
-
     }
 
 }

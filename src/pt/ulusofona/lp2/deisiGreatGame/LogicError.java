@@ -8,14 +8,12 @@ public class LogicError extends Abyss {
         imagem = "bicho.png";
     }
 
-    @Override
-    public String message() {
-        return "Deparaste-te com um demonio cujo o poder não consegues identificar, por isso " +
-                "recuaste metade das casas que avançaste";
-    }
+
 
     @Override
-    public void react(Programmer p) {
+    public String react(Programmer p) {
         p.erroDeLogica();
+        return "Deparaste-te com um demonio cujo o poder não consegues identificar, por isso " +
+                "recuaste metade das casas que avançaste";
     }
 }

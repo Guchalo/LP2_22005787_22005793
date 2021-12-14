@@ -9,14 +9,11 @@ public class TeacherHelp extends Tool{
         imagem = "rengoku.png";
     }
 
+
+
     @Override
-    public String message() {
+    public String react(Programmer p) {
         return "O Rengoku chegou para te ajudar";
-    }
-
-    @Override
-    public void react(Programmer p) {
-
     }
 
 

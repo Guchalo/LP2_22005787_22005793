@@ -9,12 +9,8 @@ public class BlueScreenofDeath extends Abyss{
     }
 
     @Override
-    public String message() {
-        return "Perdeste a tua espada pela 2ª vez, Haganezuka não te perdoou e executou-te, acabou o jogo";
-    }
-
-    @Override
-    public void react(Programmer p) {
+    public String react(Programmer p) {
         p.derrotado();
+        return "Perdeste a tua espada pela 2ª vez, Haganezuka não te perdoou e executou-te, acabou o jogo";
     }
 }

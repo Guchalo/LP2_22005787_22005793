@@ -8,13 +8,11 @@ public class SyntaxError extends Abyss {
         imagem = "armadilha.png";
     }
 
-    @Override
-    public String message() {
-        return "Caiste numa das armadilhas do Urokodaki, recuas 1 casa";
-    }
+
 
     @Override
-    public void react(Programmer p) {
+    public String react(Programmer p) {
         p.recuar(1);
+        return "Caiste numa das armadilhas do Urokodaki, recuas 1 casa";
     }
 }

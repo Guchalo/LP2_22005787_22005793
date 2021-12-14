@@ -8,14 +8,11 @@ public class SideEffects extends Abyss{
         imagem = "muzan.png";
     }
 
+
+
     @Override
-    public String message() {
+    public String  react(Programmer p) {
         return "Deste de caras com o Muzan mas perdeste a oportunidade de o apanhar," +
                 " por isso voltaste para onde estavas á 2 jogadas atrás";
-    }
-
-    @Override
-    public void react(Programmer p) {
-
     }
 }

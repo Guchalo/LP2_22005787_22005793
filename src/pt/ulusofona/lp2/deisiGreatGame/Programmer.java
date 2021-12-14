@@ -16,6 +16,7 @@ public class Programmer {
     static int valorDado = 0;
 
 
+
     public Programmer() {
     }
 
@@ -108,6 +109,13 @@ public class Programmer {
         tools.add(t);
     }
 
+    public void removerTool(String t){
+        if(t == null){
+            return;
+        }
+        tools.removeIf(tool -> tool.getTitulo().equals(t));
+    }
+
     public String getLinguagensProg() {
         Collections.sort(linguagensProg);
         StringBuilder linguagens = new StringBuilder();
@@ -129,6 +137,59 @@ public class Programmer {
         return resultado.substring(0,resultado.length() - 1);
     }
 
+    public boolean temEA(){
+        for(Tool tool : tools){
+            if (tool.getTitulo().equals("Tratamento de Excepções")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean temFP(){
+        for(Tool tool : tools){
+            if (tool.getTitulo().equals("Programação Funcional")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean temHeranca(){
+        for(Tool tool : tools){
+            if (tool.getTitulo().equals("Herança")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean temIDE(){
+        for(Tool tool : tools){
+            if (tool.getTitulo().equals("IDE")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean temTH(){
+        for(Tool tool : tools){
+            if (tool.getTitulo().equals("Ajuda Do Professor")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean temUT(){
+        for(Tool tool : tools){
+            if (tool.getTitulo().equals("Testes unitários")){
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public String toString() {

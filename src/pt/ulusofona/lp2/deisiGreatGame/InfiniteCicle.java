@@ -8,14 +8,11 @@ public class InfiniteCicle extends Abyss{
         imagem = "pedra.png";
     }
 
+
+
     @Override
-    public String message() {
+    public String  react(Programmer p) {
         return "Só precisas de partir a pedra para te tornares num caçador mas a pedra nem racha, será que vais ter " +
                 "ajuda?";
-    }
-
-    @Override
-    public void react(Programmer p) {
-
     }
 }

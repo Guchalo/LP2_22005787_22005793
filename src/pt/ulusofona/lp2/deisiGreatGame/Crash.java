@@ -8,14 +8,11 @@ public class Crash extends Abyss{
         imagem = "tanjiroInjured.png";
     }
 
-    @Override
-    public String message() {
-        return "Depois de uma grande batalha, perdeste todas as forças e foste levado para a casa da Shinobu para" +
-                "recuperar";
-    }
 
     @Override
-    public void react(Programmer p) {
+    public String react(Programmer p) {
         p.voltarPracasa();
+        return "Depois de uma grande batalha, perdeste todas as forças e foste levado para a casa da Shinobu para" +
+                "recuperar";
     }
 }

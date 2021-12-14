@@ -8,14 +8,16 @@ public class DuplicatedCode extends Abyss{
         imagem = "zenitsu.png";
     }
 
-    @Override
-    public String message() {
-        return "Viste um demonio que estava completamente fora do teu alcance, acobardaste-te e voltas-te para trás";
-    }
+
 
     @Override
-    public void react(Programmer p) {
+    public String react(Programmer p) {
+        if(p.temHeranca()){
+            p.removerTool("Herança");
+            return "Recebeste ajuda para derrotar o demonio";
+        }
         p.voltarOndeEstava();
+        return "Viste um demonio que estava completamente fora do teu alcance, acobardaste-te e voltas-te para trás";
 
     }
 }

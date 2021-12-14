@@ -9,14 +9,11 @@ public class UnityTests extends Tool{
         imagem = "nezuko.png";
     }
 
+
+
     @Override
-    public String message() {
+    public String  react(Programmer p) {
         return "A Nezuko saiu da caixa para te ajudar na luta ";
-    }
-
-    @Override
-    public void react(Programmer p) {
-
     }
 
 

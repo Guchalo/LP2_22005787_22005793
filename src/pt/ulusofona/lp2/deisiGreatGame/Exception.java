@@ -8,13 +8,11 @@ public class Exception extends Abyss{
         imagem = "tanjiroH.png";
     }
 
-    @Override
-    public String message() {
-        return "Levaste uma cabeçada do Tanjiro e voltaste duas casas para trás";
-    }
+
 
     @Override
-    public void react(Programmer p) {
+    public String react(Programmer p) {
         p.recuar(2);
+        return "Levaste uma cabeçada do Tanjiro e voltaste duas casas para trás";
     }
 }

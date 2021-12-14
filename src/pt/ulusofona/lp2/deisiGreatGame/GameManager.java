@@ -7,7 +7,6 @@ import java.util.*;
 public class GameManager {
     private int tamanhoTab;
     private ArrayList<Programmer> programadores = new ArrayList<>();
-    private ArrayList<Programmer> programadoresI = new ArrayList<>();
     private Turn turno;
     private ArrayList<BoardApps> boardApps = new ArrayList<>();
 
@@ -16,7 +15,6 @@ public class GameManager {
 
     public GameManager(ArrayList<Programmer> programadores) {
         this.programadores = programadores;
-        this.programadoresI = programadores;
     }
 
     public Turn getTurno() {
@@ -79,7 +77,7 @@ public class GameManager {
                     addProgrammer(p1);
                     addProgrammer(p2);
                     ordenarProgId();
-                    programadoresI.sort(Comparator.comparingInt(Programmer::getId));
+
                     turno = new Turn(programadores, programadores.get(0));
                     return true;
                 }
@@ -133,7 +131,7 @@ public class GameManager {
                     addProgrammer(p2);
                     addProgrammer(p3);
                     ordenarProgId();
-                    programadoresI.sort(Comparator.comparingInt(Programmer::getId));
+
                     turno = new Turn(programadores, programadores.get(0));
                     return true;
                 }
@@ -191,7 +189,7 @@ public class GameManager {
                     addProgrammer(p3);
                     addProgrammer(p4);
                     ordenarProgId();
-                    programadoresI.sort(Comparator.comparingInt(Programmer::getId));
+
                     turno = new Turn(programadores, programadores.get(0));
                     return true;
                 }
@@ -456,16 +454,18 @@ public class GameManager {
     }
 
     public String reactToAbyssOrTool() {
+        String mensagem = "";
         for (BoardApps boardApp : boardApps) {
             if (turno.getProgramadorAtual().getPos() == boardApp.getPosicao()) {
                 if (boardApp.getIdentificadorAT().equals("T")) {
                     turno.getProgramadorAtual().adicionarTool((Tool) boardApp);
+                    mensagem = boardApp.react(turno.getProgramadorAtual());
                     mudarTurno();
-                    return boardApp.message();
+                    return mensagem;
                 }
-                boardApp.react(turno.getProgramadorAtual());
+                mensagem = boardApp.react(turno.getProgramadorAtual());
                 mudarTurno();
-                return boardApp.message();
+                return mensagem;
             }
         }
         mudarTurno();
