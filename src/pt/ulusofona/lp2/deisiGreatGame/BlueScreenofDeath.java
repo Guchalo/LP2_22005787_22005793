@@ -10,6 +10,10 @@ public class BlueScreenofDeath extends Abyss {
 
     @Override
     public String react(Programmer p) {
+        if (p.temUT()) {
+            p.removerTool("Testes Unitários");
+            return "A Nezuko ao sair da caixa, oferece dango ao Haganezuka e ele perdoa-te.";
+        }
         p.derrotado();
         return "Perdeste a tua espada pela 2ª vez, Haganezuka não te perdoou e executou-te, acabou o jogo";
     }
