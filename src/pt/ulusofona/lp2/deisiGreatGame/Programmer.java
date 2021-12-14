@@ -13,6 +13,7 @@ public class Programmer {
     ArrayList<String> linguagensProg = new ArrayList<>();
     boolean estado = true;
     List<Tool> tools = new ArrayList<>();
+    static int valorDado = 0;
 
 
     public Programmer() {
@@ -22,7 +23,12 @@ public class Programmer {
         return estado;
     }
 
+    public static int getValorDado() {
+        return valorDado;
+    }
+
     public boolean moverPos(int nrPositions, int size) {
+        valorDado = nrPositions;
         if (pos + nrPositions > size) {
             int diferenca = (pos + nrPositions) - size;
             int alcancarSize = size - pos;
@@ -32,6 +38,22 @@ public class Programmer {
         }
         pos += nrPositions;
         return true;
+    }
+
+    public void recuar(int nrPositions){
+        pos -= (nrPositions);
+    }
+
+    public void voltarPracasa(){
+        pos = 1;
+    }
+
+    public void erroDeLogica(){
+        pos -= (valorDado/2);
+    }
+
+    public void voltarOndeEstava(){
+        pos -= valorDado;
     }
 
     public Programmer(int id, String name, ProgrammerColor color, ArrayList<String> linguagensProg) {

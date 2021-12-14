@@ -16,6 +16,6 @@ public class Crash extends Abyss{
 
     @Override
     public void react(Programmer p) {
-
+        p.voltarPracasa();
     }
 }

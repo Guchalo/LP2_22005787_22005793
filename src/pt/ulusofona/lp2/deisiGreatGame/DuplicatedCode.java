@@ -15,6 +15,7 @@ public class DuplicatedCode extends Abyss{
 
     @Override
     public void react(Programmer p) {
+        p.voltarOndeEstava();
 
     }
 }

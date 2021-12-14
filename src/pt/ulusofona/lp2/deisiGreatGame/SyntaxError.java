@@ -15,6 +15,6 @@ public class SyntaxError extends Abyss {
 
     @Override
     public void react(Programmer p) {
-
+        p.recuar(1);
     }
 }

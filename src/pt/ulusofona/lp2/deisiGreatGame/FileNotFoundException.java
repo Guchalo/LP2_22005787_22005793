@@ -15,6 +15,6 @@ public class FileNotFoundException extends Abyss{
 
     @Override
     public void react(Programmer p) {
-
+        p.recuar(3);
     }
 }
