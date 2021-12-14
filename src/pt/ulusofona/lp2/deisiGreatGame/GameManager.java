@@ -7,6 +7,7 @@ import java.util.*;
 public class GameManager {
     private int tamanhoTab;
     private ArrayList<Programmer> programadores = new ArrayList<>();
+    private ArrayList<Programmer> programadoresI = new ArrayList<>();
     private Turn turno;
     private ArrayList<BoardApps> boardApps = new ArrayList<>();
 
@@ -15,6 +16,11 @@ public class GameManager {
 
     public GameManager(ArrayList<Programmer> programadores) {
         this.programadores = programadores;
+        this.programadoresI = programadores;
+    }
+
+    public Turn getTurno() {
+        return turno;
     }
 
     public boolean createInitialBoard(String[][] playerInfo, int worldSize) {
@@ -73,6 +79,7 @@ public class GameManager {
                     addProgrammer(p1);
                     addProgrammer(p2);
                     ordenarProgId();
+                    programadoresI.sort(Comparator.comparingInt(Programmer::getId));
                     turno = new Turn(programadores, programadores.get(0));
                     return true;
                 }
@@ -126,6 +133,7 @@ public class GameManager {
                     addProgrammer(p2);
                     addProgrammer(p3);
                     ordenarProgId();
+                    programadoresI.sort(Comparator.comparingInt(Programmer::getId));
                     turno = new Turn(programadores, programadores.get(0));
                     return true;
                 }
@@ -183,6 +191,7 @@ public class GameManager {
                     addProgrammer(p3);
                     addProgrammer(p4);
                     ordenarProgId();
+                    programadoresI.sort(Comparator.comparingInt(Programmer::getId));
                     turno = new Turn(programadores, programadores.get(0));
                     return true;
                 }
@@ -373,9 +382,6 @@ public class GameManager {
         if (nrPositions < 1 || nrPositions > 6) {
             return false;
         }
-        if (!turno.getProgramadorAtual().getEstado()) {
-            return false;
-        }
 
         turno.getProgramadorAtual().moverPos(nrPositions, tamanhoTab);
         return true;
@@ -443,7 +449,8 @@ public class GameManager {
     }
 
     public void mudarTurno() {
-        programadores = turno.alterarTurno(turno.getProgramadorAtual());
+        turno.alterarTurno(turno.getProgramadorAtual());
+        turno.playersInGame();
         turno.mudarJogador(turno.getProgramadorAtual());
         turno.aumentarTurno();
     }
@@ -456,6 +463,7 @@ public class GameManager {
                     mudarTurno();
                     return boardApp.message();
                 }
+                boardApp.react(turno.getProgramadorAtual());
                 mudarTurno();
                 return boardApp.message();
             }

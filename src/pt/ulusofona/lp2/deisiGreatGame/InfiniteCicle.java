@@ -15,7 +15,7 @@ public class InfiniteCicle extends Abyss{
     }
 
     @Override
-    public void react() {
+    public void react(Programmer p) {
 
     }
 }

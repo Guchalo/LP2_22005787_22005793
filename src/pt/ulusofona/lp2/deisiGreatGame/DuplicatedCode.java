@@ -14,7 +14,7 @@ public class DuplicatedCode extends Abyss{
     }
 
     @Override
-    public void react() {
+    public void react(Programmer p) {
 
     }
 }

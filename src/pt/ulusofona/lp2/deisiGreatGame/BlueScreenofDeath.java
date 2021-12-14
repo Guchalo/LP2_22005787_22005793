@@ -14,7 +14,7 @@ public class BlueScreenofDeath extends Abyss{
     }
 
     @Override
-    public void react() {
-        manager.moveCurrentPlayer(-1);
+    public void react(Programmer p) {
+        p.derrotado();
     }
 }

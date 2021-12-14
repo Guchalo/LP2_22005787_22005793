@@ -14,7 +14,7 @@ public class Exception extends Abyss{
     }
 
     @Override
-    public void react() {
+    public void react(Programmer p) {
 
     }
 }

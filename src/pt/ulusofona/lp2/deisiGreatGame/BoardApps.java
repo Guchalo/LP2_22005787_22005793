@@ -15,6 +15,8 @@ public abstract class BoardApps {
     public BoardApps() {
     }
 
+
+
     public String getIdentificadorAT() {
         return identificadorAT;
     }
@@ -37,7 +39,7 @@ public abstract class BoardApps {
 
     public abstract String message();
 
-    public abstract void react();
+    public abstract void react(Programmer p);
 
-    public abstract void adicionarGM(GameManager p);
+
 }

@@ -16,12 +16,9 @@ public class Heritage extends Tool {
     }
 
     @Override
-    public void react() {
+    public void react(Programmer p) {
 
     }
 
-    @Override
-    public void adicionarGM(GameManager p) {
 
-    }
 }

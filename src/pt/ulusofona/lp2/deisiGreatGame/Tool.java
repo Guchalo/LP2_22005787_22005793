@@ -9,6 +9,6 @@ public abstract class Tool extends BoardApps {
 
     public abstract String message();
 
-    public abstract void react();
+    public abstract void react(Programmer p);
 
 }
