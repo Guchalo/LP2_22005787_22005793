@@ -385,6 +385,9 @@ public class GameManager {
     }
 
     public boolean gameIsOver() {
+        if(turno.getProgramadores().size() == 1){
+            return true;
+        }
         for (Programmer p : programadores) {
             if (p.getPos() == tamanhoTab) {
                 return true;
