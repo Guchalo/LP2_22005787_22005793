@@ -251,7 +251,7 @@ public class GameManager {
                             boardApp = new InfiniteCicle(appPosicion);
                             break;
                         case 9:
-                            boardApp = new SegmentationFault(appPosicion);
+                            boardApp = new SegmentationFault(appPosicion,programadores);
                             break;
                         default:
                             return false;

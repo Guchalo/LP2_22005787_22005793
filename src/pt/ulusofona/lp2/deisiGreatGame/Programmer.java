@@ -73,6 +73,10 @@ public class Programmer {
     }
 
     public void recuar(int nrPositions) {
+        if((pos - nrPositions) < 1){
+            pos = 1;
+            return;
+        }
         pos -= (nrPositions);
     }
 
@@ -118,6 +122,10 @@ public class Programmer {
 
     public int getPos() {
         return pos;
+    }
+
+    public boolean posicaoValidaSF(int posicion){
+        return posicion == pos;
     }
 
     public String stringEstado() {

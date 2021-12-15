@@ -276,4 +276,66 @@ public class Tests {
         assertEquals("Ajudas-te o caçador que estava preso a partir a pedra, porem tu ficaste para a partir sozinho, " +
                 "ou até alguem te vir ajudar",manager.reactToAbyssOrTool());
     }
+
+    @Test
+    public void testSegmetacion() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[1][3];
+        tools[0][0] = "0";
+        tools[0][1] = "9";
+        tools[0][2] = "3";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        manager.createInitialBoard(playerInfo, 15, tools);
+        manager.moveCurrentPlayer(2);
+        assertEquals("boda",manager.reactToAbyssOrTool());
+        manager.moveCurrentPlayer(2);
+        assertEquals("Depois de esperares pelos teus companheiros vocês reparam que não estão na estação do " +
+                "Mugen Train e recuam 3 casas",manager.reactToAbyssOrTool());
+    }
+    @Test
+    public void testSegmentacion2(){
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[3][4];
+        String[][] tools = new String[1][3];
+        tools[0][0] = "0";
+        tools[0][1] = "9";
+        tools[0][2] = "3";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        playerInfo[2][0] = "2";
+        playerInfo[2][1] = "Antonio";
+        playerInfo[2][2] = "Java";
+        playerInfo[2][3] = "BLUE";
+        manager.createInitialBoard(playerInfo, 15, tools);
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(1);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(1);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(1);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(1);
+        manager.reactToAbyssOrTool();
+        assertEquals(5,manager.getProgrammers(true).get(0).getPos());
+        assertEquals(1,manager.getProgrammers(true).get(1).getPos());
+        assertEquals(1,manager.getProgrammers(true).get(2).getPos());
+
+    }
 }
