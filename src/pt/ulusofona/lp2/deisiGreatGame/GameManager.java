@@ -407,7 +407,7 @@ public class GameManager {
         results.add("" + this.turno.getNrTurnos());
         results.add("");
         results.add("VENCEDOR");
-        programadores.sort(Comparator.comparingInt(Programmer::getPos).reversed());
+        programadores.sort(Comparator.comparingInt(Programmer::getPos).reversed().thenComparing(Programmer::getName));
         results.add("" + this.programadores.get(0).getName());
         results.add("");
         results.add("RESTANTES");
@@ -451,7 +451,7 @@ public class GameManager {
     }
 
     public String getProgrammersInfo() {
-        ArrayList<Programmer> temp = new ArrayList(programadores);
+        ArrayList<Programmer> temp = new ArrayList(turno.getProgramadores());
         temp.sort(Comparator.comparingInt(Programmer::getId));
         StringBuilder resultado = new StringBuilder();
         for (Programmer p : temp) {
