@@ -25,7 +25,7 @@ public class SegmentationFault extends Abyss {
             }
         }
         if(temp.size() < 2){
-            return "boda";
+            return "Os teus companheiros deixaram-te pendurado, continua sem eles";
         }
         if (p.temIDE()){
             p.removerTool("IDE");

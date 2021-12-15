@@ -295,7 +295,8 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         manager.createInitialBoard(playerInfo, 15, tools);
         manager.moveCurrentPlayer(2);
-        assertEquals("boda",manager.reactToAbyssOrTool());
+        assertEquals("Os teus companheiros deixaram-te pendurado, continua sem eles"
+                ,manager.reactToAbyssOrTool());
         manager.moveCurrentPlayer(2);
         assertEquals("Depois de esperares pelos teus companheiros vocês reparam que não estão na estação do " +
                 "Mugen Train e recuam 3 casas",manager.reactToAbyssOrTool());
