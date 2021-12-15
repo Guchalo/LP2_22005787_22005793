@@ -12,6 +12,7 @@ public class Programmer {
     int pos = 1;
     ArrayList<String> linguagensProg = new ArrayList<>();
     boolean estado = true;
+    boolean cicloInfinito = false;
     List<Tool> tools = new ArrayList<>();
     static int valorDoDado = 0;
     ArrayList<Integer> nrJogadas = new ArrayList<>(2);
@@ -22,6 +23,30 @@ public class Programmer {
 
     public boolean getEstado() {
         return estado;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public boolean isCicloInfinito() {
+        return cicloInfinito;
+    }
+
+    public List<Tool> getTools() {
+        return tools;
+    }
+
+    public static int getValorDoDado() {
+        return valorDoDado;
+    }
+
+    public ArrayList<Integer> getNrJogadas() {
+        return nrJogadas;
     }
 
     public static int getValorDado() {
@@ -61,6 +86,14 @@ public class Programmer {
 
     public void voltarOndeEstava() {
         pos -= valorDoDado;
+    }
+
+    public void ativarCicloInfinito(){
+            cicloInfinito = true;
+    }
+
+    public void desativarCicloInfinito(){
+        cicloInfinito = false;
     }
 
     public Programmer(int id, String name, ProgrammerColor color, ArrayList<String> linguagensProg) {

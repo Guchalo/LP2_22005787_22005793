@@ -379,6 +379,9 @@ public class GameManager {
         if (nrPositions < 1 || nrPositions > 6) {
             return false;
         }
+        if (turno.getProgramadorAtual().isCicloInfinito()){
+            return false;
+        }
 
         turno.getProgramadorAtual().moverPos(nrPositions, tamanhoTab);
         return true;

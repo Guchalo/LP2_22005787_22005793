@@ -12,7 +12,8 @@ public class IDE extends Tool {
 
     @Override
     public String react(Programmer p) {
-        return "Passaste em todos os testes do Urokodaki";
+        return "Ao passar todos os testes do Urokodaki, ele finalmente reconheceu-te" +
+                "como caçador";
     }
 
 

@@ -18,7 +18,8 @@ public class FileNotFoundException extends Abyss {
         }
         if (p.temEA()){
             p.removerTool("Tratamento de Excepções");
-            return "Graças a ajuda do Regonku vocês conseguiram derrotar o demónio, pórem o Rengoku não sobreviveu :(";
+            return "Graças ao teu treino, conseguiste-te evitar o javali sem o ferir, prosseguindo assim com a tua" +
+                    " jornada";
         }
         p.recuar(3);
         return "Deste de cara com um humano com cara de Javali e recuaste 3 casas";

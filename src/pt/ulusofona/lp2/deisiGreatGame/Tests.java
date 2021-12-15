@@ -248,4 +248,32 @@ public class Tests {
         manager.reactToAbyssOrTool();
         System.out.println(manager.getProgrammers(true));
     }
+
+    @Test
+    public void testcicloInfinito() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[1][3];
+        tools[0][0] = "0";
+        tools[0][1] = "8";
+        tools[0][2] = "3";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        manager.createInitialBoard(playerInfo, 15, tools);
+        manager.moveCurrentPlayer(2);
+        assertEquals("Só precisas de partir a pedra para te tornares num caçador mas a pedra nem racha, será que vais ter " +
+                "ajuda?",manager.reactToAbyssOrTool());
+        manager.moveCurrentPlayer(1);
+        manager.reactToAbyssOrTool();
+        assertFalse(manager.moveCurrentPlayer(2));
+        manager.moveCurrentPlayer(1);
+        assertEquals("Ajudas-te o caçador que estava preso a partir a pedra, porem tu ficaste para a partir sozinho, " +
+                "ou até alguem te vir ajudar",manager.reactToAbyssOrTool());
+    }
 }

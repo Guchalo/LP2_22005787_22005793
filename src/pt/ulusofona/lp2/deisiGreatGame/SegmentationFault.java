@@ -13,9 +13,9 @@ public class SegmentationFault extends Abyss {
     public String react(Programmer p) {
         if (p.temIDE()){
             p.removerTool("IDE");
-            return "Graças a ajuda do Regonku vocês conseguiram derrotar o demónio, pórem o Rengoku não sobreviveu :(";
+            return "Como já és um caçador experiente, conseguiste apanhar o Mugen Train a tempo";
         }
-        return "Depois de esperares pelos teus companheiros voces reparam que não estão na estação do " +
+        return "Depois de esperares pelos teus companheiros vocês reparam que não estão na estação do " +
                 "Mugen Train e recuam 3 casas";
     }
 }

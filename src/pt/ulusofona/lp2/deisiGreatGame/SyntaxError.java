@@ -14,7 +14,7 @@ public class SyntaxError extends Abyss {
         if (p.temTH()){
             p.removerTool("Erro de sintaxe");
             return "Como tens o Rengoku do teu lado, ele avisa te da armadilha e consegues evitá-la, mas como tu falhaste" +
-                    " ao detetar uma armadilha muito óbvia, ele abandonou-te.";
+                    " ao detetar uma armadilha muito óbvia e ele abandonou-te.";
         }
         if (p.temIDE()) {
             p.removerTool("IDE");

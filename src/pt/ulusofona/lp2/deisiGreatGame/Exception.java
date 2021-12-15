@@ -13,12 +13,12 @@ public class Exception extends Abyss {
     public String react(Programmer p) {
         if (p.temTH()){
             p.removerTool("Exception");
-            return "Tanjiro ao ver que estavas com o Rengoku , assumiu que eras de confiança e deixou te continuar." +
+            return "Tanjiro ao ver que estavas com o Rengoku, assumiu que eras de confiança e deixou te continuar. " +
                     "Mas o Rengoku ficou á conversa com o Tanjiro e tiveste de continuar sem ele.";
         }
         if (p.temEA()) {
             p.removerTool("Tratamento de Excepções");
-            return "O Tanjiro reconheceu-te como aluno do Urokodaki e deixou-te continuar a tua jornada.";
+            return "O Tanjiro reconheceu-te como aluno do Urokodaki e deixou-te continuar a tua jornada";
         }
         p.recuar(2);
         return "Levaste uma cabeçada do Tanjiro e voltaste duas casas para trás";
