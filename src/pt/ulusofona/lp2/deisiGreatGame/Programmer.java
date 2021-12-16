@@ -45,9 +45,6 @@ public class Programmer {
         return nrJogadas;
     }
 
-    public static int getValorDado() {
-        return valorDoDado;
-    }
 
     public boolean moverPos(int nrPositions, int size) {
         valorDoDado = nrPositions;

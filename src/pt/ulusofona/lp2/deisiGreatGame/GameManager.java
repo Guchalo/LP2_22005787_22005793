@@ -245,7 +245,7 @@ public class GameManager {
                             boardApp = new SideEffects(appPosicion);
                             break;
                         case 7:
-                            boardApp = new BlueScreenofDeath(appPosicion);
+                            boardApp = new BlueScreenOfDeath(appPosicion);
                             break;
                         case 8:
                             boardApp = new InfiniteCicle(appPosicion);
@@ -493,4 +493,3 @@ public class GameManager {
         return null;
     }
 }
-
