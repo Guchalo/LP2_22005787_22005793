@@ -11,10 +11,6 @@ public class Crash extends Abyss {
 
     @Override
     public String react(Programmer p) {
-        if (p.temIDE()){
-            p.removerTool("IDE");
-            return "Graças ao teu treino com o Urokodaki foste capaz de suportar os danos causados pela batalha";
-        }
         p.voltarPracasa();
         return "Depois de uma grande batalha, perdeste todas as forças e foste levado para a casa da Shinobu para" +
                 "recuperar";

@@ -465,9 +465,14 @@ public class GameManager {
 
     public void mudarTurno() {
         turno.alterarTurno(turno.getProgramadorAtual());
-        turno.playersInGame();
+        removePlayer();
+        turno.removePlayerTurn();
         turno.mudarJogador(turno.getProgramadorAtual());
         turno.aumentarTurno();
+    }
+
+    public void removePlayer() {
+        programadores.removeIf(p -> !p.getEstado());
     }
 
     public String reactToAbyssOrTool() {

@@ -27,10 +27,6 @@ public class SegmentationFault extends Abyss {
         if(temp.size() < 2){
             return "Os teus companheiros deixaram-te pendurado, continua sem eles";
         }
-        if (p.temIDE()){
-            p.removerTool("IDE");
-            return "Como já és um caçador experiente, conseguiste apanhar o Mugen Train a tempo";
-        }
         for (Programmer pg: temp) {
             pg.recuar(3);
         }

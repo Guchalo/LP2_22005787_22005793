@@ -46,16 +46,8 @@ public class Turn {
         return true;
     }
 
-    public void playersInGame() {
-        ArrayList<Programmer> temp = new ArrayList<>();
-        for (Programmer p : programadores) {
-            if (p.getEstado()) {
-                temp.add(p);
-            }
-        }
-        programadores.clear();
-        programadores = temp;
-
+    public void removePlayerTurn() {
+        programadores.removeIf(p -> !p.getEstado());
     }
 
 }
