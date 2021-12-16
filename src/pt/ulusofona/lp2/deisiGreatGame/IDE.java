@@ -9,12 +9,9 @@ public class IDE extends Tool {
         imagem = "passou.png";
     }
 
-
     @Override
     public String react(Programmer p) {
         return "Ao passar todos os testes do Urokodaki, ele finalmente reconheceu-te" +
                 "como caçador";
     }
-
-
 }

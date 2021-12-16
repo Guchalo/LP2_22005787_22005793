@@ -1,6 +1,7 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
 public class BlueScreenofDeath extends Abyss {
+
     public BlueScreenofDeath(int posicao) {
         super(posicao);
         id = 7;

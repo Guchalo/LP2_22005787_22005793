@@ -1,6 +1,7 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
 public class SyntaxError extends Abyss {
+
     public SyntaxError(int posicao) {
         super(posicao);
         id = 0;
@@ -8,10 +9,9 @@ public class SyntaxError extends Abyss {
         imagem = "armadilha.png";
     }
 
-
     @Override
     public String react(Programmer p) {
-        if (p.temTH()){
+        if (p.temTH()) {
             p.removerTool("Erro de sintaxe");
             return "Como tens o Rengoku do teu lado, ele avisa te da armadilha e consegues evitá-la, mas como tu falhaste" +
                     " ao detetar uma armadilha muito óbvia e ele abandonou-te.";

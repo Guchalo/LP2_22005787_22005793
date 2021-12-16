@@ -1,12 +1,12 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
 public abstract class BoardApps {
-    int id;
-    String titulo;
-    int posicao;
-    String imagem;
-    String identificadorAT;
 
+    protected int id;
+    protected String titulo;
+    protected int posicao;
+    protected String imagem;
+    protected String identificadorAT;
 
     public BoardApps(int posicao) {
         this.posicao = posicao;
@@ -14,7 +14,6 @@ public abstract class BoardApps {
 
     public BoardApps() {
     }
-
 
     public String getIdentificadorAT() {
         return identificadorAT;
@@ -37,6 +36,4 @@ public abstract class BoardApps {
     }
 
     public abstract String react(Programmer p);
-
-
 }

@@ -2,7 +2,7 @@ package pt.ulusofona.lp2.deisiGreatGame;
 
 public class InfiniteCicle extends Abyss {
 
-    Programmer player;
+    private Programmer player;
 
     public InfiniteCicle(int posicao) {
         super(posicao);
@@ -13,16 +13,16 @@ public class InfiniteCicle extends Abyss {
 
     @Override
     public String react(Programmer p) {
-        if (p.temFP()){
+        if (p.temFP()) {
             p.removerTool("Programação Funcional");
             return "Como dominaste a tecnica de Respiração Total, partir a pedra foi uma tarefa fácil";
         }
-        if(this.player == null){
+        if (this.player == null) {
             this.player = p;
             this.player.ativarCicloInfinito();
             return "Só precisas de partir a pedra para te tornares num caçador mas a pedra nem racha, será que vais ter " +
                     "ajuda?";
-        }else{
+        } else {
             this.player.desativarCicloInfinito();
             p.ativarCicloInfinito();
             this.player = p;

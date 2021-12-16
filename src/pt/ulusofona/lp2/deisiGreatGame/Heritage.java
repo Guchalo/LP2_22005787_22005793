@@ -9,11 +9,8 @@ public class Heritage extends Tool {
         imagem = "inEze.png";
     }
 
-
     @Override
     public String react(Programmer p) {
         return "Zenitsu e Inosuke juntam se a ti para a proxima batalha";
     }
-
-
 }

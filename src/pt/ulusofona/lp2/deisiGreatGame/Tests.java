@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 
 public class Tests {
 
-
     @Test
     public void testMoveCurrentPlayer1() {
         GameManager manager = new GameManager();
@@ -301,6 +300,7 @@ public class Tests {
         assertEquals("Depois de esperares pelos teus companheiros vocês reparam que não estão na estação do " +
                 "Mugen Train e recuam 3 casas",manager.reactToAbyssOrTool());
     }
+
     @Test
     public void testSegmentacion2(){
         GameManager manager = new GameManager();

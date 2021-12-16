@@ -1,6 +1,7 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
 public class LogicError extends Abyss {
+
     public LogicError(int posicao) {
         super(posicao);
         id = 1;
@@ -8,14 +9,13 @@ public class LogicError extends Abyss {
         imagem = "bicho.png";
     }
 
-
     @Override
     public String react(Programmer p) {
-        if (p.temTH()){
+        if (p.temTH()) {
             p.removerTool("Erro de lógica");
             return "Graças a ajuda do Regonku vocês conseguiram derrotar o demónio, pórem o Rengoku não sobreviveu ;-;";
         }
-        if (p.temUT()){
+        if (p.temUT()) {
             p.removerTool("Testes unitários");
             return "Graças a ajuda da Nezuko foste capaz de derrotar o demónio, porem ela ficou muito ferida e teve " +
                     "de voltar para a caixa para recuperar";

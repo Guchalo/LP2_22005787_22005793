@@ -1,6 +1,7 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
 public class Exception extends Abyss {
+
     public Exception(int posicao) {
         super(posicao);
         id = 2;
@@ -8,10 +9,9 @@ public class Exception extends Abyss {
         imagem = "tanjiroH.png";
     }
 
-
     @Override
     public String react(Programmer p) {
-        if (p.temTH()){
+        if (p.temTH()) {
             p.removerTool("Exception");
             return "Tanjiro ao ver que estavas com o Rengoku, assumiu que eras de confiança e deixou te continuar. " +
                     "Mas o Rengoku ficou á conversa com o Tanjiro e tiveste de continuar sem ele.";

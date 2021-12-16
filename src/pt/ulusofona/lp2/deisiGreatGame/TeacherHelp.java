@@ -9,11 +9,9 @@ public class TeacherHelp extends Tool {
         imagem = "rengoku.png";
     }
 
-
     @Override
     public String react(Programmer p) {
         return "O Rengoku chegou para te ajudar";
     }
-
 
 }

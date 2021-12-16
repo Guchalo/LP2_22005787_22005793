@@ -9,11 +9,8 @@ public class ExceptionHandling extends Tool {
         imagem = "mister.png";
     }
 
-
     @Override
     public String react(Programmer p) {
         return "Treinaste durante 2 anos com o Urokodaki e melhoraste as tuas habilidades de caçador";
     }
-
-
 }

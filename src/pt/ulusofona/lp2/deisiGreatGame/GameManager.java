@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.util.*;
 
 public class GameManager {
+
     private int tamanhoTab;
     private ArrayList<Programmer> programadores = new ArrayList<>();
     private Turn turno;
@@ -251,7 +252,7 @@ public class GameManager {
                             boardApp = new InfiniteCicle(appPosicion);
                             break;
                         case 9:
-                            boardApp = new SegmentationFault(appPosicion,programadores);
+                            boardApp = new SegmentationFault(appPosicion, programadores);
                             break;
                         default:
                             return false;
@@ -379,11 +380,11 @@ public class GameManager {
         if (nrPositions < 1 || nrPositions > 6) {
             return false;
         }
-        if (turno.getProgramadorAtual().isCicloInfinito()){
+        if (turno.getProgramadorAtual().isCicloInfinito()) {
             return false;
         }
 
-        if (!turno.getProgramadorAtual().isEstado()){
+        if (!turno.getProgramadorAtual().isEstado()) {
             return false;
         }
 
@@ -392,7 +393,7 @@ public class GameManager {
     }
 
     public boolean gameIsOver() {
-        if(turno.getProgramadores().size() == 1){
+        if (turno.getProgramadores().size() == 1) {
             return true;
         }
         for (Programmer p : programadores) {
@@ -474,7 +475,6 @@ public class GameManager {
         turno.aumentarTurno();
     }
 
-
     public String reactToAbyssOrTool() {
         String mensagem = "";
         for (BoardApps boardApp : boardApps) {
@@ -493,7 +493,5 @@ public class GameManager {
         mudarTurno();
         return null;
     }
-
-
 }
 

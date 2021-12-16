@@ -1,13 +1,13 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
 public class SideEffects extends Abyss {
+
     public SideEffects(int posicao) {
         super(posicao);
         id = 6;
         titulo = "Efeitos secundários";
         imagem = "muzan.png";
     }
-
 
     @Override
     public String react(Programmer p) {

@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Turn {
+
     private ArrayList<Programmer> programadores = new ArrayList<>();
-    Programmer programadorAtual;
-    int nrTurnos = 1;
+    private Programmer programadorAtual;
+    private int nrTurnos = 1;
 
     public Turn(ArrayList<Programmer> programadores, Programmer programadorAtual) {
         this.programadores.addAll(programadores);

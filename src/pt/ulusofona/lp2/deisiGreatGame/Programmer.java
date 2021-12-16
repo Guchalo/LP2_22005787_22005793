@@ -5,17 +5,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class Programmer {
-    int id;
-    String name;
-    ProgrammerColor color;
-    String image;
-    int pos = 1;
-    ArrayList<String> linguagensProg = new ArrayList<>();
-    boolean estado = true;
-    boolean cicloInfinito = false;
-    List<Tool> tools = new ArrayList<>();
-    static int valorDoDado = 0;
-    ArrayList<Integer> nrJogadas = new ArrayList<>(2);
+    private int id;
+    private String name;
+    private ProgrammerColor color;
+    private String image;
+    private int pos = 1;
+    private ArrayList<String> linguagensProg = new ArrayList<>();
+    private boolean estado = true;
+    private boolean cicloInfinito = false;
+    private final List<Tool> tools = new ArrayList<>();
+    private static int valorDoDado = 0;
+    private final ArrayList<Integer> nrJogadas = new ArrayList<>(2);
 
 
     public Programmer() {
@@ -67,13 +67,13 @@ public class Programmer {
         return true;
     }
 
-    public void posicao2Jogadas(){
+    public void posicao2Jogadas() {
         int posicao = nrJogadas.get(nrJogadas.size() - 1) + nrJogadas.get(nrJogadas.size() - 2);
         pos -= posicao;
     }
 
     public void recuar(int nrPositions) {
-        if((pos - nrPositions) < 1){
+        if ((pos - nrPositions) < 1) {
             pos = 1;
             return;
         }
@@ -92,11 +92,11 @@ public class Programmer {
         pos -= valorDoDado;
     }
 
-    public void ativarCicloInfinito(){
-            cicloInfinito = true;
+    public void ativarCicloInfinito() {
+        cicloInfinito = true;
     }
 
-    public void desativarCicloInfinito(){
+    public void desativarCicloInfinito() {
         cicloInfinito = false;
     }
 
@@ -124,7 +124,7 @@ public class Programmer {
         return pos;
     }
 
-    public boolean posicaoValidaSF(int posicion){
+    public boolean posicaoValidaSF(int posicion) {
         return posicion == pos;
     }
 
