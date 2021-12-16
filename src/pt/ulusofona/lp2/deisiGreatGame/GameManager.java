@@ -8,7 +8,7 @@ public class GameManager {
     private int tamanhoTab;
     private ArrayList<Programmer> programadores = new ArrayList<>();
     private Turn turno;
-    private ArrayList<BoardApps> boardApps = new ArrayList<>();
+    private final ArrayList<BoardApps> boardApps = new ArrayList<>();
 
     public GameManager() {
     }
@@ -383,6 +383,10 @@ public class GameManager {
             return false;
         }
 
+        if (!turno.getProgramadorAtual().isEstado()){
+            return false;
+        }
+
         turno.getProgramadorAtual().moverPos(nrPositions, tamanhoTab);
         return true;
     }
@@ -465,15 +469,11 @@ public class GameManager {
 
     public void mudarTurno() {
         turno.alterarTurno(turno.getProgramadorAtual());
-        removePlayer();
-        turno.removePlayerTurn();
+        turno.playersInGame();
         turno.mudarJogador(turno.getProgramadorAtual());
         turno.aumentarTurno();
     }
 
-    public void removePlayer() {
-        programadores.removeIf(p -> !p.getEstado());
-    }
 
     public String reactToAbyssOrTool() {
         String mensagem = "";

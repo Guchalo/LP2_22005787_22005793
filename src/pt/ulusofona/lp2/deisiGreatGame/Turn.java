@@ -46,7 +46,7 @@ public class Turn {
         return true;
     }
 
-    public void removePlayerTurn() {
+    public void playersInGame() {
         programadores.removeIf(p -> !p.getEstado());
     }
 
