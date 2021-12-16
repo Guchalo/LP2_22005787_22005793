@@ -68,7 +68,7 @@ public class GameManager {
     }
 
     public String getProgrammersInfo() {
-        ArrayList<Programmer> temp = new ArrayList(turno.getProgramadores());
+        ArrayList<Programmer> temp = new ArrayList<>(turno.getProgramadores());
         temp.sort(Comparator.comparingInt(Programmer::getId));
         StringBuilder resultado = new StringBuilder();
         for (Programmer p : temp) {
