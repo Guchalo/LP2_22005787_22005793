@@ -20,6 +20,8 @@ Este jogo ainda conta com um método para reiniciar o tabuleiro e um método par
 ### Diagrama UML
 
 ![](diagrama.png?raw=true "Diagrama UML")
+![](bicho.png?raw=true "Diagrama UML")
+ teste
 
 ### Este trabalho foi realizado por:
 
