@@ -17,8 +17,154 @@ public class GameManager {
         this.programadores = programadores;
     }
 
+    public List<String> getGameResults() {
+        ArrayList<String> results = new ArrayList<>();
+        results.add("O GRANDE JOGO DO DEISI");
+        results.add("");
+        results.add("NR. DE TURNOS");
+        results.add("" + this.turno.getNrTurnos());
+        results.add("");
+        results.add("VENCEDOR");
+        programadores.sort(Comparator.comparingInt(Programmer::getPos).reversed().thenComparing(Programmer::getName));
+        results.add("" + this.programadores.get(0).getName());
+        results.add("");
+        results.add("RESTANTES");
+        for (int u = 1; u < programadores.size(); u++) {
+            results.add("" + programadores.get(u).getName() + " " + programadores.get(u).getPos());
+        }
+        return results;
+    }
+
+    public JPanel getAuthorsPanel() {
+        JPanel painel = new JPanel();
+        painel.setBounds(40, 80, 300, 300);
+        JLabel texto = new JLabel("Trabalho realizado por;");
+        JLabel texto2 = new JLabel("                                                                          " +
+                "                                            ");
+        JLabel texto3 = new JLabel("Gonçalo Nunes (a22005787)");
+        JLabel texto4 = new JLabel("Rafael Simões (a22005793)");
+        JLabel texto5 = new JLabel("                                                                           " +
+                "                                            ");
+        JLabel texto6 = new JLabel("\"何人でも負けても生き続けるしかない。どん");
+        JLabel texto7 = new JLabel("なに壊滅的であっても、打撃は多分\"");
+        JLabel texto8 = new JLabel("- 竈門 炭治郎");
+        JLabel texto9 = new JLabel("\"No matter how many people, you may lose,");
+        JLabel texto10 = new JLabel("you have no choice but to go on living.");
+        JLabel texto11 = new JLabel("No matter how devastating, the blows maybe\"");
+        JLabel texto12 = new JLabel("- Tanjiro Kamado");
+        painel.add(texto);
+        painel.add(texto2);
+        painel.add(texto3);
+        painel.add(texto4);
+        painel.add(texto5);
+        painel.add(texto6);
+        painel.add(texto7);
+        painel.add(texto8);
+        painel.add(texto9);
+        painel.add(texto10);
+        painel.add(texto11);
+        painel.add(texto12);
+        return painel;
+    }
+
+    public String getProgrammersInfo() {
+        ArrayList<Programmer> temp = new ArrayList(turno.getProgramadores());
+        temp.sort(Comparator.comparingInt(Programmer::getId));
+        StringBuilder resultado = new StringBuilder();
+        for (Programmer p : temp) {
+            resultado.append(p.getName());
+            resultado.append(" : ");
+            resultado.append(p.toStringTools());
+            resultado.append(" | ");
+        }
+        return resultado.substring(0, resultado.length() - 3);
+    }
+
     public Turn getTurno() {
         return turno;
+    }
+
+    public String getImagePng(int position) {
+        if (position == tamanhoTab) {
+            return "finishLine50x50.png";
+        }
+        for (BoardApps boardApp : getBoardApps()) {
+            if (position == boardApp.getPosicao()) {
+                return boardApp.getImagem();
+            }
+        }
+
+        return null;
+    }
+
+    public String getTitle(int position) {
+        if (position < 0 || position == tamanhoTab) {
+            return null;
+        }
+        for (BoardApps boardApp : getBoardApps()) {
+            if (position == boardApp.getPosicao()) {
+                return boardApp.getTitulo();
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<BoardApps> getBoardApps() {
+        return boardApps;
+    }
+
+    public ArrayList<Programmer> getProgrammers() {
+        return programadores;
+    }
+
+    public List<Programmer> getProgrammers(boolean includeDefeated) {
+        ArrayList<Programmer> programmers = new ArrayList<>();
+        if (includeDefeated) {
+            return programadores;
+        }
+        for (Programmer p : programadores) {
+            if (p.getEstado()) {
+                programmers.add(p);
+            }
+        }
+        return programmers;
+
+    }
+
+    public List<Programmer> getProgrammers(int position) {
+        if (position < 0 || position > tamanhoTab) {
+            return null;
+        }
+        ArrayList<Programmer> programadoresPorPosicao = new ArrayList<>();
+        for (Programmer p : programadores) {
+            if (p.getPos() == position && p.getEstado()) {
+                programadoresPorPosicao.add(p);
+            }
+        }
+        return programadoresPorPosicao;
+    }
+
+    public int getCurrentPlayerID() {
+        return turno.getProgramadorAtual().getId();
+    }
+
+    public void setTamanhoTab(int tamanhoTab) {
+        this.tamanhoTab = tamanhoTab;
+    }
+
+    public boolean addProgrammer(Programmer p) {
+        if (p == null || p.getName() == null) {
+            return false;
+        }
+        programadores.add(p);
+        return true;
+    }
+
+    public void ordenarProgId() {
+        if (programadores.size() == 0) {
+            return;
+        }
+        programadores.sort(Comparator.comparingInt(Programmer::getId));
     }
 
     public boolean createInitialBoard(String[][] playerInfo, int worldSize) {
@@ -289,89 +435,6 @@ public class GameManager {
         return true;
     }
 
-    public void setTamanhoTab(int tamanhoTab) {
-        this.tamanhoTab = tamanhoTab;
-    }
-
-    public boolean addProgrammer(Programmer p) {
-        if (p == null || p.getName() == null) {
-            return false;
-        }
-        programadores.add(p);
-        return true;
-    }
-
-    public void ordenarProgId() {
-        if (programadores.size() == 0) {
-            return;
-        }
-        programadores.sort(Comparator.comparingInt(Programmer::getId));
-    }
-
-    public String getImagePng(int position) {
-        if (position == tamanhoTab) {
-            return "finishLine50x50.png";
-        }
-        for (BoardApps boardApp : getBoardApps()) {
-            if (position == boardApp.getPosicao()) {
-                return boardApp.getImagem();
-            }
-        }
-
-        return null;
-    }
-
-    public String getTitle(int position) {
-        if (position < 0 || position == tamanhoTab) {
-            return null;
-        }
-        for (BoardApps boardApp : getBoardApps()) {
-            if (position == boardApp.getPosicao()) {
-                return boardApp.getTitulo();
-            }
-        }
-        return null;
-    }
-
-    public ArrayList<BoardApps> getBoardApps() {
-        return boardApps;
-    }
-
-    public ArrayList<Programmer> getProgrammers() {
-        return programadores;
-    }
-
-    public List<Programmer> getProgrammers(boolean includeDefeated) {
-        ArrayList<Programmer> programmers = new ArrayList<>();
-        if (includeDefeated) {
-            return programadores;
-        }
-        for (Programmer p : programadores) {
-            if (p.getEstado()) {
-                programmers.add(p);
-            }
-        }
-        return programmers;
-
-    }
-
-    public List<Programmer> getProgrammers(int position) {
-        if (position < 0 || position > tamanhoTab) {
-            return null;
-        }
-        ArrayList<Programmer> programadoresPorPosicao = new ArrayList<>();
-        for (Programmer p : programadores) {
-            if (p.getPos() == position && p.getEstado()) {
-                programadoresPorPosicao.add(p);
-            }
-        }
-        return programadoresPorPosicao;
-    }
-
-    public int getCurrentPlayerID() {
-        return turno.getProgramadorAtual().getId();
-    }
-
     public boolean moveCurrentPlayer(int nrPositions) {
         if (gameIsOver()) {
             return false;
@@ -389,82 +452,6 @@ public class GameManager {
 
         turno.getProgramadorAtual().moverPos(nrPositions, tamanhoTab);
         return true;
-    }
-
-    public boolean gameIsOver() {
-        if (turno.getProgramadores().size() == 1) {
-            return true;
-        }
-        for (Programmer p : programadores) {
-            if (p.getPos() == tamanhoTab) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public List<String> getGameResults() {
-        ArrayList<String> results = new ArrayList<>();
-        results.add("O GRANDE JOGO DO DEISI");
-        results.add("");
-        results.add("NR. DE TURNOS");
-        results.add("" + this.turno.getNrTurnos());
-        results.add("");
-        results.add("VENCEDOR");
-        programadores.sort(Comparator.comparingInt(Programmer::getPos).reversed().thenComparing(Programmer::getName));
-        results.add("" + this.programadores.get(0).getName());
-        results.add("");
-        results.add("RESTANTES");
-        for (int u = 1; u < programadores.size(); u++) {
-            results.add("" + programadores.get(u).getName() + " " + programadores.get(u).getPos());
-        }
-        return results;
-    }
-
-    public JPanel getAuthorsPanel() {
-
-        JPanel painel = new JPanel();
-        painel.setBounds(40, 80, 300, 300);
-        JLabel texto = new JLabel("Trabalho realizado por;");
-        painel.add(texto);
-        JLabel texto2 = new JLabel("                                                                          " +
-                "                                            ");
-        JLabel texto3 = new JLabel("Gonçalo Nunes (a22005787)");
-        JLabel texto4 = new JLabel("Rafael Simões (a22005793)");
-        JLabel texto5 = new JLabel("                                                                           " +
-                "                                            ");
-        JLabel texto6 = new JLabel("\"何人でも負けても生き続けるしかない。どん");
-        JLabel texto7 = new JLabel("なに壊滅的であっても、打撃は多分\"");
-        JLabel texto8 = new JLabel("- 竈門 炭治郎");
-        JLabel texto9 = new JLabel("\"No matter how many people, you may lose,");
-        JLabel texto10 = new JLabel("you have no choice but to go on living.");
-        JLabel texto11 = new JLabel("No matter how devastating, the blows maybe\"");
-        JLabel texto12 = new JLabel("- Tanjiro Kamado");
-        painel.add(texto2);
-        painel.add(texto3);
-        painel.add(texto4);
-        painel.add(texto5);
-        painel.add(texto6);
-        painel.add(texto7);
-        painel.add(texto8);
-        painel.add(texto9);
-        painel.add(texto10);
-        painel.add(texto11);
-        painel.add(texto12);
-        return painel;
-    }
-
-    public String getProgrammersInfo() {
-        ArrayList<Programmer> temp = new ArrayList(turno.getProgramadores());
-        temp.sort(Comparator.comparingInt(Programmer::getId));
-        StringBuilder resultado = new StringBuilder();
-        for (Programmer p : temp) {
-            resultado.append(p.getName());
-            resultado.append(" : ");
-            resultado.append(p.toStringTools());
-            resultado.append(" | ");
-        }
-        return resultado.substring(0, resultado.length() - 3);
     }
 
     public void mudarTurno() {
@@ -491,5 +478,17 @@ public class GameManager {
         }
         mudarTurno();
         return null;
+    }
+
+    public boolean gameIsOver() {
+        if (turno.getProgramadores().size() == 1) {
+            return true;
+        }
+        for (Programmer p : programadores) {
+            if (p.getPos() == tamanhoTab) {
+                return true;
+            }
+        }
+        return false;
     }
 }

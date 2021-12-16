@@ -11,9 +11,9 @@ public class HelpfullFunctions {
     }
 
     public static boolean verificarColor(String[][] inf) {
-        for (int r = 0; r < inf.length; r++) {
-            if (!inf[r][3].equalsIgnoreCase("Purple") && !inf[r][3].equalsIgnoreCase("Blue") &&
-                    !inf[r][3].equalsIgnoreCase("Green") && !inf[r][3].equalsIgnoreCase("Brown")) {
+        for (String[] strings : inf) {
+            if (!strings[3].equalsIgnoreCase("Purple") && !strings[3].equalsIgnoreCase("Blue") &&
+                    !strings[3].equalsIgnoreCase("Green") && !strings[3].equalsIgnoreCase("Brown")) {
                 return false;
             }
         }
@@ -24,10 +24,7 @@ public class HelpfullFunctions {
         if (p1 == p2) {
             return false;
         }
-        if (p1.getId() == p2.getId() || p1.getColor() == p2.getColor()) {
-            return false;
-        }
-        return true;
+        return p1.getId() != p2.getId() && p1.getColor() != p2.getColor();
     }
 
     public static ArrayList<String> linguagensDeProg(String lp) {

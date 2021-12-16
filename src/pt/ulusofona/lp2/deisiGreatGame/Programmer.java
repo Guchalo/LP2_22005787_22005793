@@ -21,6 +21,30 @@ public class Programmer {
     public Programmer() {
     }
 
+    public Programmer(int id, String name, ProgrammerColor color, ArrayList<String> linguagensProg) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
+        this.image = color.getCor();
+        this.linguagensProg = linguagensProg;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ProgrammerColor getColor() {
+        return color;
+    }
+
+    public int getPos() {
+        return pos;
+    }
+
     public boolean getEstado() {
         return estado;
     }
@@ -29,12 +53,22 @@ public class Programmer {
         return image;
     }
 
-    public boolean isCicloInfinito() {
-        return cicloInfinito;
+    public String getLinguagensProg() {
+        Collections.sort(linguagensProg);
+        StringBuilder linguagens = new StringBuilder();
+        for (String linguagem : linguagensProg) {
+            linguagens.append(linguagem);
+            linguagens.append("; ");
+        }
+        return linguagens.substring(0, linguagens.length() - 2);
     }
 
     public List<Tool> getTools() {
         return tools;
+    }
+
+    public boolean isCicloInfinito() {
+        return cicloInfinito;
     }
 
     public static int getValorDoDado() {
@@ -44,7 +78,6 @@ public class Programmer {
     public ArrayList<Integer> getNrJogadas() {
         return nrJogadas;
     }
-
 
     public boolean moverPos(int nrPositions, int size) {
         valorDoDado = nrPositions;
@@ -93,48 +126,12 @@ public class Programmer {
         cicloInfinito = false;
     }
 
-    public Programmer(int id, String name, ProgrammerColor color, ArrayList<String> linguagensProg) {
-        this.id = id;
-        this.name = name;
-        this.color = color;
-        this.image = color.getCor();
-        this.linguagensProg = linguagensProg;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ProgrammerColor getColor() {
-        return color;
-    }
-
-    public int getPos() {
-        return pos;
-    }
-
     public boolean posicaoValidaSF(int posicion) {
         return posicion == pos;
     }
 
-    public String stringEstado() {
-        if (estado) {
-            return "Em Jogo";
-        } else {
-            return "Derrotado";
-        }
-    }
-
     public void derrotado() {
-        if (!estado) {
-            return;
-        } else {
-            estado = false;
-        }
+        estado = false;
     }
 
     public void adicionarTool(Tool t) {
@@ -154,27 +151,6 @@ public class Programmer {
             return;
         }
         tools.removeIf(tool -> tool.getTitulo().equals(t));
-    }
-
-    public String getLinguagensProg() {
-        Collections.sort(linguagensProg);
-        StringBuilder linguagens = new StringBuilder();
-        for (String linguagem : linguagensProg) {
-            linguagens.append(linguagem);
-            linguagens.append("; ");
-        }
-        return linguagens.substring(0, linguagens.length() - 2);
-    }
-
-    public String toStringTools() {
-        if (tools == null || tools.size() == 0) {
-            return "No tools";
-        }
-        StringBuilder resultado = new StringBuilder();
-        for (Tool ferramenta : tools) {
-            resultado.append(ferramenta.getTitulo()).append(";");
-        }
-        return resultado.substring(0, resultado.length() - 1);
     }
 
     public boolean temEA() {
@@ -231,8 +207,28 @@ public class Programmer {
         return false;
     }
 
+    public String stringEstado() {
+        if (estado) {
+            return "Em Jogo";
+        } else {
+            return "Derrotado";
+        }
+    }
+
+    public String toStringTools() {
+        if (tools.size() == 0) {
+            return "No tools";
+        }
+        StringBuilder resultado = new StringBuilder();
+        for (Tool ferramenta : tools) {
+            resultado.append(ferramenta.getTitulo()).append(";");
+        }
+        return resultado.substring(0, resultado.length() - 1);
+    }
+
     @Override
     public String toString() {
-        return "" + id + " | " + name + " | " + pos + " | " + toStringTools() + " | " + getLinguagensProg() + " | " + stringEstado();
+        return "" + id + " | " + name + " | " + pos + " | " + toStringTools() + " | " + getLinguagensProg()
+                + " | " + stringEstado();
     }
 }
