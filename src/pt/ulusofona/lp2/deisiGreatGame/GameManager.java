@@ -1,6 +1,5 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
-
 import javax.swing.*;
 import java.util.*;
 
@@ -362,7 +361,7 @@ public class GameManager {
         }
         ArrayList<Programmer> programadoresPorPosicao = new ArrayList<>();
         for (Programmer p : programadores) {
-            if (p.getPos() == position) {
+            if (p.getPos() == position && p.getEstado()) {
                 programadoresPorPosicao.add(p);
             }
         }
@@ -384,7 +383,7 @@ public class GameManager {
             return false;
         }
 
-        if (!turno.getProgramadorAtual().isEstado()) {
+        if (!turno.getProgramadorAtual().getEstado()) {
             return false;
         }
 

@@ -29,10 +29,6 @@ public class Programmer {
         return image;
     }
 
-    public boolean isEstado() {
-        return estado;
-    }
-
     public boolean isCicloInfinito() {
         return cicloInfinito;
     }

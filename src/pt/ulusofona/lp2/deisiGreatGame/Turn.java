@@ -50,5 +50,4 @@ public class Turn {
     public void playersInGame() {
         programadores.removeIf(p -> !p.getEstado());
     }
-
 }
