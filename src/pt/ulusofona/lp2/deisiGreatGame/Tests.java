@@ -633,6 +633,46 @@ public class Tests {
         ProgrammerColor cor = ProgrammerColor.valueOf("PURPLE");
         assertEquals("Purple",cor.toString());
     }
+
+    @Test
+    public void testTeacherHelp() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[3][3];
+        tools[0][0] = "0";
+        tools[0][1] = "3";
+        tools[0][2] = "10"; //
+        tools[1][0] = "0";
+        tools[1][1] = "3";
+        tools[1][2] = "5"; //
+        tools[2][0] = "1";
+        tools[2][1] = "5";
+        tools[2][2] = "6"; //
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        manager.createInitialBoard(playerInfo, 15, tools);
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        assertEquals(10,manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals("No tools",manager.getTurno().getProgramadorAtual().toStringTools());
+    }
+
 }
 
 
