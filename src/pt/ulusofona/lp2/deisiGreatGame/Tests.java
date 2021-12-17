@@ -2,6 +2,7 @@ package pt.ulusofona.lp2.deisiGreatGame;
 
 import org.junit.Test;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -885,6 +886,43 @@ public class Tests {
         assertEquals("No tools", manager.getProgrammers().get(2).toStringTools());
 
     }
+
+    @Test
+    public void testAuthorsPanel(){
+        GameManager manager = new GameManager();
+        JPanel painel = new JPanel();
+        painel.setBounds(40, 80, 300, 300);
+        JLabel texto = new JLabel("Trabalho realizado por;");
+        JLabel texto2 = new JLabel("                                                                          " +
+                "                                            ");
+        JLabel texto3 = new JLabel("Gonçalo Nunes (a22005787)");
+        JLabel texto4 = new JLabel("Rafael Simões (a22005793)");
+        JLabel texto5 = new JLabel("                                                                           " +
+                "                                            ");
+        JLabel texto6 = new JLabel("\"何人でも負けても生き続けるしかない。どん");
+        JLabel texto7 = new JLabel("なに壊滅的であっても、打撃は多分\"");
+        JLabel texto8 = new JLabel("- 竈門 炭治郎");
+        JLabel texto9 = new JLabel("\"No matter how many people, you may lose,");
+        JLabel texto10 = new JLabel("you have no choice but to go on living.");
+        JLabel texto11 = new JLabel("No matter how devastating, the blows maybe\"");
+        JLabel texto12 = new JLabel("- Tanjiro Kamado");
+        painel.add(texto);
+        painel.add(texto2);
+        painel.add(texto3);
+        painel.add(texto4);
+        painel.add(texto5);
+        painel.add(texto6);
+        painel.add(texto7);
+        painel.add(texto8);
+        painel.add(texto9);
+        painel.add(texto10);
+        painel.add(texto11);
+        painel.add(texto12);
+
+        assertEquals(painel.getComponentCount(),manager.getAuthorsPanel().getComponentCount());
+
+    }
+
 
 }
 
