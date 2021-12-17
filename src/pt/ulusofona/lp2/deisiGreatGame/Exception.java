@@ -12,7 +12,7 @@ public class Exception extends Abyss {
     @Override
     public String react(Programmer p) {
         if (p.temTH()) {
-            p.removerTool("Exception");
+            p.removerTool("Ajuda Do Professor");
             return "Tanjiro ao ver que estavas com o Rengoku, assumiu que eras de confiança e deixou te continuar. " +
                     "Mas o Rengoku ficou á conversa com o Tanjiro e tiveste de continuar sem ele.";
         }

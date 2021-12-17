@@ -269,13 +269,13 @@ public class Tests {
         manager.createInitialBoard(playerInfo, 15, tools);
         manager.moveCurrentPlayer(2);
         assertEquals("Só precisas de partir a pedra para te tornares num caçador mas a pedra nem racha, será que vais ter " +
-                "ajuda?",manager.reactToAbyssOrTool());
+                "ajuda?", manager.reactToAbyssOrTool());
         manager.moveCurrentPlayer(1);
         manager.reactToAbyssOrTool();
         assertFalse(manager.moveCurrentPlayer(2));
         manager.moveCurrentPlayer(1);
         assertEquals("Ajudas-te o caçador que estava preso a partir a pedra, porem tu ficaste para a partir sozinho, " +
-                "ou até alguem te vir ajudar",manager.reactToAbyssOrTool());
+                "ou até alguem te vir ajudar", manager.reactToAbyssOrTool());
     }
 
     @Test
@@ -297,14 +297,14 @@ public class Tests {
         manager.createInitialBoard(playerInfo, 15, tools);
         manager.moveCurrentPlayer(2);
         assertEquals("Os teus companheiros deixaram-te pendurado, continua sem eles"
-                ,manager.reactToAbyssOrTool());
+                , manager.reactToAbyssOrTool());
         manager.moveCurrentPlayer(2);
         assertEquals("Depois de esperares pelos teus companheiros vocês reparam que não estão na estação do " +
-                "Mugen Train e recuam 3 casas",manager.reactToAbyssOrTool());
+                "Mugen Train e recuam 3 casas", manager.reactToAbyssOrTool());
     }
 
     @Test
-    public void testSegmentacion2(){
+    public void testSegmentacion2() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[3][4];
         String[][] tools = new String[1][3];
@@ -336,14 +336,14 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(1);
         manager.reactToAbyssOrTool();
-        assertEquals(5,manager.getProgrammers(true).get(0).getPos());
-        assertEquals(1,manager.getProgrammers(true).get(1).getPos());
-        assertEquals(1,manager.getProgrammers(true).get(2).getPos());
+        assertEquals(5, manager.getProgrammers(true).get(0).getPos());
+        assertEquals(1, manager.getProgrammers(true).get(1).getPos());
+        assertEquals(1, manager.getProgrammers(true).get(2).getPos());
 
     }
 
     @Test
-    public void testCrash(){
+    public void testCrash() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         String[][] tools = new String[1][3];
@@ -363,11 +363,11 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
-        assertEquals(1,manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals(1, manager.getTurno().getProgramadorAtual().getPos());
     }
 
     @Test
-    public void testDuplicatedCode(){
+    public void testDuplicatedCode() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         String[][] tools = new String[1][3];
@@ -387,11 +387,11 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
-        assertEquals(1,manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals(1, manager.getTurno().getProgramadorAtual().getPos());
     }
 
     @Test
-    public void testException(){
+    public void testException() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         String[][] tools = new String[1][3];
@@ -411,11 +411,11 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
-        assertEquals(2,manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals(2, manager.getTurno().getProgramadorAtual().getPos());
     }
 
     @Test
-    public void testFileNotFoundException(){
+    public void testFileNotFoundException() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         String[][] tools = new String[1][3];
@@ -435,11 +435,11 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
-        assertEquals(2,manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals(2, manager.getTurno().getProgramadorAtual().getPos());
     }
 
     @Test
-    public void testLogicError(){
+    public void testLogicError() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         String[][] tools = new String[1][3];
@@ -459,11 +459,11 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
-        assertEquals(3,manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals(3, manager.getTurno().getProgramadorAtual().getPos());
     }
 
     @Test
-    public void testSideEffects(){
+    public void testSideEffects() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         String[][] tools = new String[1][3];
@@ -487,11 +487,11 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
-        assertEquals(1,manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals(1, manager.getTurno().getProgramadorAtual().getPos());
     }
 
     @Test
-    public void testSyntaxError(){
+    public void testSyntaxError() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         String[][] tools = new String[1][3];
@@ -511,17 +511,17 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
-        assertEquals(4,manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals(4, manager.getTurno().getProgramadorAtual().getPos());
     }
 
     @Test
-    public void testBoardApps(){
+    public void testBoardApps() {
         BoardApps apps = new TeacherHelp(3);
-        assertEquals(3,apps.getPosicao());
-        assertEquals("T",apps.getIdentificadorAT());
-        assertEquals(5,apps.getId());
-        assertEquals("rengoku.png",apps.getImagem());
-        assertEquals("Ajuda Do Professor",apps.getTitulo());
+        assertEquals(3, apps.getPosicao());
+        assertEquals("T", apps.getIdentificadorAT());
+        assertEquals(5, apps.getId());
+        assertEquals("rengoku.png", apps.getImagem());
+        assertEquals("Ajuda Do Professor", apps.getTitulo());
     }
 
     @Test
@@ -552,8 +552,8 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
-        assertEquals(4,manager.getTurno().getProgramadorAtual().getPos());
-        assertEquals("No tools",manager.getTurno().getProgramadorAtual().toStringTools());
+        assertEquals(4, manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals("No tools", manager.getTurno().getProgramadorAtual().toStringTools());
     }
 
     @Test
@@ -592,8 +592,8 @@ public class Tests {
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
 
-        assertEquals(10,manager.getTurno().getProgramadorAtual().getPos());
-        assertEquals("No tools",manager.getTurno().getProgramadorAtual().toStringTools());
+        assertEquals(10, manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals("No tools", manager.getTurno().getProgramadorAtual().toStringTools());
     }
 
     @Test
@@ -624,14 +624,14 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
-        assertEquals(10,manager.getTurno().getProgramadorAtual().getPos());
-        assertEquals("No tools",manager.getTurno().getProgramadorAtual().toStringTools());
+        assertEquals(10, manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals("No tools", manager.getTurno().getProgramadorAtual().toStringTools());
     }
 
     @Test
-    public void testProgrammerColor(){
+    public void testProgrammerColor() {
         ProgrammerColor cor = ProgrammerColor.valueOf("PURPLE");
-        assertEquals("Purple",cor.toString());
+        assertEquals("Purple", cor.toString());
     }
 
     @Test
@@ -669,8 +669,131 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
-        assertEquals(10,manager.getTurno().getProgramadorAtual().getPos());
-        assertEquals("No tools",manager.getTurno().getProgramadorAtual().toStringTools());
+        assertEquals(10, manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals("No tools", manager.getTurno().getProgramadorAtual().toStringTools());
+    }
+
+    @Test
+    public void testExceptionHandlingTeacherHelp() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[3][3];
+        tools[0][0] = "0";
+        tools[0][1] = "3";
+        tools[0][2] = "5";
+        tools[1][0] = "1";
+        tools[1][1] = "3";
+        tools[1][2] = "4";
+        tools[2][0] = "0";
+        tools[2][1] = "3";
+        tools[2][2] = "10";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        manager.createInitialBoard(playerInfo, 15, tools);
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(6);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        assertEquals(10, manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals("No tools", manager.getTurno().getProgramadorAtual().toStringTools());
+
+    }
+
+    @Test
+    public void sideEffectsFunctionalprogramming() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[3][3];
+        tools[0][0] = "0";
+        tools[0][1] = "6";
+        tools[0][2] = "5";
+        tools[1][0] = "1";
+        tools[1][1] = "1";
+        tools[1][2] = "4";
+        tools[2][0] = "0";
+        tools[2][1] = "6";
+        tools[2][2] = "10";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        manager.createInitialBoard(playerInfo, 15, tools);
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(3);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(6);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        assertEquals(10, manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals("No tools", manager.getTurno().getProgramadorAtual().toStringTools());
+    }
+
+    @Test
+    public void testTeacherHelp_Exception() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[3][3];
+        tools[0][0] = "0";
+        tools[0][1] = "2";
+        tools[0][2] = "5";
+        tools[1][0] = "1";
+        tools[1][1] = "5";
+        tools[1][2] = "4";
+        tools[2][0] = "0";
+        tools[2][1] = "2";
+        tools[2][2] = "10";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        manager.createInitialBoard(playerInfo, 15, tools);
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(3);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(1);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(6);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        assertEquals(10, manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals("No tools", manager.getTurno().getProgramadorAtual().toStringTools());
+
     }
 
 }
