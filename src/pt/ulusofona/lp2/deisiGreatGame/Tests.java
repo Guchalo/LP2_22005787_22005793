@@ -757,6 +757,46 @@ public class Tests {
     }
 
     @Test
+    public void testExceptionHandling_Exception() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[3][3];
+        tools[0][0] = "0";
+        tools[0][1] = "2";
+        tools[0][2] = "5";
+        tools[1][0] = "1";
+        tools[1][1] = "3";
+        tools[1][2] = "4";
+        tools[2][0] = "0";
+        tools[2][1] = "2";
+        tools[2][2] = "10";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        manager.createInitialBoard(playerInfo, 15, tools);
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(3);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(1);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(6);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        assertEquals(10, manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals("No tools", manager.getTurno().getProgramadorAtual().toStringTools());
+
+    }
+
+    @Test
     public void testTeacherHelp_Exception() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
@@ -793,6 +833,56 @@ public class Tests {
         manager.reactToAbyssOrTool();
         assertEquals(10, manager.getTurno().getProgramadorAtual().getPos());
         assertEquals("No tools", manager.getTurno().getProgramadorAtual().toStringTools());
+
+    }
+
+    @Test
+    public void FunctionalProgramming_InfinteCicle() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[3][4];
+        String[][] tools = new String[3][3];
+        tools[0][0] = "0";
+        tools[0][1] = "8";
+        tools[0][2] = "5";
+        tools[1][0] = "1";
+        tools[1][1] = "1";
+        tools[1][2] = "6";
+        tools[2][0] = "1";
+        tools[2][1] = "1";
+        tools[2][2] = "10";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        playerInfo[2][0] = "2";
+        playerInfo[2][1] = "Antonio";
+        playerInfo[2][2] = "Java";
+        playerInfo[2][3] = "BLUE";
+        manager.createInitialBoard(playerInfo, 15, tools);
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(6);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(5);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(3);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(6);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        assertEquals(10, manager.getTurno().getProgramadorAtual().getPos());
+        assertEquals("No tools", manager.getProgrammers().get(2).toStringTools());
 
     }
 
