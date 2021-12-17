@@ -42,7 +42,7 @@ https://youtu.be/od9J57DP7Tk
 
 ![](diagrama.png?raw=true "Diagrama UML")
 
-### Este trabalho foi realizado por:
+### Trabalho foi realizado por:
 
 Gonçalo Nunes 22005787
 
