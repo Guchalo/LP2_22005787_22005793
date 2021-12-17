@@ -31,7 +31,7 @@ Decidimos modelar as classes do programa desta forma, para ser mais fácil agrup
 Decidimos fazer o projeto baseado na animação japonesa Kimetsu No Yaiba(Demon Slayer).
 
 ### Link do vídeo:
-jfopidsjoisnjovjscopi
+https://youtu.be/od9J57DP7Tk
 
 ### Diagrama UML
 
