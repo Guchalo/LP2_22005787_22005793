@@ -33,6 +33,11 @@ Decidimos fazer o projeto baseado na animação japonesa Kimetsu No Yaiba(Demon 
 ### Link do vídeo:
 https://youtu.be/od9J57DP7Tk
 
+
+### Relação entre Abismos e Ferramentas:
+
+![](tabela.png?raw=true "Tabela")
+
 ### Diagrama UML
 
 ![](diagrama.png?raw=true "Diagrama UML")
