@@ -23,6 +23,8 @@ public class Tests {
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
         manager.createInitialBoard(playerInfo, 15);
+        assertEquals(3,manager.getCurrentPlayerID());
+        assertEquals(0,manager.getBoardApps().size());
         assertTrue(manager.moveCurrentPlayer(5));
     }
 
@@ -71,6 +73,7 @@ public class Tests {
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
         manager.createInitialBoard(playerInfo, 5);
+        assertEquals(1,manager.getTurno().getNrTurnos());
         assertFalse(manager.moveCurrentPlayer(-5));
 
     }
