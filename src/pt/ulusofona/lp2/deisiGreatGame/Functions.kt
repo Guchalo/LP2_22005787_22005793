@@ -40,7 +40,6 @@ fun players (manager : GameManager, nome : String) : String?{
     if(playerFound == "[]"){
         return "Inexistent player"
     }
-
         return playerFound.replace("[" , "").replace("]","")
 }
 
@@ -66,7 +65,7 @@ fun polyglots(manager : GameManager) : String{
 
 fun mostUsedPositions(){
 
-//
+
 
 }
 

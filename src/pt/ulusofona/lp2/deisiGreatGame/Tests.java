@@ -30,7 +30,18 @@ public class Tests {
         }
         assertEquals(3,manager.getCurrentPlayerID());
         assertEquals(0,manager.getBoardApps().size());
-        assertTrue(manager.moveCurrentPlayer(5));
+        assertTrue(manager.moveCurrentPlayer(2));
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        System.out.println(manager.allPositions().toString());
+
     }
 
     @Test
@@ -166,6 +177,7 @@ public class Tests {
     public void testAddProgrammer1() {
         GameManager manager = new GameManager();
         ArrayList<String> lp = new ArrayList<>();
+        ArrayList<Position> positions= new ArrayList<>();
         lp.add("Java");
         Programmer pTest = new Programmer(10, "Testador", ProgrammerColor.BROWN, lp);
         assertTrue(manager.addProgrammer(pTest));
@@ -214,6 +226,7 @@ public class Tests {
     @Test
     public void testVerificarProgrammer() {
         ArrayList<String> lp = new ArrayList<>();
+        ArrayList<Position> positions= new ArrayList<>();
         lp.add("Java");
         Programmer p1 = new Programmer(12, "Joaquim", ProgrammerColor.GREEN, lp);
         Programmer p2 = new Programmer(1, "António", ProgrammerColor.PURPLE, lp);
@@ -235,6 +248,7 @@ public class Tests {
 
         ArrayList<String> lp = new ArrayList<>();
         lp.add("Java");
+        ArrayList<Position> positions= new ArrayList<>();
         Programmer p1 = new Programmer(12, "Joaquim", ProgrammerColor.GREEN, lp);
         Programmer p2 = new Programmer(1, "António", ProgrammerColor.PURPLE, lp);
         Programmer p3 = new Programmer(10, "Fernando", ProgrammerColor.BROWN, lp);

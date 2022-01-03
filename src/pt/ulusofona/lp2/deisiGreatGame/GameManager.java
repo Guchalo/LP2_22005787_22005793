@@ -10,12 +10,17 @@ public class GameManager {
     private ArrayList<Programmer> programadores = new ArrayList<>();
     private Turn turno;
     private final ArrayList<BoardApps> boardApps = new ArrayList<>();
+    private ArrayList<Position> positions = new ArrayList<>();
 
     public GameManager() {
     }
 
     public GameManager(ArrayList<Programmer> programadores) {
         this.programadores = programadores;
+    }
+
+    public ArrayList<Position> getPositions() {
+        return positions;
     }
 
     public List<String> getGameResults() {
@@ -429,6 +434,25 @@ public class GameManager {
             }
         }
         return false;
+    }
+
+    public ArrayList<Position> allPositions(){
+        ArrayList<Position> posicoes = new ArrayList<>(programadores.get(0).getPositions());
+        for (int i = 1; i < programadores.size(); i++){
+            for (Position position : posicoes){
+                for (Position posicao : programadores.get(i).getPositions()){
+                    if (position.getNumPosition() == posicao.getNumPosition()){
+                        posicao.increaseFootSteps();
+                        break;
+                    }
+                    if (position.getNumPosition() > posicao.getNumPosition()){
+                        continue;
+                    }
+                    posicoes.add(position);
+                }
+            }
+        }
+        return posicoes;
     }
 
     public boolean saveGame(File file){
