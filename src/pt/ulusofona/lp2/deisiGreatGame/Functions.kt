@@ -41,17 +41,16 @@ fun players (manager : GameManager, nome : String) : String?{
         return "Inexistent player"
     }
 
-        return playerFound
+        return playerFound.replace("[" , "").replace("]","")
 }
 
 fun playerByLanguage (manager : GameManager, linguagem : String) : String?{
 
     val player = manager.getProgrammers(true)
-    val playerFound : String = player.filter{ HelpfullFunctions.existeLinguagem( it.linguagensProg, linguagem)}
-        .map { it.name }
-        .joinToString(",")
+    val playerFound : String = player.filter { HelpfullFunctions.existeLinguagem(it.linguagensProg, linguagem) }
+        .map { it.name }.toString()
 
-    return playerFound
+    return playerFound.replace("[","").replace("]","").replace(", ",",")
 }
 
 fun polyglots(manager : GameManager) : String{
