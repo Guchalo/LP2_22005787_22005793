@@ -1,6 +1,7 @@
 package pt.ulusofona.lp2.deisiGreatGame;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.*;
 
 public class GameManager {
@@ -167,16 +168,16 @@ public class GameManager {
         programadores.sort(Comparator.comparingInt(Programmer::getId));
     }
 
-    public boolean createInitialBoard(String[][] playerInfo, int worldSize) {
+    public void createInitialBoard(String[][] playerInfo, int worldSize) throws InvalidInitialBoardException {
         programadores.clear();
         boardApps.clear();
         setTamanhoTab(worldSize);
         int nJogadores = playerInfo.length;
         if (nJogadores < 2 || nJogadores > 4) {
-            return false;
+            throw new InvalidInitialBoardException("Número de jogadores inválido");
         }
         if (worldSize < (nJogadores * 2)) {
-            return false;
+            throw new InvalidInitialBoardException("Tamanho do tabuleiro inválido");
         }
         Programmer p1;
         Programmer p2;
@@ -188,89 +189,73 @@ public class GameManager {
         int id3;
         int id4;
         switch (nJogadores) {
-            case 2:
+            case 2 -> {
                 if (!HelpfullFunctions.verificarString(playerInfo[0][0]) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][0])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Id do jogador inválido");
                 }
                 id1 = Integer.parseInt(playerInfo[0][0]);
                 id2 = Integer.parseInt(playerInfo[1][0]);
                 if (id1 < 0 || id2 < 0) {
-                    return false;
+                    throw new InvalidInitialBoardException("Id do jogador inválido");
                 }
-
                 if (!HelpfullFunctions.verificarString(playerInfo[0][1]) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][1])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Nome do jogador inválido");
                 }
-
                 if (!HelpfullFunctions.verificarString(playerInfo[0][2]) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][2])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Cor do jogador inválida");
                 }
-
                 if (!HelpfullFunctions.verificarColor(playerInfo) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][3])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Linguagem de programação do jogador inválida");
                 }
-
                 p1 = new Programmer(id1, playerInfo[0][1], ProgrammerColor.valueOf(playerInfo[0][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[0][2]));
                 p2 = new Programmer(id2, playerInfo[1][1], ProgrammerColor.valueOf(playerInfo[1][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[1][2]));
-
                 if (HelpfullFunctions.compararProgrammer(p1, p2)) {
                     addProgrammer(p1);
                     addProgrammer(p2);
                     ordenarProgId();
 
                     turno = new Turn(programadores, programadores.get(0));
-                    return true;
                 }
-
-                break;
-
-
-            case 3:
+            }
+            case 3 -> {
                 if (!HelpfullFunctions.verificarString(playerInfo[0][0]) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][0]) ||
                         !HelpfullFunctions.verificarString(playerInfo[2][0])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Id do jogador inválido");
                 }
-
                 id1 = Integer.parseInt(playerInfo[0][0]);
                 id2 = Integer.parseInt(playerInfo[1][0]);
                 id3 = Integer.parseInt(playerInfo[2][0]);
-
                 if (id1 < 0 || id2 < 0 || id3 < 0) {
-                    return false;
+                    throw new InvalidInitialBoardException("Id do jogador inválido");
                 }
-
                 if (!HelpfullFunctions.verificarString(playerInfo[0][1]) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][1]) ||
                         !HelpfullFunctions.verificarString(playerInfo[2][1])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Nome do jogador inválido");
                 }
-
                 if (!HelpfullFunctions.verificarString(playerInfo[0][2]) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][2]) ||
                         !HelpfullFunctions.verificarString(playerInfo[2][2])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Cor do jogador inválida");
                 }
-
                 if (!HelpfullFunctions.verificarColor(playerInfo) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][3]) ||
                         !HelpfullFunctions.verificarString(playerInfo[2][3])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Linguagem de programação do jogador inválida");
                 }
-
                 p1 = new Programmer(id1, playerInfo[0][1], ProgrammerColor.valueOf(playerInfo[0][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[0][2]));
                 p2 = new Programmer(id2, playerInfo[1][1], ProgrammerColor.valueOf(playerInfo[1][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[1][2]));
                 p3 = new Programmer(id3, playerInfo[2][1], ProgrammerColor.valueOf(playerInfo[2][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[2][2]));
-
                 if (HelpfullFunctions.compararProgrammer(p1, p2) || HelpfullFunctions.compararProgrammer(p1, p3) ||
                         HelpfullFunctions.compararProgrammer(p2, p3)) {
                     addProgrammer(p1);
@@ -279,45 +264,38 @@ public class GameManager {
                     ordenarProgId();
 
                     turno = new Turn(programadores, programadores.get(0));
-                    return true;
                 }
-
-                break;
-
-            case 4:
-
+            }
+            case 4 -> {
                 if (!HelpfullFunctions.verificarString(playerInfo[0][0]) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][0]) ||
                         !HelpfullFunctions.verificarString(playerInfo[2][0]) ||
                         !HelpfullFunctions.verificarString(playerInfo[3][0])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Id do jogador inválido");
                 }
                 id1 = Integer.parseInt(playerInfo[0][0]);
                 id2 = Integer.parseInt(playerInfo[1][0]);
                 id3 = Integer.parseInt(playerInfo[2][0]);
                 id4 = Integer.parseInt(playerInfo[3][0]);
                 if (id1 < 0 || id2 < 0 || id3 < 0 || id4 < 0) {
-                    return false;
+                    throw new InvalidInitialBoardException("Id do jogador inválido");
                 }
                 if (!HelpfullFunctions.verificarString(playerInfo[0][1]) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][1]) ||
                         !HelpfullFunctions.verificarString(playerInfo[2][1]) ||
                         !HelpfullFunctions.verificarString(playerInfo[3][1])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Nome do jogador inválido");
                 }
-
                 if (!HelpfullFunctions.verificarString(playerInfo[0][2]) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][2]) ||
                         !HelpfullFunctions.verificarString(playerInfo[2][2])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Cor do jogador inválida");
                 }
-
                 if (!HelpfullFunctions.verificarColor(playerInfo) ||
                         !HelpfullFunctions.verificarString(playerInfo[1][3]) ||
                         !HelpfullFunctions.verificarString(playerInfo[2][3])) {
-                    return false;
+                    throw new InvalidInitialBoardException("Linguagem de programação do jogador inválida");
                 }
-
                 p1 = new Programmer(id1, playerInfo[0][1], ProgrammerColor.valueOf(playerInfo[0][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[0][2]));
                 p2 = new Programmer(id2, playerInfo[1][1], ProgrammerColor.valueOf(playerInfo[1][3].toUpperCase()),
@@ -326,7 +304,6 @@ public class GameManager {
                         HelpfullFunctions.linguagensDeProg(playerInfo[2][2]));
                 p4 = new Programmer(id4, playerInfo[3][1], ProgrammerColor.valueOf(playerInfo[3][3].toUpperCase()),
                         HelpfullFunctions.linguagensDeProg(playerInfo[3][2]));
-
                 if (HelpfullFunctions.compararProgrammer(p1, p2) || HelpfullFunctions.compararProgrammer(p1, p3) ||
                         HelpfullFunctions.compararProgrammer(p1, p4) || HelpfullFunctions.compararProgrammer(p2, p3) ||
                         HelpfullFunctions.compararProgrammer(p2, p4) || HelpfullFunctions.compararProgrammer(p3, p4)) {
@@ -337,25 +314,20 @@ public class GameManager {
                     ordenarProgId();
 
                     turno = new Turn(programadores, programadores.get(0));
-                    return true;
                 }
-
-                break;
-
-            default:
-                return false;
+            }
+            default -> throw new InvalidInitialBoardException("Número de jogadores inválido");
         }
-        return false;
-
     }
 
-    public boolean createInitialBoard(String[][] playerInfo, int worldSize, String[][] abyssesAndTools) {
+    public void createInitialBoard(String[][] playerInfo, int worldSize, String[][] abyssesAndTools)
+    throws InvalidInitialBoardException {
         createInitialBoard(playerInfo, worldSize);
         for (String[] abyssesAndTool : abyssesAndTools) {
             if (!HelpfullFunctions.verificarString(abyssesAndTool[0]) ||
                     !HelpfullFunctions.verificarString(abyssesAndTool[1]) ||
                     !HelpfullFunctions.verificarString(abyssesAndTool[2])) {
-                return false;
+                throw new InvalidInitialBoardException("Dados do Abismo/Ferramenta inválidos");
             }
 
             int app = Integer.parseInt(abyssesAndTool[0]);
@@ -363,76 +335,35 @@ public class GameManager {
             int appPosicion = Integer.parseInt(abyssesAndTool[2]);
 
             if (appPosicion < 0 || appPosicion > worldSize) {
-                return false;
+                throw new InvalidInitialBoardException("Posição do Abismo/Ferramenta inválida");
             }
-            BoardApps boardApp;
-            switch (app) {
-                case 0:
-                    switch (appType) {
-                        case 0:
-                            boardApp = new SyntaxError(appPosicion);
-                            break;
-                        case 1:
-                            boardApp = new LogicError(appPosicion);
-                            break;
-                        case 2:
-                            boardApp = new Exception(appPosicion);
-                            break;
-                        case 3:
-                            boardApp = new FileNotFoundException(appPosicion);
-                            break;
-                        case 4:
-                            boardApp = new Crash(appPosicion);
-                            break;
-                        case 5:
-                            boardApp = new DuplicatedCode(appPosicion);
-                            break;
-                        case 6:
-                            boardApp = new SideEffects(appPosicion);
-                            break;
-                        case 7:
-                            boardApp = new BlueScreenOfDeath(appPosicion);
-                            break;
-                        case 8:
-                            boardApp = new InfiniteCicle(appPosicion);
-                            break;
-                        case 9:
-                            boardApp = new SegmentationFault(appPosicion, programadores);
-                            break;
-                        default:
-                            return false;
-                    }
-                    break;
-                case 1:
-                    switch (appType) {
-                        case 0:
-                            boardApp = new Heritage(appPosicion);
-                            break;
-                        case 1:
-                            boardApp = new FunctionalProgramming(appPosicion);
-                            break;
-                        case 2:
-                            boardApp = new UnityTests(appPosicion);
-                            break;
-                        case 3:
-                            boardApp = new ExceptionHandling(appPosicion);
-                            break;
-                        case 4:
-                            boardApp = new IDE(appPosicion);
-                            break;
-                        case 5:
-                            boardApp = new TeacherHelp(appPosicion);
-                            break;
-                        default:
-                            return false;
-                    }
-                    break;
-                default:
-                    return false;
-            }
+            BoardApps boardApp = switch (app) {
+                case 0 -> switch (appType) {
+                    case 0 -> new SyntaxError(appPosicion);
+                    case 1 -> new LogicError(appPosicion);
+                    case 2 -> new Exception(appPosicion);
+                    case 3 -> new FileNotFoundException(appPosicion);
+                    case 4 -> new Crash(appPosicion);
+                    case 5 -> new DuplicatedCode(appPosicion);
+                    case 6 -> new SideEffects(appPosicion);
+                    case 7 -> new BlueScreenOfDeath(appPosicion);
+                    case 8 -> new InfiniteCicle(appPosicion);
+                    case 9 -> new SegmentationFault(appPosicion, programadores);
+                    default -> throw new InvalidInitialBoardException("Tipo do Abismo inválido");
+                };
+                case 1 -> switch (appType) {
+                    case 0 -> new Heritage(appPosicion);
+                    case 1 -> new FunctionalProgramming(appPosicion);
+                    case 2 -> new UnityTests(appPosicion);
+                    case 3 -> new ExceptionHandling(appPosicion);
+                    case 4 -> new IDE(appPosicion);
+                    case 5 -> new TeacherHelp(appPosicion);
+                    default -> throw new InvalidInitialBoardException("Tipo da Ferramenta inválida");
+                };
+                default -> throw new InvalidInitialBoardException("Tipo inexistente");
+            };
             boardApps.add(boardApp);
         }
-        return true;
     }
 
     public boolean moveCurrentPlayer(int nrPositions) {
@@ -490,5 +421,13 @@ public class GameManager {
             }
         }
         return false;
+    }
+
+    public boolean saveGame(File file){
+        return true;
+    }
+
+    public boolean loadGame(File file){
+        return true;
     }
 }

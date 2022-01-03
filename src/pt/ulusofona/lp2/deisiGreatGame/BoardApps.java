@@ -32,5 +32,13 @@ public abstract class BoardApps {
         return posicao;
     }
 
+    public boolean isAbyss(){
+        return identificadorAT.equals("A");
+    }
+
+    public boolean isTool(){
+        return identificadorAT.equals("T");
+    }
+
     public abstract String react(Programmer p);
 }

@@ -22,7 +22,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15);
+        try {
+            manager.createInitialBoard(playerInfo, 15);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         assertEquals(3,manager.getCurrentPlayerID());
         assertEquals(0,manager.getBoardApps().size());
         assertTrue(manager.moveCurrentPlayer(5));
@@ -40,7 +45,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15);
+        try {
+            manager.createInitialBoard(playerInfo, 15);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         assertFalse(manager.moveCurrentPlayer(8));
     }
 
@@ -56,7 +66,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 4);
+        try {
+            manager.createInitialBoard(playerInfo, 4);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         assertTrue(manager.moveCurrentPlayer(5));
     }
 
@@ -72,7 +87,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 5);
+        try {
+            manager.createInitialBoard(playerInfo, 5);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         assertEquals(1,manager.getTurno().getNrTurnos());
         assertFalse(manager.moveCurrentPlayer(-5));
 
@@ -90,7 +110,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        assertTrue(manager.createInitialBoard(playerInfo, 15));
+        try {
+            manager.createInitialBoard(playerInfo, 15);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Test
@@ -105,7 +130,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        assertFalse(manager.createInitialBoard(playerInfo, 3));
+        try {
+            manager.createInitialBoard(playerInfo, 3);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Test
@@ -213,7 +243,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
         System.out.println(manager.getProgrammers());
@@ -244,7 +279,12 @@ public class Tests {
         playerInfo[2][1] = "Antonio";
         playerInfo[2][2] = "Java";
         playerInfo[2][3] = "BLUE";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
@@ -270,7 +310,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(2);
         assertEquals("Só precisas de partir a pedra para te tornares num caçador mas a pedra nem racha, será que vais ter " +
                 "ajuda?", manager.reactToAbyssOrTool());
@@ -298,7 +343,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(2);
         assertEquals("Os teus companheiros deixaram-te pendurado, continua sem eles"
                 , manager.reactToAbyssOrTool());
@@ -327,7 +377,12 @@ public class Tests {
         playerInfo[2][1] = "Antonio";
         playerInfo[2][2] = "Java";
         playerInfo[2][3] = "BLUE";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(1);
@@ -362,7 +417,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
@@ -386,7 +446,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
@@ -410,7 +475,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
@@ -434,7 +504,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
@@ -458,7 +533,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
@@ -482,7 +562,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
@@ -510,7 +595,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
@@ -547,7 +637,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
@@ -582,7 +677,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
@@ -619,7 +719,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
@@ -660,7 +765,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
@@ -699,7 +809,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
@@ -739,7 +854,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
@@ -782,7 +902,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
@@ -822,7 +947,12 @@ public class Tests {
         playerInfo[1][1] = "JJ";
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(3);
@@ -866,7 +996,12 @@ public class Tests {
         playerInfo[2][1] = "Antonio";
         playerInfo[2][2] = "Java";
         playerInfo[2][3] = "BLUE";
-        manager.createInitialBoard(playerInfo, 15, tools);
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
         manager.moveCurrentPlayer(4);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(4);
