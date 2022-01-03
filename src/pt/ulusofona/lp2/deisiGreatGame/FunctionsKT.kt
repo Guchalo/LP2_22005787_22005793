@@ -12,3 +12,6 @@ enum class CommandType (private val type: String) {
     }
 }
 
+fun router(){
+
+}
