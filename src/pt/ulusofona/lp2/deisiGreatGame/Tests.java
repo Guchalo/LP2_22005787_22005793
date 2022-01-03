@@ -139,6 +139,30 @@ public class Tests {
     }
 
     @Test
+    public void testCreateInicialBoard3(){
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[1][3];
+        tools[0][0] = "0";
+        tools[0][1] = "8";
+        tools[0][2] = null;
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        }
+        catch(InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Test
     public void testAddProgrammer1() {
         GameManager manager = new GameManager();
         ArrayList<String> lp = new ArrayList<>();
@@ -295,7 +319,7 @@ public class Tests {
     }
 
     @Test
-    public void testcicloInfinito() {
+    public void testCicloInfinito() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         String[][] tools = new String[1][3];

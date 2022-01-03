@@ -325,14 +325,18 @@ public class GameManager {
         createInitialBoard(playerInfo, worldSize);
         for (String[] abyssesAndTool : abyssesAndTools) {
             if (!HelpfullFunctions.verificarString(abyssesAndTool[0]) ||
-                    !HelpfullFunctions.verificarString(abyssesAndTool[1]) ||
-                    !HelpfullFunctions.verificarString(abyssesAndTool[2])) {
+                    !HelpfullFunctions.verificarString(abyssesAndTool[1])){
                 throw new InvalidInitialBoardException("Dados do Abismo/Ferramenta inválidos");
             }
 
             int app = Integer.parseInt(abyssesAndTool[0]);
             int appType = Integer.parseInt(abyssesAndTool[1]);
-            int appPosicion = Integer.parseInt(abyssesAndTool[2]);
+            int appPosicion = 0;
+
+            if (HelpfullFunctions.verificarString(abyssesAndTool[2])) {
+                appPosicion = Integer.parseInt(abyssesAndTool[2]);
+            }
+
 
             if (appPosicion < 0 || appPosicion > worldSize) {
                 throw new InvalidInitialBoardException("Posição do Abismo/Ferramenta inválida");
@@ -362,6 +366,10 @@ public class GameManager {
                 };
                 default -> throw new InvalidInitialBoardException("Tipo inexistente");
             };
+            if (appPosicion == 0){
+                throw new InvalidInitialBoardException("Erro no Abismo/Ferramenta com o id:",boardApp);
+
+            }
             boardApps.add(boardApp);
         }
     }
