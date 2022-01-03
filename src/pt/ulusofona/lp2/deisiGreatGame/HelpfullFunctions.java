@@ -3,6 +3,7 @@ package pt.ulusofona.lp2.deisiGreatGame;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public class HelpfullFunctions {
 
@@ -33,4 +34,23 @@ public class HelpfullFunctions {
         Collections.sort(listaLinguagens);
         return listaLinguagens;
     }
+
+    public static String firstName(String nome){
+
+        String[] name = nome.split(" ");
+        return name[0];
+
+    }
+
+    public static boolean existeLinguagem(String linguagens , String linguagemPretendida){
+
+        ArrayList<String> listaLinguagens = linguagensDeProg(linguagens);
+        for (String linguagem : listaLinguagens){
+            if(linguagem.equals(linguagemPretendida)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

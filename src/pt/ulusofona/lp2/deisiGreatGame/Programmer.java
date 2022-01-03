@@ -16,6 +16,7 @@ public class Programmer {
     private final List<Tool> tools = new ArrayList<>();
     private static int valorDoDado = 0;
     private final ArrayList<Integer> nrJogadas = new ArrayList<>(2);
+    private int numeroLinguagens = 0;
 
 
     public Programmer() {
@@ -27,6 +28,11 @@ public class Programmer {
         this.color = color;
         this.image = color.getCor();
         this.linguagensProg = linguagensProg;
+        this.numeroLinguagens = linguagensProg.size();
+    }
+
+    public int getNumeroLinguagens() {
+        return numeroLinguagens;
     }
 
     public int getId() {
