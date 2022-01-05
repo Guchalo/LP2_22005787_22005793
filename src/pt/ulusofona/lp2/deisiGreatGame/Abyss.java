@@ -18,5 +18,6 @@ public abstract class Abyss extends BoardApps {
     public void aumentarTimesUsed(){
         timesUsed++;
     }
+
 }
 

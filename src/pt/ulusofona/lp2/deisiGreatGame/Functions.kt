@@ -24,8 +24,8 @@ fun getFunsGet (manager : GameManager, list : List<String>) : String?{
 
 fun getFunsPost (manager : GameManager, list : List<String>) : String?{
     return when (list[0]){
-        "MOVE" -> players(manager,list[1])
-        "ABYSS" -> players(manager,list[1])
+        "MOVE" -> postMove(manager,list[1])
+        "ABYSS" -> postAbyss(manager,list[1],list[2])
         else -> null
     }
 }
@@ -85,6 +85,23 @@ fun mostUsedAbyss(manager: GameManager, nrResults : String): String{
         .sortedWith { i1, i2 -> (i2 as Abyss).timesUsed - (i1 as Abyss).timesUsed }
         .take(results)
         .joinToString("\n") { it.getTitulo().toString() + ":" + (it as Abyss).timesUsed }
+}
+
+fun postMove(manager : GameManager, nrCasas : String): String?{
+
+   var result : String? = ""
+   manager.moveCurrentPlayer(nrCasas.toInt())
+    result = manager.reactToAbyssOrTool()
+    return result ?: "OK"
+}
+
+fun postAbyss(manager : GameManager, abyssTypeId : String, position : String) : String?{
+
+    if (manager.posicaoOcupada(position.toInt())){
+        return "Position is occupied."
+    }
+    manager.addAbyss(position.toInt(),abyssTypeId);
+    return "OK";
 }
 
 

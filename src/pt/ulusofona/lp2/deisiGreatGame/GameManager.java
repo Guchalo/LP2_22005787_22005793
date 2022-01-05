@@ -465,6 +465,37 @@ public class GameManager {
         }
     }
 
+    public boolean posicaoOcupada(int posicao){
+        for (BoardApps app : boardApps){
+            if (app.getPosicao() == posicao){
+                if(app.isAbyss() || app.isTool()){
+                   return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void addAbyss(int pos, String id){
+        if(!posicaoOcupada(pos)){
+            int identificador = Integer.parseInt(id);
+            BoardApps app = switch(identificador){
+               case 0 -> new SyntaxError(pos);
+               case 1 -> new LogicError(pos);
+               case 2 -> new Exception(pos);
+               case 3 -> new FileNotFoundException(pos);
+               case 4 -> new Crash(pos);
+               case 5 -> new DuplicatedCode(pos);
+               case 6 -> new SideEffects(pos);
+               case 7 -> new BlueScreenOfDeath(pos);
+               case 8 -> new InfiniteCicle(pos);
+               case 9 -> new SegmentationFault(pos, programadores);
+                default -> new LogicError(pos);
+           };
+           boardApps.add(app);
+        }
+    }
+
     public boolean saveGame(File file) {
         return true;
     }
