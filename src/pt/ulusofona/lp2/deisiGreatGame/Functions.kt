@@ -83,6 +83,7 @@ fun mostUsedAbyss(manager: GameManager, nrResults : String): String{
 
     return player.filter { it.isAbyss }
         .sortedWith { i1, i2 -> (i2 as Abyss).timesUsed - (i1 as Abyss).timesUsed }
+        .distinctBy { it.getTitulo() }
         .take(results)
         .joinToString("\n") { it.getTitulo().toString() + ":" + (it as Abyss).timesUsed }
 }
