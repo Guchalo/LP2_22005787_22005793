@@ -69,6 +69,20 @@ public class Programmer {
         return estado;
     }
 
+    public int getEstadoToInt() {
+        if (estado){
+            return 1;
+        }
+        return 0;
+    }
+
+    public int getCicloInfToInt() {
+        if (cicloInfinito){
+            return 1;
+        }
+        return 0;
+    }
+
     public String getImage() {
         return image;
     }
@@ -233,6 +247,17 @@ public class Programmer {
         } else {
             return "Derrotado";
         }
+    }
+
+    public String getNrJogadasToString(){
+        if (nrJogadas == null || nrJogadas.size() == 0){
+            return "0";
+        }
+        StringBuilder resultado = new StringBuilder();
+        for (Integer i : nrJogadas) {
+            resultado.append(i).append(";");
+        }
+        return resultado.substring(0, resultado.length() - 1);
     }
 
     public String toStringTools() {

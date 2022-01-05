@@ -3,6 +3,7 @@ package pt.ulusofona.lp2.deisiGreatGame;
 import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class GameManager {
@@ -500,7 +501,32 @@ public class GameManager {
     }
 
     public boolean saveGame(File file) {
-        return true;
+        try {
+            PrintWriter ps = new PrintWriter(file);
+            ps.println(tamanhoTab);
+            ps.println(programadores.size());
+            for (Programmer p : programadores) {
+                String result = "" + p.getId() + "/" + p.getName() + "/" + p.getColor().toString() + "/" +
+                        p.getLinguagensProg().trim() + "/" + p.getPos() + "/" + p.getCicloInfToInt() +
+                        "/" + p.toStringTools() + "/" + p.getNrJogadasToString() + "/" + p.getEstadoToInt();
+                ps.println(result);
+            }
+            ps.println(boardApps.size());
+            for (BoardApps app : boardApps) {
+                String result = "" + app.getTypeOfBoradApp() + "/" + app.getId() + "/" + app.getPosicao();
+                if (app.isAbyss()) {
+                    result += "/" + ((Abyss) app).getTimesUsed();
+                }
+                ps.println(result);
+
+            }
+            ps.println(turno.getNrTurnos());
+            ps.println(turno.getProgramadorAtual().getName());
+            ps.close();
+            return true;
+        } catch (java.io.FileNotFoundException e) {
+            return false;
+        }
     }
 
     public boolean loadGame(File file) {
@@ -534,7 +560,9 @@ public class GameManager {
             programadores.add(p);
         }
 
-        for (int g = 0; g < nrJogadores; g++) {
+        int boardAppsSize = Integer.parseInt(scan.nextLine());
+
+        for (int g = 0; g < boardAppsSize; g++) {
             line = scan.nextLine();
             String[] data = line.split("/");
             BoardApps boardApp = switch (Integer.parseInt(data[0])) {

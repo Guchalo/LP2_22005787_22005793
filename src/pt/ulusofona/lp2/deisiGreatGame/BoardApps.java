@@ -23,6 +23,13 @@ public abstract class BoardApps {
         return imagem;
     }
 
+    public String getTypeOfBoradApp(){
+        if (identificadorAT.equals("T")){
+            return "1";
+        }
+        return "0";
+    }
+
     public int getId() {
         return id;
     }
