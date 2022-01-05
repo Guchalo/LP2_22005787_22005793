@@ -12,21 +12,21 @@ fun getCommandType(type: CommandType) : Function2<GameManager,List<String>,Strin
 }
 
 fun getFunsGet (manager : GameManager, list : List<String>) : String?{
-    when (list[0]){
-        "PLAYER" -> return players(manager,list[1])
-        "PLAYERS_BY_LANGUAGE" -> return playerByLanguage(manager,list[1])
-        "POLYGLOTS" -> return polyglots(manager)
-        "MOST_USED_POSITIONS" -> return players(manager,list[1])
-        "MOST_USED_ABYSSES" -> return players(manager,list[1])
-        else -> return null
+    return when (list[0]){
+        "PLAYER" -> players(manager,list[1])
+        "PLAYERS_BY_LANGUAGE" -> playerByLanguage(manager,list[1])
+        "POLYGLOTS" -> polyglots(manager)
+        "MOST_USED_POSITIONS" -> players(manager,list[1])
+        "MOST_USED_ABYSSES" -> players(manager,list[1])
+        else -> null
     }
 }
 
 fun getFunsPost (manager : GameManager, list : List<String>) : String?{
-    when (list[0]){
-        "MOVE" -> return players(manager,list[1])
-        "ABYSS" -> return players(manager,list[1])
-        else -> return null
+    return when (list[0]){
+        "MOVE" -> players(manager,list[1])
+        "ABYSS" -> players(manager,list[1])
+        else -> null
     }
 }
 
@@ -40,7 +40,7 @@ fun players (manager : GameManager, nome : String) : String?{
     if(playerFound == "[]"){
         return "Inexistent player"
     }
-        return playerFound.replace("[" , "").replace("]","")
+    return playerFound.replace("[" , "").replace("]","")
 }
 
 fun playerByLanguage (manager : GameManager, linguagem : String) : String?{
@@ -49,24 +49,23 @@ fun playerByLanguage (manager : GameManager, linguagem : String) : String?{
     val playerFound : String = player.filter { HelpfullFunctions.existeLinguagem(it.linguagensProg, linguagem) }
         .map { it.name }.toString()
 
+    if(playerFound == "[]"){
+        return ""
+    }
+
     return playerFound.replace("[","").replace("]","").replace(", ",",")
 }
 
-fun polyglots(manager : GameManager) : String{
+fun polyglots(manager: GameManager): String {
 
     val player = manager.getProgrammers(true)
-    val playerFound : String = player.filter{ it.numeroLinguagens >= 2 }
-        .sortedWith{ i1,i2 -> i1.numeroLinguagens - i2.numeroLinguagens }
-        .map { it.name + ":" + it.numeroLinguagens }
-        .joinToString ("\n")
 
-    return playerFound;
+    return player.filter { it.numeroLinguagens >= 2 }
+        .sortedWith { i1, i2 -> i1.numeroLinguagens - i2.numeroLinguagens }
+        .joinToString("\n") { it.name + ":" + it.numeroLinguagens };
 }
 
 fun mostUsedPositions(){
-
-
-
 }
 
 

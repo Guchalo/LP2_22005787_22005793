@@ -46,7 +46,7 @@ public class HelpfullFunctions {
 
         ArrayList<String> listaLinguagens = linguagensDeProg(linguagens);
         for (String linguagem : listaLinguagens){
-            if(linguagem.equals(linguagemPretendida)){
+            if(linguagem.trim().equals(linguagemPretendida.trim())){
                 return true;
             }
         }

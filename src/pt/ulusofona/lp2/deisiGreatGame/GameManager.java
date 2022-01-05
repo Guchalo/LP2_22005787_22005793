@@ -326,7 +326,7 @@ public class GameManager {
     }
 
     public void createInitialBoard(String[][] playerInfo, int worldSize, String[][] abyssesAndTools)
-    throws InvalidInitialBoardException {
+            throws InvalidInitialBoardException {
         createInitialBoard(playerInfo, worldSize);
         for (String[] abyssesAndTool : abyssesAndTools) {
             if (!HelpfullFunctions.verificarString(abyssesAndTool[0]) ||
