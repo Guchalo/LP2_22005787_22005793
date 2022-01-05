@@ -40,7 +40,7 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
-        System.out.println(manager.allPositions().toString());
+        System.out.println(manager.getPositions().toString());
 
     }
 

@@ -17,7 +17,7 @@ public class Programmer {
     private static int valorDoDado = 0;
     private final ArrayList<Integer> nrJogadas = new ArrayList<>(2);
     private int numeroLinguagens = 0;
-    private ArrayList<Position> positions = new ArrayList<>();
+
 
     public Programmer() {
     }
@@ -29,10 +29,6 @@ public class Programmer {
         this.image = color.getCor();
         this.linguagensProg = linguagensProg;
         this.numeroLinguagens = linguagensProg.size();
-    }
-
-    public ArrayList<Position> getPositions() {
-        return positions;
     }
 
     public int getNumeroLinguagens() {
@@ -92,31 +88,14 @@ public class Programmer {
     public boolean moverPos(int nrPositions, int size) {
         valorDoDado = nrPositions;
         nrJogadas.add(valorDoDado);
-        Position posicao;
         if (pos + nrPositions > size) {
             int diferenca = (pos + nrPositions) - size;
             int alcancarSize = size - pos;
             pos += alcancarSize;
             pos -= diferenca;
-            for (Position position : positions ){
-                if (position.getNumPosition() == pos){
-                    position.increaseFootSteps();
-                    return true;
-                }
-            }
-            posicao = new Position(pos);
-            positions.add(posicao);
             return true;
         }
         pos += nrPositions;
-        for (Position position : positions ){
-            if (position.getNumPosition() == pos){
-                position.increaseFootSteps();
-                return true;
-            }
-        }
-        posicao = new Position(pos);
-        positions.add(posicao);
         return true;
     }
 

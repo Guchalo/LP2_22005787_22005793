@@ -2,8 +2,9 @@ package pt.ulusofona.lp2.deisiGreatGame;
 
 public class Position {
 
-    private int numPosition;
-    private int nrFootSteps = 1;
+    private final int numPosition;
+    private int nrFootSteps = 0;
+    private Abyss abyss;
 
     public Position(int numPosition) {
         this.numPosition = numPosition;
@@ -15,6 +16,10 @@ public class Position {
 
     public int getNrFootSteps() {
         return nrFootSteps;
+    }
+
+    public void setAbyss(Abyss abyss) {
+        this.abyss = abyss;
     }
 
     public void increaseFootSteps(){

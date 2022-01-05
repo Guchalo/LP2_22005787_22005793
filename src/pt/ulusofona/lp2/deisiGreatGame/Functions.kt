@@ -16,8 +16,8 @@ fun getFunsGet (manager : GameManager, list : List<String>) : String?{
         "PLAYER" -> players(manager,list[1])
         "PLAYERS_BY_LANGUAGE" -> playerByLanguage(manager,list[1])
         "POLYGLOTS" -> polyglots(manager)
-        "MOST_USED_POSITIONS" -> players(manager,list[1])
-        "MOST_USED_ABYSSES" -> players(manager,list[1])
+        "MOST_USED_POSITIONS" -> mostUsedPositions(manager,list[1])
+        "MOST_USED_ABYSSES" -> mostUsedAbyss(manager,list[1])
         else -> null
     }
 }
@@ -65,7 +65,26 @@ fun polyglots(manager: GameManager): String {
         .joinToString("\n") { it.name + ":" + it.numeroLinguagens };
 }
 
-fun mostUsedPositions(){
+fun mostUsedPositions(manager: GameManager, nrResults : String): String{
+    val player = manager.positions
+    val results = nrResults.toInt()
+
+
+    return player.filter { it.nrFootSteps > 0 }
+        .sortedWith { i1, i2 -> i2.nrFootSteps - i1.nrFootSteps }
+        .take(results)
+        .joinToString("\n") { it.numPosition.toString() + ":" + it.nrFootSteps }
+}
+
+fun mostUsedAbyss(manager: GameManager, nrResults : String): String{
+    val player = manager.boardApps
+    val results = nrResults.toInt()
+
+
+    return player.filter { it.isAbyss && (it as Abyss).timesUsed > 0}
+        .sortedWith { i1, i2 -> (i2 as Abyss).timesUsed - (i1 as Abyss).timesUsed }
+        .take(results)
+        .joinToString("\n") { it.getTitulo().toString() + ":" + (it as Abyss).timesUsed }
 }
 
 

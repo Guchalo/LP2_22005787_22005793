@@ -174,9 +174,8 @@ public class GameManager {
     }
 
     public void createInitialBoard(String[][] playerInfo, int worldSize) throws InvalidInitialBoardException {
-        programadores.clear();
-        boardApps.clear();
-        setTamanhoTab(worldSize);
+        programadores.clear(); boardApps.clear();
+        setTamanhoTab(worldSize); this.positions = makePositions();
         int nJogadores = playerInfo.length;
         if (nJogadores < 2 || nJogadores > 4) {
             throw new InvalidInitialBoardException("Número de jogadores inválido");
@@ -330,7 +329,7 @@ public class GameManager {
         createInitialBoard(playerInfo, worldSize);
         for (String[] abyssesAndTool : abyssesAndTools) {
             if (!HelpfullFunctions.verificarString(abyssesAndTool[0]) ||
-                    !HelpfullFunctions.verificarString(abyssesAndTool[1])){
+                    !HelpfullFunctions.verificarString(abyssesAndTool[1])) {
                 throw new InvalidInitialBoardException("Dados do Abismo/Ferramenta inválidos");
             }
 
@@ -371,8 +370,8 @@ public class GameManager {
                 };
                 default -> throw new InvalidInitialBoardException("Tipo inexistente");
             };
-            if (appPosicion == 0){
-                throw new InvalidInitialBoardException("Erro no Abismo/Ferramenta com o id:",boardApp);
+            if (appPosicion == 0) {
+                throw new InvalidInitialBoardException("Erro no Abismo/Ferramenta com o id:", boardApp);
 
             }
             boardApps.add(boardApp);
@@ -395,6 +394,8 @@ public class GameManager {
         }
 
         turno.getProgramadorAtual().moverPos(nrPositions, tamanhoTab);
+        aumentarNrStepsPos();
+
         return true;
     }
 
@@ -415,6 +416,7 @@ public class GameManager {
                     mudarTurno();
                     return mensagem;
                 }
+                abyssUsed();
                 mensagem = boardApp.react(turno.getProgramadorAtual());
                 mudarTurno();
                 return mensagem;
@@ -436,30 +438,38 @@ public class GameManager {
         return false;
     }
 
-    public ArrayList<Position> allPositions(){
-        ArrayList<Position> posicoes = new ArrayList<>(programadores.get(0).getPositions());
-        for (int i = 1; i < programadores.size(); i++){
-            for (Position position : posicoes){
-                for (Position posicao : programadores.get(i).getPositions()){
-                    if (position.getNumPosition() == posicao.getNumPosition()){
-                        posicao.increaseFootSteps();
-                        break;
-                    }
-                    if (position.getNumPosition() > posicao.getNumPosition()){
-                        continue;
-                    }
-                    posicoes.add(position);
-                }
-            }
+    public ArrayList<Position> makePositions() {
+        ArrayList<Position> posicoes = new ArrayList<>();
+        for (int a = 0; a < tamanhoTab; a++){
+            Position position = new Position(a);
+            posicoes.add(position);
         }
         return posicoes;
     }
 
-    public boolean saveGame(File file){
+    public void aumentarNrStepsPos(){
+        for (Position p : positions) {
+            if (p.getNumPosition() == turno.getProgramadorAtual().getPos()){
+                p.increaseFootSteps();
+            }
+        }
+    }
+
+    public void abyssUsed(){
+        for(BoardApps app : boardApps){
+            if(app.isAbyss()){
+                if (app.getPosicao() == turno.getProgramadorAtual().getPos()){
+                    ((Abyss) app).aumentarTimesUsed();
+                }
+            }
+        }
+    }
+
+    public boolean saveGame(File file) {
         return true;
     }
 
-    public boolean loadGame(File file){
+    public boolean loadGame(File file) {
         return true;
     }
 }
