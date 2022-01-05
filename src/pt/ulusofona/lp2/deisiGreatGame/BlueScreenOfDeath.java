@@ -9,6 +9,13 @@ public class BlueScreenOfDeath extends Abyss {
         imagem = "haganezuka.png";
     }
 
+    public BlueScreenOfDeath(int posicao, int timesUsed) {
+        super(posicao, timesUsed);
+        id = 7;
+        titulo = "Blue Screen of Death";
+        imagem = "haganezuka.png";
+    }
+
     @Override
     public String react(Programmer p) {
         p.derrotado();

@@ -9,6 +9,13 @@ public class Crash extends Abyss {
         imagem = "tanjiroInjured.png";
     }
 
+    public Crash(int posicao, int timesUsed) {
+        super(posicao, timesUsed);
+        id = 4;
+        titulo = "Crash (aka Rebentanço)";
+        imagem = "tanjiroInjured.png";
+    }
+
     @Override
     public String react(Programmer p) {
         p.voltarPracasa();

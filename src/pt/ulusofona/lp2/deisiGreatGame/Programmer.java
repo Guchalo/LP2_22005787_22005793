@@ -9,13 +9,13 @@ public class Programmer {
     private String name;
     private ProgrammerColor color;
     private String image;
-    private int pos = 1;
+    private int pos;
     private ArrayList<String> linguagensProg = new ArrayList<>();
     private boolean estado = true;
     private boolean cicloInfinito = false;
-    private final List<Tool> tools = new ArrayList<>();
+    private List<Tool> tools = new ArrayList<>();
     private static int valorDoDado = 0;
-    private final ArrayList<Integer> nrJogadas = new ArrayList<>(2);
+    private ArrayList<Integer> nrJogadas = new ArrayList<>(2);
     private int numeroLinguagens = 0;
 
 
@@ -29,6 +29,20 @@ public class Programmer {
         this.image = color.getCor();
         this.linguagensProg = linguagensProg;
         this.numeroLinguagens = linguagensProg.size();
+        this.pos = 1;
+    }
+
+    public Programmer(int id, String name, ProgrammerColor color, ArrayList<String> linguagensProg, int pos,
+                      boolean cicloInfinito, List<Tool> tools,ArrayList<Integer> nrJogadas, boolean estado) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
+        this.pos = pos;
+        this.linguagensProg = linguagensProg;
+        this.estado = estado;
+        this.cicloInfinito = cicloInfinito;
+        this.tools = tools;
+        this.nrJogadas = nrJogadas;
     }
 
     public int getNumeroLinguagens() {

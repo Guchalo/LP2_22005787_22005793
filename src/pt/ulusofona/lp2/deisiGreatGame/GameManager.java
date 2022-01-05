@@ -2,6 +2,7 @@ package pt.ulusofona.lp2.deisiGreatGame;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.*;
 
 public class GameManager {
@@ -174,8 +175,10 @@ public class GameManager {
     }
 
     public void createInitialBoard(String[][] playerInfo, int worldSize) throws InvalidInitialBoardException {
-        programadores.clear(); boardApps.clear();
-        setTamanhoTab(worldSize); this.positions = makePositions();
+        programadores.clear();
+        boardApps.clear();
+        setTamanhoTab(worldSize);
+        this.positions = makePositions();
         int nJogadores = playerInfo.length;
         if (nJogadores < 2 || nJogadores > 4) {
             throw new InvalidInitialBoardException("Número de jogadores inválido");
@@ -440,59 +443,59 @@ public class GameManager {
 
     public ArrayList<Position> makePositions() {
         ArrayList<Position> posicoes = new ArrayList<>();
-        for (int a = 0; a < tamanhoTab; a++){
+        for (int a = 0; a < tamanhoTab; a++) {
             Position position = new Position(a);
             posicoes.add(position);
         }
         return posicoes;
     }
 
-    public void aumentarNrStepsPos(){
+    public void aumentarNrStepsPos() {
         for (Position p : positions) {
-            if (p.getNumPosition() == turno.getProgramadorAtual().getPos()){
+            if (p.getNumPosition() == turno.getProgramadorAtual().getPos()) {
                 p.increaseFootSteps();
             }
         }
     }
 
-    public void abyssUsed(){
-        for(BoardApps app : boardApps){
-            if(app.isAbyss()){
-                if (app.getPosicao() == turno.getProgramadorAtual().getPos()){
+    public void abyssUsed() {
+        for (BoardApps app : boardApps) {
+            if (app.isAbyss()) {
+                if (app.getPosicao() == turno.getProgramadorAtual().getPos()) {
                     ((Abyss) app).aumentarTimesUsed();
                 }
             }
         }
     }
 
-    public boolean posicaoOcupada(int posicao){
-        for (BoardApps app : boardApps){
-            if (app.getPosicao() == posicao){
-                if(app.isAbyss() || app.isTool()){
-                   return true;
+    public boolean posicaoOcupada(int posicao) {
+        for (BoardApps app : boardApps) {
+            if (app.getPosicao() == posicao) {
+                if (app.isAbyss() || app.isTool()) {
+                    return true;
                 }
             }
         }
         return false;
     }
 
-    public void addAbyss(int pos, String id){
-        if(!posicaoOcupada(pos)){
+    public void addAbyss(int pos, String id) {
+        if (!posicaoOcupada(pos)) {
             int identificador = Integer.parseInt(id);
-            BoardApps app = switch(identificador){
-               case 0 -> new SyntaxError(pos);
-               case 1 -> new LogicError(pos);
-               case 2 -> new Exception(pos);
-               case 3 -> new FileNotFoundException(pos);
-               case 4 -> new Crash(pos);
-               case 5 -> new DuplicatedCode(pos);
-               case 6 -> new SideEffects(pos);
-               case 7 -> new BlueScreenOfDeath(pos);
-               case 8 -> new InfiniteCicle(pos);
-               case 9 -> new SegmentationFault(pos, programadores);
+            BoardApps app = switch (identificador) {
+                case 0 -> new SyntaxError(pos);
+                case 1 -> new LogicError(pos);
+                case 2 -> new Exception(pos);
+                case 3 -> new FileNotFoundException(pos);
+                case 4 -> new Crash(pos);
+                case 5 -> new DuplicatedCode(pos);
+                case 6 -> new SideEffects(pos);
+                case 7 -> new BlueScreenOfDeath(pos);
+                case 8 -> new InfiniteCicle(pos);
+                case 9 -> new SegmentationFault(pos, programadores);
                 default -> new LogicError(pos);
-           };
-           boardApps.add(app);
+            };
+            boardApps.add(app);
         }
     }
 
@@ -501,6 +504,80 @@ public class GameManager {
     }
 
     public boolean loadGame(File file) {
+        programadores.clear();
+        boardApps.clear();
+        FileInputStream fis;
+        try {
+            fis = new FileInputStream(file);
+        } catch (java.io.FileNotFoundException e) {
+            return false;
+        }
+        Scanner scan = new Scanner(fis);
+        String line = scan.nextLine();
+        tamanhoTab = Integer.parseInt(line);
+
+        line = scan.nextLine();
+        int nrJogadores = Integer.parseInt(line);
+
+        for (int g = 0; g < nrJogadores; g++) {
+            line = scan.nextLine();
+            String[] data = line.split("/");
+            Programmer p = new Programmer(Integer.parseInt(data[0]),
+                    data[1],
+                    ProgrammerColor.valueOf(data[2].toUpperCase()),
+                    HelpfullFunctions.linguagensDeProg(data[3]),
+                    Integer.parseInt(data[4]),
+                    HelpfullFunctions.stringToBoolean(data[5]),
+                    HelpfullFunctions.tools(data[6]),
+                    HelpfullFunctions.pos(data[7]),
+                    HelpfullFunctions.stringToBoolean(data[8]));
+            programadores.add(p);
+        }
+
+        for (int g = 0; g < nrJogadores; g++) {
+            line = scan.nextLine();
+            String[] data = line.split("/");
+            BoardApps boardApp = switch (Integer.parseInt(data[0])) {
+                case 0 -> switch (Integer.parseInt(data[1])) {
+                    case 0 -> new SyntaxError(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+                    case 1 -> new LogicError(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+                    case 2 -> new Exception(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+                    case 3 -> new FileNotFoundException(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+                    case 4 -> new Crash(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+                    case 5 -> new DuplicatedCode(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+                    case 6 -> new SideEffects(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+                    case 7 -> new BlueScreenOfDeath(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+                    case 8 -> new InfiniteCicle(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+                    case 9 -> new SegmentationFault(Integer.parseInt(data[2]), Integer.parseInt(data[3]), programadores);
+                    default -> new SegmentationFault(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+                };
+                case 1 -> switch (Integer.parseInt(data[1])) {
+                    case 0 -> new Heritage(Integer.parseInt(data[2]));
+                    case 1 -> new FunctionalProgramming(Integer.parseInt(data[2]));
+                    case 2 -> new UnityTests(Integer.parseInt(data[2]));
+                    case 3 -> new ExceptionHandling(Integer.parseInt(data[2]));
+                    case 4 -> new IDE(Integer.parseInt(data[2]));
+                    case 5 -> new TeacherHelp(Integer.parseInt(data[2]));
+                    default -> new TeacherHelp(Integer.parseInt(data[2]));
+                };
+                default -> new TeacherHelp(Integer.parseInt(data[2]));
+            };
+            boardApps.add(boardApp);
+        }
+
+        line = scan.nextLine();
+        int nrTurnos = Integer.parseInt(line);
+
+        line = scan.nextLine();
+        Programmer atual = new Programmer();
+        for (Programmer p : programadores) {
+            if (p.getName().equals(line)) {
+                atual = p;
+            }
+        }
+        turno = new Turn(programadores, atual);
+        turno.setNrTurnos(nrTurnos);
+
         return true;
     }
 }

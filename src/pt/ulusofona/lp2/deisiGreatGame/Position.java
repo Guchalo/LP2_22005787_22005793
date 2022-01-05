@@ -4,7 +4,6 @@ public class Position {
 
     private final int numPosition;
     private int nrFootSteps = 0;
-    private Abyss abyss;
 
     public Position(int numPosition) {
         this.numPosition = numPosition;
@@ -18,19 +17,12 @@ public class Position {
         return nrFootSteps;
     }
 
-    public void setAbyss(Abyss abyss) {
-        this.abyss = abyss;
-    }
-
     public void increaseFootSteps(){
         nrFootSteps++;
     }
 
     @Override
     public String toString() {
-        return "Position{" +
-                "numPosition=" + numPosition +
-                ", nrFootSteps=" + nrFootSteps +
-                '}';
+        return "" + numPosition + ":" + nrFootSteps;
     }
 }

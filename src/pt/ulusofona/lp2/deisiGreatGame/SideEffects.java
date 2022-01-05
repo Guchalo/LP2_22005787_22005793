@@ -9,6 +9,13 @@ public class SideEffects extends Abyss {
         imagem = "muzan.png";
     }
 
+    public SideEffects(int posicao, int timesUsed) {
+        super(posicao, timesUsed);
+        id = 6;
+        titulo = "Efeitos secundários";
+        imagem = "muzan.png";
+    }
+
     @Override
     public String react(Programmer p) {
         if (p.temFP()) {

@@ -7,6 +7,10 @@ public abstract class Tool extends BoardApps {
         identificadorAT = "T";
     }
 
+    public Tool() {
+        identificadorAT = "T";
+    }
+
     public abstract String react(Programmer p);
 
 }

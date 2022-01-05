@@ -9,6 +9,13 @@ public class LogicError extends Abyss {
         imagem = "bicho.png";
     }
 
+    public LogicError(int posicao, int timesUsed) {
+        super(posicao, timesUsed);
+        id = 1;
+        titulo = "Erro de lógica";
+        imagem = "bicho.png";
+    }
+
     @Override
     public String react(Programmer p) {
         if (p.temTH()) {

@@ -9,6 +9,13 @@ public class FunctionalProgramming extends Tool {
         imagem = "respiracaoDoSol.png";
     }
 
+    public FunctionalProgramming() {
+        super();
+        id = 1;
+        titulo = "Programação Funcional";
+        imagem = "respiracaoDoSol.png";
+    }
+
     @Override
     public String react(Programmer p) {
         return "Agora que conseguiste dominar a Respiração total, já tens capacidade e poder " +

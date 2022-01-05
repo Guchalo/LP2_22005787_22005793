@@ -9,6 +9,13 @@ public class FileNotFoundException extends Abyss {
         imagem = "JAVALI.png";
     }
 
+    public FileNotFoundException(int posicao, int timesUsed) {
+        super(posicao, timesUsed);
+        id = 2;
+        titulo = "Exception";
+        imagem = "tanjiroH.png";
+    }
+
     @Override
     public String react(Programmer p) {
         if (p.temTH()) {

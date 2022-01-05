@@ -11,6 +11,13 @@ public class InfiniteCicle extends Abyss {
         imagem = "pedra.png";
     }
 
+    public InfiniteCicle(int posicao, int timesUsed) {
+        super(posicao, timesUsed);
+        id = 8;
+        titulo = "Ciclo infinito";
+        imagem = "pedra.png";
+    }
+
     @Override
     public String react(Programmer p) {
         if (p.temFP()) {

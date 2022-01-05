@@ -9,6 +9,13 @@ public class SyntaxError extends Abyss {
         imagem = "armadilha.png";
     }
 
+    public SyntaxError(int posicao, int timesUsed) {
+        super(posicao, timesUsed);
+        id = 0;
+        titulo = "Erro de sintaxe";
+        imagem = "armadilha.png";
+    }
+
     @Override
     public String react(Programmer p) {
         if (p.temTH()) {

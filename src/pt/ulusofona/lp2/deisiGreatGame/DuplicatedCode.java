@@ -9,6 +9,13 @@ public class DuplicatedCode extends Abyss {
         imagem = "zenitsu.png";
     }
 
+    public DuplicatedCode(int posicao, int timesUsed) {
+        super(posicao, timesUsed);
+        id = 5;
+        titulo = "Duplicated Code";
+        imagem = "zenitsu.png";
+    }
+
     @Override
     public String react(Programmer p) {
         if (p.temHeranca()) {

@@ -53,4 +53,34 @@ public class HelpfullFunctions {
         return false;
     }
 
+    public static boolean stringToBoolean(String s){
+        return !s.equals("0");
+    }
+
+    public static List<Tool> tools(String lp) {
+        String[] lP = lp.split(";");
+        List<Tool> listaLinguagens = new ArrayList<>();
+        for(String s : lP){
+            BoardApps app = switch (s){
+                case "Tratamento de Excepções" -> new ExceptionHandling();
+                case "Herança" -> new Heritage();
+                case "Programação Funcional" -> new FunctionalProgramming();
+                case "Testes unitários" -> new UnityTests();
+                case "IDE" -> new IDE();
+                case "Ajuda Do Professor" -> new TeacherHelp();
+                default -> new TeacherHelp();
+            };
+            listaLinguagens.add((Tool) app);
+        }
+        return listaLinguagens;
+    }
+
+    public static ArrayList<Integer> pos(String lp) {
+        String[] lP = lp.split(";");
+        ArrayList<Integer> lista = new ArrayList<>();
+        for (String s : lP) {
+            lista.add(Integer.parseInt(s));
+        }
+        return lista;
+    }
 }

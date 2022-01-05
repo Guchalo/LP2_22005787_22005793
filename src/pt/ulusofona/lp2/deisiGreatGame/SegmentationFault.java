@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SegmentationFault extends Abyss {
 
-    private final List<Programmer> programadores = new ArrayList<>();
+    private List<Programmer> programadores = new ArrayList<>();
 
     public SegmentationFault(int posicao, List<Programmer> programadores) {
         super(posicao);
@@ -13,6 +13,18 @@ public class SegmentationFault extends Abyss {
         titulo = "Segmentation Fault";
         imagem = "train.png";
         this.programadores.addAll(programadores);
+    }
+
+    public SegmentationFault(int posicao, int timesUsed, List<Programmer> programadores) {
+        super(posicao, timesUsed);
+        id = 9;
+        titulo = "Segmentation Fault";
+        imagem = "train.png";
+        this.programadores.addAll(programadores);
+    }
+
+    public SegmentationFault(int posicao, int timesUsed) {
+        super(posicao, timesUsed);
     }
 
     @Override

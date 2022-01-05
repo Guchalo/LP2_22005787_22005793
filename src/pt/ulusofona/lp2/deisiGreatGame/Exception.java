@@ -9,6 +9,13 @@ public class Exception extends Abyss {
         imagem = "tanjiroH.png";
     }
 
+    public Exception(int posicao, int timesUsed) {
+        super(posicao, timesUsed);
+        id = 2;
+        titulo = "Exception";
+        imagem = "tanjiroH.png";
+    }
+
     @Override
     public String react(Programmer p) {
         if (p.temTH()) {

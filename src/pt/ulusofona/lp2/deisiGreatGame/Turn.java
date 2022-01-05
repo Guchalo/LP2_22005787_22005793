@@ -7,11 +7,18 @@ public class Turn {
 
     private ArrayList<Programmer> programadores = new ArrayList<>();
     private Programmer programadorAtual;
-    private int nrTurnos = 1;
+    private int nrTurnos;
 
     public Turn(ArrayList<Programmer> programadores, Programmer programadorAtual) {
         this.programadores.addAll(programadores);
         this.programadorAtual = programadorAtual;
+        this.nrTurnos = 1;
+    }
+
+    public Turn(ArrayList<Programmer> programadores, Programmer programadorAtual, int nrTurnos) {
+        this.programadores = programadores;
+        this.programadorAtual = programadorAtual;
+        this.nrTurnos = nrTurnos;
     }
 
     public Programmer getProgramadorAtual() {
@@ -20,6 +27,10 @@ public class Turn {
 
     public int getNrTurnos() {
         return nrTurnos;
+    }
+
+    public void setNrTurnos(int nrTurnos) {
+        this.nrTurnos = nrTurnos;
     }
 
     public void aumentarTurno() {

@@ -12,6 +12,9 @@ public abstract class BoardApps {
         this.posicao = posicao;
     }
 
+    public BoardApps() {
+    }
+
     public String getIdentificadorAT() {
         return identificadorAT;
     }
