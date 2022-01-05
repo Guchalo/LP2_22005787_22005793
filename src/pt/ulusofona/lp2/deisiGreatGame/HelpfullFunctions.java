@@ -58,8 +58,11 @@ public class HelpfullFunctions {
     }
 
     public static List<Tool> tools(String lp) {
-        String[] lP = lp.split(";");
         List<Tool> listaLinguagens = new ArrayList<>();
+        if (lp.equals("No tools")){
+            return listaLinguagens;
+        }
+        String[] lP = lp.split(";");
         for(String s : lP){
             BoardApps app = switch (s){
                 case "Tratamento de Excepções" -> new ExceptionHandling();
