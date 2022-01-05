@@ -17,7 +17,7 @@ public class Position {
         return nrFootSteps;
     }
 
-    public void increaseFootSteps(){
+    public void increaseFootSteps() {
         nrFootSteps++;
     }
 

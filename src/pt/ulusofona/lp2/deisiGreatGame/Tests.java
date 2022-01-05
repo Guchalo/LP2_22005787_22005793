@@ -24,12 +24,11 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
-        assertEquals(3,manager.getCurrentPlayerID());
-        assertEquals(0,manager.getBoardApps().size());
+        assertEquals(3, manager.getCurrentPlayerID());
+        assertEquals(0, manager.getBoardApps().size());
         assertTrue(manager.moveCurrentPlayer(2));
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
@@ -58,8 +57,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         assertFalse(manager.moveCurrentPlayer(8));
@@ -79,8 +77,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 4);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         assertTrue(manager.moveCurrentPlayer(5));
@@ -100,11 +97,10 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 5);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
-        assertEquals(1,manager.getTurno().getNrTurnos());
+        assertEquals(1, manager.getTurno().getNrTurnos());
         assertFalse(manager.moveCurrentPlayer(-5));
 
     }
@@ -123,8 +119,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
     }
@@ -143,14 +138,13 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 3);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
     @Test
-    public void testCreateInicialBoard3(){
+    public void testCreateInicialBoard3() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         String[][] tools = new String[1][3];
@@ -167,8 +161,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
     }
@@ -177,7 +170,7 @@ public class Tests {
     public void testAddProgrammer1() {
         GameManager manager = new GameManager();
         ArrayList<String> lp = new ArrayList<>();
-        ArrayList<Position> positions= new ArrayList<>();
+        ArrayList<Position> positions = new ArrayList<>();
         lp.add("Java");
         Programmer pTest = new Programmer(10, "Testador", ProgrammerColor.BROWN, lp);
         assertTrue(manager.addProgrammer(pTest));
@@ -226,7 +219,7 @@ public class Tests {
     @Test
     public void testVerificarProgrammer() {
         ArrayList<String> lp = new ArrayList<>();
-        ArrayList<Position> positions= new ArrayList<>();
+        ArrayList<Position> positions = new ArrayList<>();
         lp.add("Java");
         Programmer p1 = new Programmer(12, "Joaquim", ProgrammerColor.GREEN, lp);
         Programmer p2 = new Programmer(1, "António", ProgrammerColor.PURPLE, lp);
@@ -248,7 +241,7 @@ public class Tests {
 
         ArrayList<String> lp = new ArrayList<>();
         lp.add("Java");
-        ArrayList<Position> positions= new ArrayList<>();
+        ArrayList<Position> positions = new ArrayList<>();
         Programmer p1 = new Programmer(12, "Joaquim", ProgrammerColor.GREEN, lp);
         Programmer p2 = new Programmer(1, "António", ProgrammerColor.PURPLE, lp);
         Programmer p3 = new Programmer(10, "Fernando", ProgrammerColor.BROWN, lp);
@@ -283,8 +276,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(2);
@@ -319,8 +311,7 @@ public class Tests {
         playerInfo[2][3] = "BLUE";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(3);
@@ -350,8 +341,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(2);
@@ -383,8 +373,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(2);
@@ -417,8 +406,7 @@ public class Tests {
         playerInfo[2][3] = "BLUE";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(2);
@@ -457,8 +445,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(2);
@@ -486,8 +473,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(2);
@@ -515,8 +501,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(3);
@@ -544,8 +529,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(4);
@@ -573,8 +557,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(4);
@@ -602,8 +585,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(2);
@@ -635,8 +617,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(4);
@@ -677,8 +658,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(2);
@@ -717,8 +697,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(4);
@@ -759,8 +738,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(4);
@@ -805,8 +783,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(4);
@@ -849,8 +826,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(4);
@@ -894,8 +870,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(2);
@@ -942,8 +917,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(4);
@@ -987,8 +961,7 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(4);
@@ -1036,8 +1009,7 @@ public class Tests {
         playerInfo[2][3] = "BLUE";
         try {
             manager.createInitialBoard(playerInfo, 15, tools);
-        }
-        catch(InvalidInitialBoardException ex) {
+        } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
         manager.moveCurrentPlayer(4);
@@ -1064,7 +1036,7 @@ public class Tests {
     }
 
     @Test
-    public void testAuthorsPanel(){
+    public void testAuthorsPanel() {
         GameManager manager = new GameManager();
         JPanel painel = new JPanel();
         painel.setBounds(40, 80, 300, 300);
@@ -1095,7 +1067,7 @@ public class Tests {
         painel.add(texto11);
         painel.add(texto12);
 
-        assertEquals(painel.getComponentCount(),manager.getAuthorsPanel().getComponentCount());
+        assertEquals(painel.getComponentCount(), manager.getAuthorsPanel().getComponentCount());
 
     }
 

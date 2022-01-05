@@ -5,7 +5,6 @@ public class InvalidInitialBoardException extends java.lang.Exception {
     String mensagem;
     BoardApps boardApp;
 
-
     public InvalidInitialBoardException(String mensagem) {
         this.mensagem = mensagem;
     }
@@ -14,7 +13,6 @@ public class InvalidInitialBoardException extends java.lang.Exception {
         this.mensagem = mensagem;
         this.boardApp = boardApp;
     }
-
 
     public String getMessage() {
         return mensagem;

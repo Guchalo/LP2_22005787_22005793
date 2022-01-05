@@ -502,8 +502,6 @@ public class GameManager {
 
     public boolean saveGame(File file) {
         try {
-            FileInputStream fis;
-            fis = new FileInputStream(file);
             PrintWriter ps = new PrintWriter(file);
             ps.println(tamanhoTab);
             ps.println(programadores.size());

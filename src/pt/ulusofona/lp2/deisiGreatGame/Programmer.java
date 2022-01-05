@@ -33,7 +33,7 @@ public class Programmer {
     }
 
     public Programmer(int id, String name, ProgrammerColor color, ArrayList<String> linguagensProg, int pos,
-                      boolean cicloInfinito, List<Tool> tools,ArrayList<Integer> nrJogadas, boolean estado) {
+                      boolean cicloInfinito, List<Tool> tools, ArrayList<Integer> nrJogadas, boolean estado) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -70,14 +70,14 @@ public class Programmer {
     }
 
     public int getEstadoToInt() {
-        if (estado){
+        if (estado) {
             return 1;
         }
         return 0;
     }
 
     public int getCicloInfToInt() {
-        if (cicloInfinito){
+        if (cicloInfinito) {
             return 1;
         }
         return 0;
@@ -249,8 +249,8 @@ public class Programmer {
         }
     }
 
-    public String getNrJogadasToString(){
-        if (nrJogadas == null || nrJogadas.size() == 0){
+    public String getNrJogadasToString() {
+        if (nrJogadas == null || nrJogadas.size() == 0) {
             return "0";
         }
         StringBuilder resultado = new StringBuilder();

@@ -15,15 +15,15 @@ public abstract class Abyss extends BoardApps {
         this.timesUsed = timesUsed;
     }
 
-    public abstract String react(Programmer p);
-
     public int getTimesUsed() {
         return timesUsed;
     }
 
-    public void aumentarTimesUsed(){
+    public void aumentarTimesUsed() {
         timesUsed++;
     }
+
+    public abstract String react(Programmer p);
 
 }
 

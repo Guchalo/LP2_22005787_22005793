@@ -23,8 +23,8 @@ public abstract class BoardApps {
         return imagem;
     }
 
-    public String getTypeOfBoradApp(){
-        if (identificadorAT.equals("T")){
+    public String getTypeOfBoradApp() {
+        if (identificadorAT.equals("T")) {
             return "1";
         }
         return "0";
@@ -42,11 +42,11 @@ public abstract class BoardApps {
         return posicao;
     }
 
-    public boolean isAbyss(){
+    public boolean isAbyss() {
         return identificadorAT.equals("A");
     }
 
-    public boolean isTool(){
+    public boolean isTool() {
         return identificadorAT.equals("T");
     }
 

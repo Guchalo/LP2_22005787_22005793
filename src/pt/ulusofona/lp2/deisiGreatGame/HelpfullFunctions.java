@@ -35,36 +35,36 @@ public class HelpfullFunctions {
         return listaLinguagens;
     }
 
-    public static String firstName(String nome){
+    public static String firstName(String nome) {
 
         String[] name = nome.split(" ");
         return name[0];
 
     }
 
-    public static boolean existeLinguagem(String linguagens , String linguagemPretendida){
+    public static boolean existeLinguagem(String linguagens, String linguagemPretendida) {
 
         ArrayList<String> listaLinguagens = linguagensDeProg(linguagens);
-        for (String linguagem : listaLinguagens){
-            if(linguagem.trim().equals(linguagemPretendida.trim())){
+        for (String linguagem : listaLinguagens) {
+            if (linguagem.trim().equals(linguagemPretendida.trim())) {
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean stringToBoolean(String s){
+    public static boolean stringToBoolean(String s) {
         return !s.equals("0");
     }
 
     public static List<Tool> tools(String lp) {
         List<Tool> listaLinguagens = new ArrayList<>();
-        if (lp.equals("No tools")){
+        if (lp.equals("No tools")) {
             return listaLinguagens;
         }
         String[] lP = lp.split(";");
-        for(String s : lP){
-            BoardApps app = switch (s){
+        for (String s : lP) {
+            BoardApps app = switch (s) {
                 case "Tratamento de Excepções" -> new ExceptionHandling();
                 case "Herança" -> new Heritage();
                 case "Programação Funcional" -> new FunctionalProgramming();
