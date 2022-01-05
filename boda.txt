@@ -1,0 +1,30 @@
+79
+3
+3/Ada Lovelace/Green/C,C#; Ada/14/0/No tools/1;3;6;3/1
+1/Joshua Bloch/Purple/Python;   C;  C#; Java/22/0/Ajuda Do Professor;IDE/4;5;3;6;3/1
+2/Guido van Rossum/Blue/C;  Common Lisp; Python/18/0/Tratamento de Excepções/1;5;4;1;6/1
+22
+1/2/32
+1/2/34
+1/3/3
+0/2/69/0
+1/0/37
+0/1/70/0
+0/5/74/0
+1/5/10
+0/8/44/0
+1/1/16
+0/0/50/0
+1/3/18
+1/4/19
+0/7/52/0
+0/6/53/0
+1/1/21
+0/9/54/0
+1/4/22
+0/4/55/0
+1/5/23
+1/0/25
+0/2/59/0
+15
+Ada Lovelace

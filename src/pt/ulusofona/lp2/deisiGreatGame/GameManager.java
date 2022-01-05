@@ -228,6 +228,7 @@ public class GameManager {
                     addProgrammer(p2);
                     ordenarProgId();
 
+
                     turno = new Turn(programadores, programadores.get(0));
                 }
             }
@@ -270,6 +271,7 @@ public class GameManager {
                     addProgrammer(p2);
                     addProgrammer(p3);
                     ordenarProgId();
+
 
                     turno = new Turn(programadores, programadores.get(0));
                 }
@@ -320,6 +322,7 @@ public class GameManager {
                     addProgrammer(p3);
                     addProgrammer(p4);
                     ordenarProgId();
+
 
                     turno = new Turn(programadores, programadores.get(0));
                 }
@@ -560,7 +563,26 @@ public class GameManager {
             programadores.add(p);
         }
 
-        int boardAppsSize = Integer.parseInt(scan.nextLine());
+        line = scan.nextLine();
+        if (line == null || line.equals("")) {
+
+            line = scan.nextLine();
+            int nrTurnos = Integer.parseInt(line);
+
+            line = scan.nextLine();
+            Programmer atual = new Programmer();
+            for (Programmer p : programadores) {
+                if (p.getName().equals(line)) {
+                    atual = p;
+                }
+            }
+            turno = new Turn(programadores, atual);
+            turno.setNrTurnos(nrTurnos);
+
+            return true;
+        }
+
+        int boardAppsSize = Integer.parseInt(line);
 
         for (int g = 0; g < boardAppsSize; g++) {
             line = scan.nextLine();
@@ -598,11 +620,18 @@ public class GameManager {
 
         line = scan.nextLine();
         Programmer atual = new Programmer();
+        ArrayList<Programmer> temp = new ArrayList<>();
         for (Programmer p : programadores) {
             if (p.getName().equals(line)) {
                 atual = p;
             }
         }
+        programadores.remove(atual);
+        temp.add(atual);
+        temp.addAll(programadores);
+        programadores.clear();
+        programadores.addAll(temp);
+
         turno = new Turn(programadores, atual);
         turno.setNrTurnos(nrTurnos);
 
