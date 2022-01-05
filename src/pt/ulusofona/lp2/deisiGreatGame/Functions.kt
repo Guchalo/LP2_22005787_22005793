@@ -81,7 +81,7 @@ fun mostUsedAbyss(manager: GameManager, nrResults : String): String{
     val results = nrResults.toInt()
 
 
-    return player.filter { it.isAbyss && (it as Abyss).timesUsed > 0}
+    return player.filter { it.isAbyss }
         .sortedWith { i1, i2 -> (i2 as Abyss).timesUsed - (i1 as Abyss).timesUsed }
         .take(results)
         .joinToString("\n") { it.getTitulo().toString() + ":" + (it as Abyss).timesUsed }
