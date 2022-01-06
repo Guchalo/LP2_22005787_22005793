@@ -1421,41 +1421,41 @@ public class Tests {
     }
 
     @Test
-    public void testAddAbyss(){
+    public void testAddAbyss() {
 
         GameManager manager = new GameManager();
 
-        manager.addAbyss(1,"1");
-        manager.addAbyss(2,"2");
-        manager.addAbyss(3,"3");
-        manager.addAbyss(4,"4");
-        manager.addAbyss(5,"5");
-        manager.addAbyss(6,"6");
-        manager.addAbyss(7,"7");
-        manager.addAbyss(8,"8");
-        manager.addAbyss(9,"9");
-        manager.addAbyss(10,"0");
+        manager.addAbyss(1, "1");
+        manager.addAbyss(2, "2");
+        manager.addAbyss(3, "3");
+        manager.addAbyss(4, "4");
+        manager.addAbyss(5, "5");
+        manager.addAbyss(6, "6");
+        manager.addAbyss(7, "7");
+        manager.addAbyss(8, "8");
+        manager.addAbyss(9, "9");
+        manager.addAbyss(10, "0");
 
-        assertEquals(manager.getBoardApps().get(0).getId(),1);
+        assertEquals(manager.getBoardApps().get(0).getId(), 1);
 
 
     }
 
     @Test
-    public void testAbyss(){
+    public void testAbyss() {
 
         GameManager manager = new GameManager();
 
 
-        manager.addAbyss(1,"1");
-        manager.addAbyss(2,"2");
-        manager.addAbyss(3,"3");
-        manager.addAbyss(4,"4");
-        manager.addAbyss(5,"5");
-        manager.addAbyss(6,"6");
-        manager.addAbyss(7,"7");
-        manager.addAbyss(8,"8");
-        manager.addAbyss(9,"9");
+        manager.addAbyss(1, "1");
+        manager.addAbyss(2, "2");
+        manager.addAbyss(3, "3");
+        manager.addAbyss(4, "4");
+        manager.addAbyss(5, "5");
+        manager.addAbyss(6, "6");
+        manager.addAbyss(7, "7");
+        manager.addAbyss(8, "8");
+        manager.addAbyss(9, "9");
         manager.posicaoOcupada(1);
 
         assertTrue(manager.posicaoOcupada(1));
@@ -1464,14 +1464,14 @@ public class Tests {
     }
 
     @Test
-    public void testLoadGame(){
+    public void testLoadGame() {
         GameManager manager = new GameManager();
         assertTrue(manager.loadGame(new File("DemonsSlayer.txt")));
 
     }
 
     @Test
-    public void testSaveGame(){
+    public void testSaveGame() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[3][4];
         String[][] tools = new String[3][3];
@@ -1520,7 +1520,7 @@ public class Tests {
     }
 
     @Test
-    public void testLoadGame1(){
+    public void testLoadGame1() {
         GameManager manager = new GameManager();
         assertTrue(manager.loadGame(new File("DemonsSlayerWithoutApps.txt")));
 
