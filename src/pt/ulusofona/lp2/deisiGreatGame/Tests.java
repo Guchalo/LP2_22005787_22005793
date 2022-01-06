@@ -284,6 +284,7 @@ public class Tests {
         }
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
+        assertEquals(manager.getProgrammersInfo(),"JJ : No tools");
         assertFalse(manager.getProgrammers(true).get(0).getEstado());
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
@@ -291,6 +292,10 @@ public class Tests {
         manager.reactToAbyssOrTool();
         assertFalse(manager.getProgrammers(true).get(0).getEstado());
         assertEquals(manager.getProgrammers(true).get(0).getPos(), 3);
+        assertNull(manager.getTitle(-1));
+        assertEquals(manager.getImagePng(15),"finishLine50x50.png");
+        assertEquals(manager.getImagePng(3),"haganezuka.png");
+        assertNull(manager.getImagePng(1));
 
     }
 
@@ -1105,7 +1110,7 @@ public class Tests {
         Crash crash = new Crash(1, 1);
         DuplicatedCode dP = new DuplicatedCode(2, 2);
         Exception exception = new Exception(3, 3);
-        LogicError logicError = new LogicError(9,9);
+        LogicError logicError = new LogicError(9, 9);
         FileNotFoundException fileNotFoundException = new FileNotFoundException(4, 4);
         InfiniteCicle infiniteCicle = new InfiniteCicle(5, 5);
         SegmentationFault segmentationFault = new SegmentationFault(6, 6);
@@ -1141,13 +1146,136 @@ public class Tests {
     }
 
     @Test
-    public void testCommandType(){
+    public void testCommandType() {
         CommandType get = CommandType.GET;
-        assertEquals(get.name(),"GET");
+        assertEquals(get.name(), "GET");
     }
 
+    @Test
+    public void testTurn() {
+        ArrayList<String> lp = new ArrayList<>();
+        lp.add("Java");
+        ArrayList<Position> positions = new ArrayList<>();
+        Programmer p1 = new Programmer(12, "Joaquim", ProgrammerColor.GREEN, lp);
+        Programmer p2 = new Programmer(1, "António", ProgrammerColor.PURPLE, lp);
+        Programmer p3 = new Programmer(10, "Fernando", ProgrammerColor.BROWN, lp);
+        Programmer p4 = new Programmer(10, "Armando", ProgrammerColor.PURPLE, lp);
+        ArrayList<Programmer> programadores = new ArrayList<>();
+        programadores.add(p1);
+        programadores.add(p2);
+        programadores.add(p3);
+        programadores.add(p4);
 
+        Turn turno = new Turn(programadores, p1, 0);
+        turno.setNrTurnos(2);
+        assertEquals(turno.getProgramadorAtual(), p1);
+        assertEquals(turno.getNrTurnos(), 2);
+    }
 
+    @Test
+    public void testSyntaxErrorTeacherHelp() {
+        ArrayList<String> lp = new ArrayList<>();
+        ArrayList<Integer> positions = new ArrayList<>();
+        lp.add("Java");
+        List<Tool> tools1 = new ArrayList<>();
+        tools1.add(new TeacherHelp());
+        Programmer p = new Programmer(3, "Anibal",
+                ProgrammerColor.BROWN, lp, 3, false, tools1, positions, true);
+        SyntaxError se = new SyntaxError(1);
+        assertEquals(se.react(p), "Como tens o Rengoku do teu lado, ele avisa te da armadilha e consegues evitá-la," +
+                " mas como tu falhaste ao detetar uma armadilha muito óbvia e ele abandonou-te.");
+    }
+
+    @Test
+    public void testGetTitleAndGetImage() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[3][4];
+        String[][] tools = new String[3][3];
+        tools[0][0] = "0";
+        tools[0][1] = "8";
+        tools[0][2] = "5";
+        tools[1][0] = "1";
+        tools[1][1] = "1";
+        tools[1][2] = "6";
+        tools[2][0] = "1";
+        tools[2][1] = "1";
+        tools[2][2] = "10";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        playerInfo[2][0] = "2";
+        playerInfo[2][1] = "Antonio";
+        playerInfo[2][2] = "Java";
+        playerInfo[2][3] = "BLUE";
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        } catch (InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
+        assertNull(manager.getTitle(0));
+        assertNull(manager.getTitle(17));
+        assertEquals(manager.getTitle(10), "Programação Funcional");
+    }
+
+    @Test
+    public void testInvalidInicialBoardException() {
+        InvalidInitialBoardException e = new InvalidInitialBoardException("Teste", new Exception(1));
+        InvalidInitialBoardException b = new InvalidInitialBoardException("Teste");
+        InvalidInitialBoardException a = new InvalidInitialBoardException("Teste", new TeacherHelp());
+        assertFalse(e.isInvalidTool());
+        assertTrue(e.isInvalidAbyss());
+        assertTrue(a.isInvalidTool());
+        assertFalse(a.isInvalidAbyss());
+        assertEquals(e.getTypeId(), "2");
+        assertFalse(b.isInvalidAbyss());
+        assertFalse(b.isInvalidTool());
+    }
+
+    @Test
+    public void testProgrammer() {
+        ArrayList<String> lp = new ArrayList<>();
+        lp.add("Java");
+        Programmer p = new Programmer(3, "Anibal", ProgrammerColor.BROWN, lp);
+        assertFalse(p.temFP());
+        FunctionalProgramming fp = new FunctionalProgramming();
+        p.adicionarTool(fp);
+        assertFalse(p.temIDE());
+        p.adicionarTool(new IDE());
+        p.adicionarTool(new FunctionalProgramming());
+        assertFalse(p.temHeranca());
+        assertFalse(p.temTH());
+        assertFalse(p.temUT());
+        assertFalse(p.temEA());
+        assertEquals(p.toStringTools(),"Programação Funcional;IDE");
+        assertEquals(p.getTools().get(0),fp);
+        assertEquals(p.getNumeroLinguagens(),1);
+        assertEquals(p.getNrJogadas().toString(),"[]");
+        assertEquals(p.getImage(),"Brown");
+        assertEquals(p.getEstadoToInt(),1);
+        assertEquals(p.getCicloInfToInt(),0);
+        assertEquals(p.getNrJogadasToString(),"0");
+
+        ArrayList<Integer> positions = new ArrayList<>();
+        positions.add(2);
+        positions.add(2);
+        List<Tool> tools1 = new ArrayList<>();
+        tools1.add(new FunctionalProgramming());
+        Programmer p1 = new Programmer(3, "Anibal",
+                ProgrammerColor.BROWN, lp, 3, true, tools1, positions, false);
+        assertEquals(p1.getEstadoToInt(),0);
+        assertEquals(p1.getCicloInfToInt(),1);
+        assertEquals(p1.getNrJogadasToString(),"2;2");
+    }
+
+    @Test
+    public void testKotlin(){
+        TestsKotlinKt.testRouter();
+    }
 }
 
 

@@ -115,7 +115,7 @@ public class Programmer {
 
     public boolean moverPos(int nrPositions, int size) {
         valorDoDado = nrPositions;
-        nrJogadas.add(valorDoDado);
+        nrJogadas.add(getValorDoDado());
         if (pos + nrPositions > size) {
             int diferenca = (pos + nrPositions) - size;
             int alcancarSize = size - pos;

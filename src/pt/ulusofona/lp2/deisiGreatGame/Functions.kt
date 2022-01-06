@@ -30,7 +30,7 @@ fun getFunsPost(manager: GameManager, list: List<String>): String? {
     }
 }
 
-fun players(manager: GameManager, nome: String): String? {
+fun players(manager: GameManager, nome: String): String {
 
     val player = manager.getProgrammers(true)
     val playerFound: String = player.filter { HelpfullFunctions.firstName(it.name) == nome }
@@ -43,7 +43,7 @@ fun players(manager: GameManager, nome: String): String? {
     return playerFound.replace("[", "").replace("]", "")
 }
 
-fun playerByLanguage(manager: GameManager, linguagem: String): String? {
+fun playerByLanguage(manager: GameManager, linguagem: String): String {
 
     val player = manager.getProgrammers(true)
     val playerFound: String = player.filter { HelpfullFunctions.existeLinguagem(it.linguagensProg, linguagem) }
@@ -89,7 +89,7 @@ fun mostUsedAbyss(manager: GameManager, nrResults: String): String {
         .joinToString("\n") { it.getTitulo().toString() + ":" + (it as Abyss).timesUsed }
 }
 
-fun postMove(manager: GameManager, nrCasas: String): String? {
+fun postMove(manager: GameManager, nrCasas: String): String {
 
     var result: String? = ""
     manager.moveCurrentPlayer(nrCasas.toInt())
@@ -97,7 +97,7 @@ fun postMove(manager: GameManager, nrCasas: String): String? {
     return result ?: "OK"
 }
 
-fun postAbyss(manager: GameManager, abyssTypeId: String, position: String): String? {
+fun postAbyss(manager: GameManager, abyssTypeId: String, position: String): String {
 
     if (manager.posicaoOcupada(position.toInt())) {
         return "Position is occupied."
