@@ -1288,7 +1288,7 @@ public class Tests {
 
         assertTrue(HelpfullFunctions.existeLinguagem(playerInfo[1][2],"Kotlin"));
     }
-
+//
     @Test
     public void sideEffectsFunctionalprogrammingToStringTools() {
         GameManager manager = new GameManager();
