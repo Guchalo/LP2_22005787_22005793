@@ -63,7 +63,7 @@ fun polyglots(manager: GameManager): String {
 
     return player.filter { it.numeroLinguagens >= 2 }
         .sortedWith { i1, i2 -> i1.numeroLinguagens - i2.numeroLinguagens }
-        .joinToString("\n") { it.name + ":" + it.numeroLinguagens };
+        .joinToString("\n") { it.name + ":" + it.numeroLinguagens }
 }
 
 fun mostUsedPositions(manager: GameManager, nrResults: String): String {
@@ -72,8 +72,8 @@ fun mostUsedPositions(manager: GameManager, nrResults: String): String {
 
 
     return player.filter { it.nrFootSteps > 0 }
-        .sortedWith { i1, i2 -> i2.nrFootSteps - i1.nrFootSteps }
-        .take(results)
+        .sortedWith { i1, i2 -> i1.nrFootSteps - i2.nrFootSteps }
+        .takeLast(results)
         .joinToString("\n") { it.numPosition.toString() + ":" + it.nrFootSteps }
 }
 
@@ -82,7 +82,7 @@ fun mostUsedAbyss(manager: GameManager, nrResults: String): String {
     val results = nrResults.toInt()
 
 
-    return player.filter { it.isAbyss }
+    return player.asSequence().filter { it.isAbyss }
         .sortedWith { i1, i2 -> (i2 as Abyss).timesUsed - (i1 as Abyss).timesUsed }
         .distinctBy { it.getTitulo() }
         .take(results)
@@ -91,9 +91,8 @@ fun mostUsedAbyss(manager: GameManager, nrResults: String): String {
 
 fun postMove(manager: GameManager, nrCasas: String): String {
 
-    var result: String? = ""
     manager.moveCurrentPlayer(nrCasas.toInt())
-    result = manager.reactToAbyssOrTool()
+    val result: String? = manager.reactToAbyssOrTool()
     return result ?: "OK"
 }
 
@@ -102,8 +101,8 @@ fun postAbyss(manager: GameManager, abyssTypeId: String, position: String): Stri
     if (manager.posicaoOcupada(position.toInt())) {
         return "Position is occupied."
     }
-    manager.addAbyss(position.toInt(), abyssTypeId);
-    return "OK";
+    manager.addAbyss(position.toInt(), abyssTypeId)
+    return "OK"
 }
 
 
