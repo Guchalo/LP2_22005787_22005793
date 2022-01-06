@@ -1288,4 +1288,87 @@ public class Tests {
 
         assertTrue(HelpfullFunctions.existeLinguagem(playerInfo[1][2],"Kotlin"));
     }
+
+    @Test
+    public void sideEffectsFunctionalprogrammingToStringTools() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[4][3];
+        tools[0][0] = "0";
+        tools[0][1] = "6";
+        tools[0][2] = "5";
+        tools[1][0] = "1";
+        tools[1][1] = "1";
+        tools[1][2] = "4";
+        tools[2][0] = "0";
+        tools[2][1] = "6";
+        tools[2][2] = "10";
+        tools[3][0] = "1";
+        tools[3][1] = "5";
+        tools[3][2] = "7";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        } catch (InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
+        manager.moveCurrentPlayer(3);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(3);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        assertEquals("Programação Funcional;Ajuda Do Professor",manager.getTurno().getProgramadorAtual().toStringTools());
+    }
+
+
+    @Test
+    public void testeTools(){
+
+        List<Tool> tools = HelpfullFunctions.tools("Programação Funcional;Ajuda Do Professor;Tratamento de Excepções;" +
+                "Herança;Testes unitários;IDE");
+        assertEquals("Programação Funcional",tools.get(0).getTitulo());
+
+    }
+
+    @Test
+    public void pos(){
+
+        ArrayList<Integer> teste = new ArrayList<>();
+        teste.add(1);
+        teste.add(2);
+        teste.add(3);
+        teste.add(4);
+        teste.add(5);
+
+        ArrayList<Integer> teste2 = HelpfullFunctions.pos("1;2;3;4;5");
+
+        assertEquals(teste,teste2);
+
+
+
+    }
+
+    @Test
+    public void firstName(){
+
+        String nome = "Tanjiro";
+
+        String teste2 = HelpfullFunctions.firstName("Tanjiro Kamado");
+
+        assertEquals(nome,teste2);
+
+
+
+    }
+
 }
