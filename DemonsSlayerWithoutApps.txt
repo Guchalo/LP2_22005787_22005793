@@ -1,0 +1,9 @@
+79
+4
+1/Tanjiro Kamado/Green/Python;C/1/0/No tools/0/1
+2/Nezuko Kamado/Purple/Assembly;Ruby;C/1/0/No tools/0/1
+3/Zenitsu Agatsuma/Brown/Java;JavaScript/1/0/No tools/0/1
+4/Inosuke Hashibira/Blue/Matlab/1/0/No tools/0/1
+
+1
+Tanjiro Kamado
