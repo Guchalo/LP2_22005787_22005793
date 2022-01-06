@@ -338,7 +338,7 @@ public class GameManager {
             throws InvalidInitialBoardException {
         createInitialBoard(playerInfo, worldSize);
         if (abyssesAndTools == null) {
-            throw new InvalidInitialBoardException("Valor de abyssesAndTools inválido");
+            return;
         }
         for (String[] abyssesAndTool : abyssesAndTools) {
             if (!HelpfullFunctions.verificarString(abyssesAndTool[0]) ||
