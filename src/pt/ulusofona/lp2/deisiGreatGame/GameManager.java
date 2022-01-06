@@ -335,6 +335,9 @@ public class GameManager {
             throws InvalidInitialBoardException {
         createInitialBoard(playerInfo, worldSize);
         for (String[] abyssesAndTool : abyssesAndTools) {
+            if(abyssesAndTool == null){
+                continue;
+            }
             if (!HelpfullFunctions.verificarString(abyssesAndTool[0]) ||
                     !HelpfullFunctions.verificarString(abyssesAndTool[1])) {
                 throw new InvalidInitialBoardException("Dados do Abismo/Ferramenta inválidos");
@@ -414,6 +417,9 @@ public class GameManager {
     }
 
     public String reactToAbyssOrTool() {
+        if (gameIsOver()) {
+            return null;
+        }
         String mensagem = "";
         for (BoardApps boardApp : boardApps) {
             if (turno.getProgramadorAtual().getPos() == boardApp.getPosicao()) {
