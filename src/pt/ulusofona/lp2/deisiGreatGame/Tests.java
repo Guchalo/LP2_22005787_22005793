@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +12,7 @@ import static org.junit.Assert.*;
 public class Tests {
 
     @Test
-    public void testMoveCurrentPlayer1() {
+    public void testMoveCurrentPlayerAndPosicions() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         playerInfo[0][0] = "3";
@@ -39,7 +40,9 @@ public class Tests {
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
-        System.out.println(manager.getPositions().toString());
+        assertEquals(manager.getPositions().get(3).getNumPosition(), 3);
+        assertEquals(manager.getPositions().get(3).getNrFootSteps(), 2);
+        assertEquals(manager.getPositions().get(3).toString(), "3:2");
 
     }
 
@@ -281,12 +284,14 @@ public class Tests {
         }
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
-        System.out.println(manager.getProgrammers());
+        assertFalse(manager.getProgrammers(true).get(0).getEstado());
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
-        System.out.println(manager.getProgrammers());
+        assertFalse(manager.getProgrammers(true).get(0).getEstado());
+        assertEquals(manager.getProgrammers(true).get(0).getPos(), 3);
+
     }
 
     @Test
@@ -671,6 +676,8 @@ public class Tests {
         manager.reactToAbyssOrTool();
         assertEquals(4, manager.getTurno().getProgramadorAtual().getPos());
         assertEquals("No tools", manager.getTurno().getProgramadorAtual().toStringTools());
+        assertTrue(manager.getBoardApps().get(0).isTool());
+        assertEquals(manager.getBoardApps().get(0).getTypeOfBoradApp(), "1");
     }
 
     @Test
@@ -1033,6 +1040,16 @@ public class Tests {
         assertEquals(10, manager.getTurno().getProgramadorAtual().getPos());
         assertEquals("No tools", manager.getProgrammers().get(2).toStringTools());
 
+        ArrayList<String> lp = new ArrayList<>();
+        ArrayList<Integer> positions = new ArrayList<>();
+        lp.add("Java");
+        List<Tool> tools1 = new ArrayList<>();
+        tools1.add(new FunctionalProgramming());
+        Programmer p = new Programmer(3, "Anibal",
+                ProgrammerColor.BROWN, lp, 3, false, tools1, positions, true);
+        InfiniteCicle ic = new InfiniteCicle(2);
+        assertEquals(ic.react(p), "Como dominaste a tecnica de Respiração Total, partir a pedra foi uma tarefa fácil");
+
     }
 
     @Test
@@ -1070,6 +1087,65 @@ public class Tests {
         assertEquals(painel.getComponentCount(), manager.getAuthorsPanel().getComponentCount());
 
     }
+
+    @Test
+    public void testBoardApps2() {
+        BlueScreenOfDeath BSD = new BlueScreenOfDeath(2, 0);
+        assertEquals(BSD.getTimesUsed(), 0);
+        assertEquals(BSD.getIdentificadorAT(), "A");
+        assertEquals(BSD.getTypeOfBoradApp(), "0");
+        BSD.aumentarTimesUsed();
+        assertEquals(BSD.getTimesUsed(), 1);
+        IDE ide = new IDE();
+        assertEquals(ide.getIdentificadorAT(), "T");
+    }
+
+    @Test
+    public void constructorAbyss() {
+        Crash crash = new Crash(1, 1);
+        DuplicatedCode dP = new DuplicatedCode(2, 2);
+        Exception exception = new Exception(3, 3);
+        LogicError logicError = new LogicError(9,9);
+        FileNotFoundException fileNotFoundException = new FileNotFoundException(4, 4);
+        InfiniteCicle infiniteCicle = new InfiniteCicle(5, 5);
+        SegmentationFault segmentationFault = new SegmentationFault(6, 6);
+        SegmentationFault sFWithProgrammers = new SegmentationFault(6, 6, new ArrayList<>());
+        SideEffects sideEffects = new SideEffects(7, 7);
+        SyntaxError syntaxError = new SyntaxError(8, 8);
+        assertTrue(crash.isAbyss());
+        assertTrue(dP.isAbyss());
+        assertTrue(exception.isAbyss());
+        assertTrue(fileNotFoundException.isAbyss());
+        assertTrue(infiniteCicle.isAbyss());
+        assertTrue(segmentationFault.isAbyss());
+        assertTrue(sFWithProgrammers.isAbyss());
+        assertTrue(sideEffects.isAbyss());
+        assertTrue(syntaxError.isAbyss());
+        assertTrue(logicError.isAbyss());
+    }
+
+    @Test
+    public void testConstructorTools() {
+        ExceptionHandling exceptionHandling = new ExceptionHandling();
+        FunctionalProgramming functionalProgramming = new FunctionalProgramming();
+        Heritage heritage = new Heritage();
+        IDE ide = new IDE();
+        TeacherHelp teacherHelp = new TeacherHelp();
+        UnityTests unityTests = new UnityTests();
+        assertTrue(exceptionHandling.isTool());
+        assertTrue(functionalProgramming.isTool());
+        assertTrue(heritage.isTool());
+        assertTrue(ide.isTool());
+        assertTrue(teacherHelp.isTool());
+        assertTrue(unityTests.isTool());
+    }
+
+    @Test
+    public void testCommandType(){
+        CommandType get = CommandType.GET;
+        assertEquals(get.name(),"GET");
+    }
+
 
 
 }
