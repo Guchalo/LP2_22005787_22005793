@@ -72,8 +72,8 @@ fun mostUsedPositions(manager: GameManager, nrResults: String): String {
 
 
     return player.filter { it.nrFootSteps > 0 }
-        .sortedWith { i1, i2 -> i1.nrFootSteps - i2.nrFootSteps }
-        .takeLast(results)
+        .sortedWith { i1, i2 -> i2.nrFootSteps - i1.nrFootSteps }
+        .take(results)
         .joinToString("\n") { it.numPosition.toString() + ":" + it.nrFootSteps }
 }
 
