@@ -173,7 +173,6 @@ public class Tests {
     public void testAddProgrammer1() {
         GameManager manager = new GameManager();
         ArrayList<String> lp = new ArrayList<>();
-        ArrayList<Position> positions = new ArrayList<>();
         lp.add("Java");
         Programmer pTest = new Programmer(10, "Testador", ProgrammerColor.BROWN, lp);
         assertTrue(manager.addProgrammer(pTest));
@@ -222,7 +221,6 @@ public class Tests {
     @Test
     public void testVerificarProgrammer() {
         ArrayList<String> lp = new ArrayList<>();
-        ArrayList<Position> positions = new ArrayList<>();
         lp.add("Java");
         Programmer p1 = new Programmer(12, "Joaquim", ProgrammerColor.GREEN, lp);
         Programmer p2 = new Programmer(1, "António", ProgrammerColor.PURPLE, lp);
@@ -244,7 +242,6 @@ public class Tests {
 
         ArrayList<String> lp = new ArrayList<>();
         lp.add("Java");
-        ArrayList<Position> positions = new ArrayList<>();
         Programmer p1 = new Programmer(12, "Joaquim", ProgrammerColor.GREEN, lp);
         Programmer p2 = new Programmer(1, "António", ProgrammerColor.PURPLE, lp);
         Programmer p3 = new Programmer(10, "Fernando", ProgrammerColor.BROWN, lp);
@@ -1155,7 +1152,6 @@ public class Tests {
     public void testTurn() {
         ArrayList<String> lp = new ArrayList<>();
         lp.add("Java");
-        ArrayList<Position> positions = new ArrayList<>();
         Programmer p1 = new Programmer(12, "Joaquim", ProgrammerColor.GREEN, lp);
         Programmer p2 = new Programmer(1, "António", ProgrammerColor.PURPLE, lp);
         Programmer p3 = new Programmer(10, "Fernando", ProgrammerColor.BROWN, lp);
@@ -1274,7 +1270,6 @@ public class Tests {
 
     @Test
     public void testeExisteLinguagem() {
-        GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
         playerInfo[0][0] = "3";
         playerInfo[0][1] = "Boda";
@@ -1288,48 +1283,6 @@ public class Tests {
 
         assertTrue(HelpfullFunctions.existeLinguagem(playerInfo[1][2],"Kotlin"));
     }
-//
-    @Test
-    public void sideEffectsFunctionalprogrammingToStringTools() {
-        GameManager manager = new GameManager();
-        String[][] playerInfo = new String[2][4];
-        String[][] tools = new String[4][3];
-        tools[0][0] = "0";
-        tools[0][1] = "6";
-        tools[0][2] = "5";
-        tools[1][0] = "1";
-        tools[1][1] = "1";
-        tools[1][2] = "4";
-        tools[2][0] = "0";
-        tools[2][1] = "6";
-        tools[2][2] = "10";
-        tools[3][0] = "1";
-        tools[3][1] = "5";
-        tools[3][2] = "7";
-        playerInfo[0][0] = "3";
-        playerInfo[0][1] = "Boda";
-        playerInfo[0][2] = "Python;SQL";
-        playerInfo[0][3] = "PURPLE";
-        playerInfo[1][0] = "2735";
-        playerInfo[1][1] = "JJ";
-        playerInfo[1][2] = "Kotlin;C";
-        playerInfo[1][3] = "GREEN";
-        try {
-            manager.createInitialBoard(playerInfo, 15, tools);
-        } catch (InvalidInitialBoardException ex) {
-            System.out.println(ex.getMessage());
-        }
-        manager.moveCurrentPlayer(3);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(2);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(3);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(2);
-        manager.reactToAbyssOrTool();
-        assertEquals("Programação Funcional;Ajuda Do Professor",manager.getTurno().getProgramadorAtual().toStringTools());
-    }
-
 
     @Test
     public void testeTools(){
@@ -1370,5 +1323,6 @@ public class Tests {
 
 
     }
+
 
 }
