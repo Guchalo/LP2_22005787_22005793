@@ -142,8 +142,9 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 3);
+            fail("Deveria ter lançado uma exception");
         } catch (InvalidInitialBoardException ex) {
-            System.out.println(ex.getMessage());
+            assertEquals(ex.getMessage(),"Tamanho do tabuleiro inválido");
         }
     }
 
