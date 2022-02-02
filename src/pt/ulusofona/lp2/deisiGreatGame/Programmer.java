@@ -17,6 +17,8 @@ public class Programmer {
     private static int valorDoDado = 0;
     private ArrayList<Integer> nrJogadas = new ArrayList<>(2);
     private int numeroLinguagens = 0;
+    private ArrayList<Integer> posicoes = new ArrayList<>();
+    private double posicaoTemp;
 
 
     public Programmer() {
@@ -121,9 +123,11 @@ public class Programmer {
             int alcancarSize = size - pos;
             pos += alcancarSize;
             pos -= diferenca;
+            posicoes.add(pos);
             return true;
         }
         pos += nrPositions;
+        posicoes.add(pos);
         return true;
     }
 
@@ -166,6 +170,29 @@ public class Programmer {
 
     public void derrotado() {
         estado = false;
+    }
+
+    public void media3CasasAnteriores(){
+
+        if (posicoes.size() >= 3){
+            int positions1 = pos - nrJogadas.get(nrJogadas.size() - 1);
+            int positions2 = pos - nrJogadas.get(nrJogadas.size() - 2);
+            int positions3 = pos - nrJogadas.get(nrJogadas.size() - 3);
+            posicaoTemp = Math.ceil((positions1 + positions2 + positions3) / 3);
+            pos = (int)posicaoTemp;
+            return;
+        }
+        if (posicoes.size()  == 2){
+            int positions1 = pos - nrJogadas.get(nrJogadas.size() - 1);
+            int positions2 = pos - nrJogadas.get(nrJogadas.size() - 2);
+            int somaPositions = positions1 + positions2;
+            posicaoTemp = Math.ceil(somaPositions / 2);
+            pos = (int)posicaoTemp;
+            return;
+        }
+        if (posicoes.size() == 1){
+            pos = posicoes.get(0);
+        }
     }
 
     public void adicionarTool(Tool t) {

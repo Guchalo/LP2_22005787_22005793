@@ -13,9 +13,13 @@ public class GameManager {
     private Turn turno;
     private final ArrayList<BoardApps> boardApps = new ArrayList<>();
     private ArrayList<Position> positions = new ArrayList<>();
+    private ArrayList<Integer> posicoes = new ArrayList<>();
+
 
     public GameManager() {
     }
+
+
 
     public GameManager(ArrayList<Programmer> programadores) {
         this.programadores = programadores;
@@ -289,6 +293,7 @@ public class GameManager {
                     case 7 -> new BlueScreenOfDeath(appPosicion);
                     case 8 -> new InfiniteCicle(appPosicion);
                     case 9 -> new SegmentationFault(appPosicion, programadores);
+                    case 10 -> new LetsDoCounts(appPosicion);
                     default -> throw new InvalidInitialBoardException("Tipo do Abismo inválido");
                 };
                 case 1 -> switch (appType) {

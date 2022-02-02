@@ -3,7 +3,6 @@ package pt.ulusofona.lp2.deisiGreatGame;
 import org.junit.Test;
 
 import javax.swing.*;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -142,9 +141,8 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
         try {
             manager.createInitialBoard(playerInfo, 3);
-            fail("Deveria ter lançado uma exception");
         } catch (InvalidInitialBoardException ex) {
-            assertEquals(ex.getMessage(),"Tamanho do tabuleiro inválido");
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -283,7 +281,7 @@ public class Tests {
         }
         manager.moveCurrentPlayer(2);
         manager.reactToAbyssOrTool();
-        assertEquals(manager.getProgrammersInfo(), "JJ : No tools");
+        assertEquals(manager.getProgrammersInfo(),"JJ : No tools");
         assertFalse(manager.getProgrammers(true).get(0).getEstado());
         manager.moveCurrentPlayer(3);
         manager.reactToAbyssOrTool();
@@ -292,8 +290,8 @@ public class Tests {
         assertFalse(manager.getProgrammers(true).get(0).getEstado());
         assertEquals(manager.getProgrammers(true).get(0).getPos(), 3);
         assertNull(manager.getTitle(-1));
-        assertEquals(manager.getImagePng(15), "finishLine50x50.png");
-        assertEquals(manager.getImagePng(3), "haganezuka.png");
+        assertEquals(manager.getImagePng(15),"finishLine50x50.png");
+        assertEquals(manager.getImagePng(3),"haganezuka.png");
         assertNull(manager.getImagePng(1));
 
     }
@@ -1249,14 +1247,14 @@ public class Tests {
         assertFalse(p.temTH());
         assertFalse(p.temUT());
         assertFalse(p.temEA());
-        assertEquals(p.toStringTools(), "Programação Funcional;IDE");
-        assertEquals(p.getTools().get(0), fp);
-        assertEquals(p.getNumeroLinguagens(), 1);
-        assertEquals(p.getNrJogadas().toString(), "[]");
-        assertEquals(p.getImage(), "Brown");
-        assertEquals(p.getEstadoToInt(), 1);
-        assertEquals(p.getCicloInfToInt(), 0);
-        assertEquals(p.getNrJogadasToString(), "0");
+        assertEquals(p.toStringTools(),"Programação Funcional;IDE");
+        assertEquals(p.getTools().get(0),fp);
+        assertEquals(p.getNumeroLinguagens(),1);
+        assertEquals(p.getNrJogadas().toString(),"[]");
+        assertEquals(p.getImage(),"Brown");
+        assertEquals(p.getEstadoToInt(),1);
+        assertEquals(p.getCicloInfToInt(),0);
+        assertEquals(p.getNrJogadasToString(),"0");
 
         ArrayList<Integer> positions = new ArrayList<>();
         positions.add(2);
@@ -1265,13 +1263,13 @@ public class Tests {
         tools1.add(new FunctionalProgramming());
         Programmer p1 = new Programmer(3, "Anibal",
                 ProgrammerColor.BROWN, lp, 3, true, tools1, positions, false);
-        assertEquals(p1.getEstadoToInt(), 0);
-        assertEquals(p1.getCicloInfToInt(), 1);
-        assertEquals(p1.getNrJogadasToString(), "2;2");
+        assertEquals(p1.getEstadoToInt(),0);
+        assertEquals(p1.getCicloInfToInt(),1);
+        assertEquals(p1.getNrJogadasToString(),"2;2");
     }
 
     @Test
-    public void testExisteLinguagem() {
+    public void testeExisteLinguagem() {
         String[][] playerInfo = new String[2][4];
         playerInfo[0][0] = "3";
         playerInfo[0][1] = "Boda";
@@ -1283,20 +1281,20 @@ public class Tests {
         playerInfo[1][3] = "GREEN";
 
 
-        assertTrue(HelpfullFunctions.existeLinguagem(playerInfo[1][2], "Kotlin"));
+        assertTrue(HelpfullFunctions.existeLinguagem(playerInfo[1][2],"Kotlin"));
     }
 
     @Test
-    public void testTools() {
+    public void testeTools(){
 
         List<Tool> tools = HelpfullFunctions.tools("Programação Funcional;Ajuda Do Professor;Tratamento de Excepções;" +
                 "Herança;Testes unitários;IDE");
-        assertEquals("Programação Funcional", tools.get(0).getTitulo());
+        assertEquals("Programação Funcional",tools.get(0).getTitulo());
 
     }
 
     @Test
-    public void testPos() {
+    public void pos(){
 
         ArrayList<Integer> teste = new ArrayList<>();
         teste.add(1);
@@ -1307,266 +1305,36 @@ public class Tests {
 
         ArrayList<Integer> teste2 = HelpfullFunctions.pos("1;2;3;4;5");
 
-        assertEquals(teste, teste2);
+        assertEquals(teste,teste2);
+
 
 
     }
 
     @Test
-    public void testFirstName() {
+    public void firstName(){
 
         String nome = "Tanjiro";
 
         String teste2 = HelpfullFunctions.firstName("Tanjiro Kamado");
 
-        assertEquals(nome, teste2);
+        assertEquals(nome,teste2);
 
-
-    }
-
-    @Test
-    public void testGameResults() {
-        GameManager manager = new GameManager();
-        String[][] playerInfo = new String[3][4];
-        String[][] tools = new String[3][3];
-        tools[0][0] = "0";
-        tools[0][1] = "8";
-        tools[0][2] = "5";
-        tools[1][0] = "1";
-        tools[1][1] = "1";
-        tools[1][2] = "6";
-        tools[2][0] = "1";
-        tools[2][1] = "1";
-        tools[2][2] = "10";
-        playerInfo[0][0] = "3";
-        playerInfo[0][1] = "Boda";
-        playerInfo[0][2] = "Python;SQL";
-        playerInfo[0][3] = "PURPLE";
-        playerInfo[1][0] = "2735";
-        playerInfo[1][1] = "JJ";
-        playerInfo[1][2] = "Kotlin;C";
-        playerInfo[1][3] = "GREEN";
-        playerInfo[2][0] = "2";
-        playerInfo[2][1] = "Antonio";
-        playerInfo[2][2] = "Java";
-        playerInfo[2][3] = "BLUE";
-        try {
-            manager.createInitialBoard(playerInfo, 15, tools);
-        } catch (InvalidInitialBoardException ex) {
-            System.out.println(ex.getMessage());
-        }
-        manager.moveCurrentPlayer(4);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(4);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(2);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(2);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(6);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(5);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(3);
-        manager.reactToAbyssOrTool();
-        assertEquals(manager.getGameResults().get(0), "O GRANDE JOGO DO DEISI");
-    }
-
-    @Test
-    public void testGetProgPos() {
-        GameManager manager = new GameManager();
-        String[][] playerInfo = new String[3][4];
-        String[][] tools = new String[3][3];
-        tools[0][0] = "0";
-        tools[0][1] = "8";
-        tools[0][2] = "5";
-        tools[1][0] = "1";
-        tools[1][1] = "1";
-        tools[1][2] = "6";
-        tools[2][0] = "1";
-        tools[2][1] = "1";
-        tools[2][2] = "10";
-        playerInfo[0][0] = "3";
-        playerInfo[0][1] = "Boda";
-        playerInfo[0][2] = "Python;SQL";
-        playerInfo[0][3] = "PURPLE";
-        playerInfo[1][0] = "2735";
-        playerInfo[1][1] = "JJ";
-        playerInfo[1][2] = "Kotlin;C";
-        playerInfo[1][3] = "GREEN";
-        playerInfo[2][0] = "2";
-        playerInfo[2][1] = "Antonio";
-        playerInfo[2][2] = "Java";
-        playerInfo[2][3] = "BLUE";
-        try {
-            manager.createInitialBoard(playerInfo, 15, tools);
-        } catch (InvalidInitialBoardException ex) {
-            System.out.println(ex.getMessage());
-        }
-        manager.moveCurrentPlayer(4);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(4);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(2);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(2);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(6);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(5);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(3);
-        manager.reactToAbyssOrTool();
-        assertNull(manager.getProgrammers(19));
-        assertEquals(manager.getProgrammers(10).get(0).getName(), "Antonio");
-    }
-
-    @Test
-    public void testAddAbyss() {
-
-        GameManager manager = new GameManager();
-
-        manager.addAbyss(1, "1");
-        manager.addAbyss(2, "2");
-        manager.addAbyss(3, "3");
-        manager.addAbyss(4, "4");
-        manager.addAbyss(5, "5");
-        manager.addAbyss(6, "6");
-        manager.addAbyss(7, "7");
-        manager.addAbyss(8, "8");
-        manager.addAbyss(9, "9");
-        manager.addAbyss(10, "0");
-
-        assertEquals(manager.getBoardApps().get(0).getId(), 1);
 
 
     }
 
     @Test
-    public void testAbyss() {
-
-        GameManager manager = new GameManager();
-
-
-        manager.addAbyss(1, "1");
-        manager.addAbyss(2, "2");
-        manager.addAbyss(3, "3");
-        manager.addAbyss(4, "4");
-        manager.addAbyss(5, "5");
-        manager.addAbyss(6, "6");
-        manager.addAbyss(7, "7");
-        manager.addAbyss(8, "8");
-        manager.addAbyss(9, "9");
-        manager.posicaoOcupada(1);
-
-        assertTrue(manager.posicaoOcupada(1));
-
-
-    }
-
-    @Test
-    public void testLoadGame() {
-        GameManager manager = new GameManager();
-        String[][] playerInfo = new String[3][4];
-        String[][] tools = new String[3][3];
-        tools[0][0] = "0";
-        tools[0][1] = "8";
-        tools[0][2] = "5";
-        tools[1][0] = "1";
-        tools[1][1] = "1";
-        tools[1][2] = "6";
-        tools[2][0] = "1";
-        tools[2][1] = "1";
-        tools[2][2] = "10";
-        playerInfo[0][0] = "3";
-        playerInfo[0][1] = "Boda";
-        playerInfo[0][2] = "Python;SQL";
-        playerInfo[0][3] = "PURPLE";
-        playerInfo[1][0] = "2735";
-        playerInfo[1][1] = "JJ";
-        playerInfo[1][2] = "Kotlin;C";
-        playerInfo[1][3] = "GREEN";
-        playerInfo[2][0] = "2";
-        playerInfo[2][1] = "Antonio";
-        playerInfo[2][2] = "Java";
-        playerInfo[2][3] = "BLUE";
-        try {
-            manager.createInitialBoard(playerInfo, 15, tools);
-        } catch (InvalidInitialBoardException ex) {
-            System.out.println(ex.getMessage());
-        }
-        manager.moveCurrentPlayer(4);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(4);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(2);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(2);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(6);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(5);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(3);
-        manager.reactToAbyssOrTool();
-        manager.saveGame(new File("testFile.txt"));
-        assertTrue(manager.loadGame(new File("testFile.txt")));
-
-    }
-
-    @Test
-    public void testSaveGame() {
-        GameManager manager = new GameManager();
-        String[][] playerInfo = new String[3][4];
-        String[][] tools = new String[3][3];
-        tools[0][0] = "0";
-        tools[0][1] = "8";
-        tools[0][2] = "5";
-        tools[1][0] = "1";
-        tools[1][1] = "1";
-        tools[1][2] = "6";
-        tools[2][0] = "1";
-        tools[2][1] = "1";
-        tools[2][2] = "10";
-        playerInfo[0][0] = "3";
-        playerInfo[0][1] = "Boda";
-        playerInfo[0][2] = "Python;SQL";
-        playerInfo[0][3] = "PURPLE";
-        playerInfo[1][0] = "2735";
-        playerInfo[1][1] = "JJ";
-        playerInfo[1][2] = "Kotlin;C";
-        playerInfo[1][3] = "GREEN";
-        playerInfo[2][0] = "2";
-        playerInfo[2][1] = "Antonio";
-        playerInfo[2][2] = "Java";
-        playerInfo[2][3] = "BLUE";
-        try {
-            manager.createInitialBoard(playerInfo, 15, tools);
-        } catch (InvalidInitialBoardException ex) {
-            System.out.println(ex.getMessage());
-        }
-        manager.moveCurrentPlayer(4);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(4);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(2);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(2);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(6);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(5);
-        manager.reactToAbyssOrTool();
-        manager.moveCurrentPlayer(3);
-        manager.reactToAbyssOrTool();
-        assertTrue(manager.saveGame(new File("testFile.txt")));
-
-    }
-
-    @Test
-    public void testLoadGame1() {
+    public void testCasaDivide3() {
         GameManager manager = new GameManager();
         String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[2][3];
+        tools[1][0] = "0";
+        tools[1][1] = "10";
+        tools[1][2] = "7";
+        tools[0][0] = "1";
+        tools[0][1] = "4";
+        tools[0][2] = "3";
         playerInfo[0][0] = "3";
         playerInfo[0][1] = "Boda";
         playerInfo[0][2] = "Python;SQL";
@@ -1576,13 +1344,62 @@ public class Tests {
         playerInfo[1][2] = "Kotlin;C";
         playerInfo[1][3] = "GREEN";
         try {
-            manager.createInitialBoard(playerInfo, 5);
+            manager.createInitialBoard(playerInfo, 15, tools);
         } catch (InvalidInitialBoardException ex) {
             System.out.println(ex.getMessage());
         }
-        manager.saveGame(new File("testFile.txt"));
-        assertTrue(manager.loadGame(new File("testFile.txt")));
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(1);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(1);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        assertEquals(5, manager.getTurno().getProgramadorAtual().getPos());
+    }
 
+    @Test
+    public void testCasaDivide2() {
+        GameManager manager = new GameManager();
+        String[][] playerInfo = new String[2][4];
+        String[][] tools = new String[2][3];
+        tools[1][0] = "0";
+        tools[1][1] = "10";
+        tools[1][2] = "5";
+        tools[0][0] = "1";
+        tools[0][1] = "4";
+        tools[0][2] = "3";
+        playerInfo[0][0] = "3";
+        playerInfo[0][1] = "Boda";
+        playerInfo[0][2] = "Python;SQL";
+        playerInfo[0][3] = "PURPLE";
+        playerInfo[1][0] = "2735";
+        playerInfo[1][1] = "JJ";
+        playerInfo[1][2] = "Kotlin;C";
+        playerInfo[1][3] = "GREEN";
+        try {
+            manager.createInitialBoard(playerInfo, 15, tools);
+        } catch (InvalidInitialBoardException ex) {
+            System.out.println(ex.getMessage());
+        }
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(2);
+        manager.reactToAbyssOrTool();
+        manager.moveCurrentPlayer(4);
+        manager.reactToAbyssOrTool();
+        assertEquals(3, manager.getTurno().getProgramadorAtual().getPos());
     }
 
 
