@@ -178,7 +178,8 @@ public class Programmer {
             int positions1 = pos - nrJogadas.get(nrJogadas.size() - 1);
             int positions2 = pos - nrJogadas.get(nrJogadas.size() - 2);
             int positions3 = pos - nrJogadas.get(nrJogadas.size() - 3);
-            posicaoTemp = Math.ceil((positions1 + positions2 + positions3) / 3);
+            int somaPositions = positions1 + positions2 + positions3;
+            posicaoTemp = Math.ceil(somaPositions / 3);
             pos = (int)posicaoTemp;
             return;
         }
@@ -191,7 +192,7 @@ public class Programmer {
             return;
         }
         if (posicoes.size() == 1){
-            pos = posicoes.get(0);
+            pos = pos - nrJogadas.get(nrJogadas.size() - 1);
         }
     }
 
