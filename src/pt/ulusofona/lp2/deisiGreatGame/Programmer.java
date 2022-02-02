@@ -199,7 +199,7 @@ public class Programmer {
         if(isCicloInfinito()){
             return "Ciclo Infinito";
         } else {
-            return "Blue Screen Of Death";
+            return "Blue Screen of Death";
         }
     }
 
