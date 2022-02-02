@@ -175,18 +175,18 @@ public class Programmer {
     public void media3CasasAnteriores(){
 
         if (posicoes.size() >= 3){
-            int positions1 = pos - nrJogadas.get(nrJogadas.size() - 1);
-            int positions2 = pos - nrJogadas.get(nrJogadas.size() - 2);
-            int positions3 = pos - nrJogadas.get(nrJogadas.size() - 3);
-            int somaPositions = positions1 + positions2 + positions3;
+            double positions1 = pos - nrJogadas.get(nrJogadas.size() - 1);
+            double positions2 = pos - nrJogadas.get(nrJogadas.size() - 2);
+            double positions3 = pos - nrJogadas.get(nrJogadas.size() - 3);
+            double somaPositions = positions1 + positions2 + positions3;
             posicaoTemp = Math.ceil(somaPositions / 3);
             pos = (int)posicaoTemp;
             return;
         }
         if (posicoes.size()  == 2){
-            int positions1 = pos - nrJogadas.get(nrJogadas.size() - 1);
-            int positions2 = pos - nrJogadas.get(nrJogadas.size() - 2);
-            int somaPositions = positions1 + positions2;
+            double positions1 = pos - nrJogadas.get(nrJogadas.size() - 1);
+            double positions2 = pos - nrJogadas.get(nrJogadas.size() - 2);
+            double somaPositions = positions1 + positions2;
             posicaoTemp = Math.ceil(somaPositions / 2);
             pos = (int)posicaoTemp;
             return;
