@@ -14,6 +14,7 @@ public class GameManager {
     private final ArrayList<BoardApps> boardApps = new ArrayList<>();
     private ArrayList<Position> positions = new ArrayList<>();
     private ArrayList<Integer> posicoes = new ArrayList<>();
+    private boolean empatado = false;
 
 
     public GameManager() {
@@ -30,6 +31,21 @@ public class GameManager {
     }
 
     public List<String> getGameResults() {
+        if (empatado){
+            ArrayList<String> results = new ArrayList<>();
+            results.add("O GRANDE JOGO DO DEISI");
+            results.add("");
+            results.add("NR. DE TURNOS");
+            results.add("" + this.turno.getNrTurnos());
+            results.add("");
+            results.add("Participantes:");
+            programadores.sort(Comparator.comparingInt(Programmer::getPos).reversed());
+            for (Programmer p : programadores) {
+                results.add("" + p.getName() + " : " + p.getPos() + " : " +
+                        p.causaDerrota());
+            }
+            return results;
+        }
         ArrayList<String> results = new ArrayList<>();
         results.add("O GRANDE JOGO DO DEISI");
         results.add("");
@@ -371,6 +387,20 @@ public class GameManager {
             if (p.getPos() == tamanhoTab) {
                 return true;
             }
+        }
+        int count = 0;
+        for (Programmer p : programadores){
+            if (p.isCicloInfinito()){
+                count++;
+                continue;
+            }
+          if(!p.getEstado()){
+                count++;
+            }
+        }
+        if (count == programadores.size()){
+            empatado = true;
+            return true;
         }
         return false;
     }
