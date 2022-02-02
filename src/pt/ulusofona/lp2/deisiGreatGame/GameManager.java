@@ -38,6 +38,8 @@ public class GameManager {
             results.add("NR. DE TURNOS");
             results.add("" + this.turno.getNrTurnos());
             results.add("");
+            results.add("O jogo terminou empatado.");
+            results.add("");
             results.add("Participantes:");
             programadores.sort(Comparator.comparingInt(Programmer::getPos).reversed());
             for (Programmer p : programadores) {
