@@ -44,7 +44,7 @@ https://youtu.be/od9J57DP7Tk
 
 ### Diagrama UML
 
-![](diagrama.png?raw=true "Diagrama UML")
+![](uml_projeto.drawio.png?raw=true "Diagrama UML")
 
 ### Trabalho foi realizado por:
 
